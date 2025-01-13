@@ -1,10 +1,13 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+// solving the error Caution: `ReactDOM` also has a named export `createRoot`. Check if you meant to write `import {createRoot} from 'react-dom/client'` instead. Also the forbidden non null assertion
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+const rootElement = document.getElementById('root') as HTMLElement;
+
+createRoot(rootElement).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-)
+  </React.StrictMode>
+);
+// 1.1.28

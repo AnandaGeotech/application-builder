@@ -3,12 +3,14 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import "./index.css"
+import { Toaster } from 'react-hot-toast';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 
 createRoot(rootElement).render(
   <React.StrictMode>
     <App />
+    <Toaster />
   </React.StrictMode>
 );
 // 1.1.28

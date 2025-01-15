@@ -1,5 +1,5 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable import/no-extraneous-dependencies */
 import { FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/common/components/Button';

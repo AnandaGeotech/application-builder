@@ -1,6 +1,8 @@
+/* eslint-disable boundaries/element-types */
 import { RouteObject } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from '@/common/layouts/BasicLayout';
+import NotFoundPage from '@/router/components/NotFoundPage';
 
 export const applicationcationRoutes: RouteObject[] = [
   {
@@ -20,5 +22,9 @@ export const applicationcationRoutes: RouteObject[] = [
         lazy: () => import('./pages/Edit'), // Edit route
       },
     ],
+  },
+  {
+    path: '*',
+    element: <NotFoundPage />,
   },
 ];

@@ -51,17 +51,17 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-indigo-500/100 mb-8">Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-4/5 mx-auto md:w-full">
-            <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-l-4 border-slate-900">
+            <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-x-4 border-indigo-500/100">
               <div className="text-blue-600 text-4xl mb-4">&#x2699;</div>
               <h3 className="text-xl font-bold mb-2">Drag-and-Drop</h3>
               <p className="text-slate-400">Easily create applications with an intuitive drag-and-drop interface.</p>
             </div>
-            <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-l-4 border-slate-900">
+            <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-x-4 border-indigo-500/100">
               <div className="text-blue-600 text-4xl mb-4">&#x1F4BB;</div>
               <h3 className="text-xl font-bold mb-2 ">Customizable Templates</h3>
               <p className="text-slate-400">Choose from a variety of pre-built templates tailored to your needs.</p>
             </div>
-            <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-l-4 border-slate-900">
+            <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-x-4 border-indigo-500/100">
               <div className="text-blue-600 text-4xl mb-4">&#x1F4E6;</div>
               <h3 className="text-xl font-bold mb-2 ">Seamless Integration</h3>
               <p className="text-slate-400">Connect with popular tools and services effortlessly.</p>
@@ -80,7 +80,7 @@ const Home = () => {
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
-          <table className="table-auto border-collapse w-full">
+          <table className="table-auto border border-indigo-500/100 w-full">
             <thead>
               <tr className=" text-indigo-500/100 bg-slate-900 text-sm md:text-base h-8">
                 {staticFormData.map((item) => (
@@ -92,10 +92,10 @@ const Home = () => {
             </thead>
             <tbody>
               <tr className="bg-slate-700 transition-colors h-12">
-                {staticFormData.map((item, index) => (
+                {staticFormData.map((item) => (
                   <td
                     key={item.id}
-                    className={` px-4 text-slate-300 text-sm md:text-base whitespace-nowrap text-center ${index % 2 === 0 ? 'bg-slate-600' : ''}`}
+                    className=" px-4 text-slate-300 text-sm md:text-base whitespace-nowrap text-center bg-slate-900"
                   >
                     {item.defaultValue?.toString() !== 'false' || item.defaultValue ? item.defaultValue : 'N/A'}
                   </td>

@@ -86,7 +86,7 @@ const AddForm = () => {
           </div>
         </div>
         <div className="col-span-full ">
-          <ABFileInput setValue={methods.setValue} handleFileChange={handleFileChange} preview={preview} />
+          <ABFileInput handleFileChange={handleFileChange} preview={preview} />
         </div>
       </div>
       <div className="mt-10">

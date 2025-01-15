@@ -158,6 +158,7 @@ export const staticFormData = [
     label: 'Profile Picture',
     required: false,
     accept: ['image/png', 'image/jpeg'],
+    defaultValue: false,
   },
   {
     id: 'skills',

@@ -1,7 +1,6 @@
 /* eslint-disable boundaries/element-types */
 import { RouteObject } from 'react-router-dom';
 import Home from './pages/Home';
-// import UserDetails from './pages/UserDetails';
 import Layout from '@/common/layouts/ApplicationLayout';
 import NotFoundPage from '@/router/components/NotFoundPage';
 
@@ -23,7 +22,7 @@ export const applicationcationRoutes: RouteObject[] = [
         lazy: () => import('./pages/Edit'), // Edit route
       },
       {
-        path: 'user-details/:id',
+        path: 'user/:id',
         lazy: () => import('./pages/UserDetails'), // user details route
       },
     ],

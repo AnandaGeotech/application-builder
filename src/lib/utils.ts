@@ -8,6 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 // capitalize a string
 export const capitalize = (str: string) => str.slice(0, 1).toUpperCase() + str.slice(1, str.length).toLowerCase();
 
+// static data for HomePage
 export const staticFormData = [
   {
     id: 'name',
@@ -208,3 +209,16 @@ export const staticFormData = [
     defaultValue: 'I am a passionate developer with experience in web technologies.',
   },
 ];
+
+// initial data for edit page
+export const initialData = {
+  firstName: 'John',
+  lastName: 'Doe',
+  phone: '1234567890',
+  gender: 'Male',
+  address: '123 Main St',
+  city: 'Anytown',
+  state: 'Anystate',
+  pincode: '123456',
+  fileUrl: 'https://example.com/preview.jpg', // URL of an existing uploaded file
+};

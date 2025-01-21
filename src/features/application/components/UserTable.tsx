@@ -5,6 +5,7 @@
 import { Link } from 'react-router-dom';
 import useApplicationUserList from '../hooks/useApplicationUserlist';
 import { capitalize } from '@/lib/utils';
+import { Button } from '@/common/components/Button';
 
 const UserTable = () => {
   const { listData } = useApplicationUserList();

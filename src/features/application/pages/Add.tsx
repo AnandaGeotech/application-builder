@@ -25,7 +25,24 @@ export const Component = () => (
       </div>
     </div>
 
-    <ABPHForm defaultValues={{}}>
+    <ABPHForm
+      defaultValues={{
+        education: [
+          {
+            description: '',
+            duration: '',
+            label: '',
+          },
+        ],
+        professional: [
+          {
+            description: '',
+            duration: '',
+            label: '',
+          },
+        ],
+      }}
+    >
       <AddForm />
     </ABPHForm>
   </div>

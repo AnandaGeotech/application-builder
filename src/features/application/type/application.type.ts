@@ -12,7 +12,7 @@ export interface IApplicationJsonApiDBService {
 
 export interface TableApplicationUserListProps {
   // Function to set selected file info
-  openModal: (data: any) => void; // Function to open the modal
+  openModal: (data: Required<IApplicationUser>) => void; // Function to open the modal
   dataResource: {
     read: () => IApplicationUsersListRes; // Function to read data, always returning FileInfo[]
   } | null; // dataResource can be null,

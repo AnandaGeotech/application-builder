@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line boundaries/no-unknown
 
+import { Link } from 'react-router-dom';
 import useApplicationUserList from '../hooks/useApplicationUserlist';
 import { capitalize } from '@/lib/utils';
 
@@ -16,6 +17,15 @@ const UserTable = () => {
     }
     if (defaultValue === '' || defaultValue === true) {
       return 'null';
+    }
+    if (Array.isArray(defaultValue)) {
+      return defaultValue
+        .map((item) => (typeof item === 'object' && item !== null ? Object.values(item).join(', ') : String(item)))
+        .join(', ');
+    }
+    if (typeof defaultValue === 'object' && defaultValue !== null) {
+      // Handle objects: join all values with commas
+      return Object.values(defaultValue).join(', ');
     }
     return String(defaultValue);
   }
@@ -46,7 +56,7 @@ const UserTable = () => {
                     key={header}
                     className="p-4 text-slate-300 text-sm md:text-base whitespace-nowrap text-center bg-slate-900 bg-opacity-80"
                   >
-                    {getDisplayValue(item[header])}
+                    <Link to={`user/${item.id}`}>{getDisplayValue(item[header])}</Link>
                   </td>
                 ))}
               </tr>

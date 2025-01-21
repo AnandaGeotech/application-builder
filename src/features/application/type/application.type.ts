@@ -9,3 +9,17 @@ export interface IApplicationJsonApiDBService {
   deleteDataFromDBFn: (id: string) => Promise<void>;
   upsertDataToDBFn: (payload: IApplicationUser) => Promise<IApplicationUser | void>;
 }
+
+export interface TableApplicationUserListProps {
+  // Function to set selected file info
+  openModal: (data: any) => void; // Function to open the modal
+  dataResource: {
+    read: () => IApplicationUsersListRes; // Function to read data, always returning FileInfo[]
+  } | null; // dataResource can be null,
+
+  headers: string[];
+  getDisplayValue: (defaultValue: unknown) => string;
+  handleConfirm: () => void;
+  closeModal: () => void;
+  isModalOpen: boolean;
+}

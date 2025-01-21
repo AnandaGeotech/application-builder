@@ -1,14 +1,6 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
-
-interface ErrorBoundaryProps {
-  children: ReactNode;
-  fallback?: ReactNode; // Optional custom fallback UI
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean;
-  error: Error | null;
-}
+/* eslint-disable boundaries/no-unknown */
+import { Component, ErrorInfo } from 'react';
+import { ErrorBoundaryProps, ErrorBoundaryState } from '@/types/common.type';
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

@@ -70,7 +70,10 @@ const Home = () => {
           <h2 className="text-4xl font-bold text-center text-indigo-500/100 mb-8">Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-4/5 mx-auto md:w-full">
             {featureDetails.map(({ icon, featureName, description }) => (
-              <div className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-x-4 border-indigo-500/100">
+              <div
+                className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-x-4 border-indigo-500/100"
+                key={featureName}
+              >
                 <div className="text-blue-600 text-4xl mb-4">{icon}</div>
                 <h3 className="text-xl font-bold mb-2">{featureName}</h3>
                 <p className="text-slate-400">{description}</p>
@@ -82,7 +85,7 @@ const Home = () => {
 
       {/* table */}
       <section className="bg-slate-800 py-16 pb-24 mx-auto px-6">
-        <h3 className="font-bold text-indigo-500/100 text-xl lg:text-4xl mb-4 text-center">Table Demo</h3>
+        <h3 className="font-bold text-indigo-500/100 text-4xl mb-4 text-center">Table Demo</h3>
         <div
           className="container py-4 overflow-x-auto mx-auto rounded-lg bg-slate-800 [&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50

@@ -1,70 +1,90 @@
 {
   "users": [
     {
+      "id": "1159",
       "firstName": "John",
       "lastName": "Doe",
+      "email": "john.doe@example.com",
       "phone": "123-456-7890",
-      "gender": "Male",
-      "address": "123 Main St",
-      "city": "Springfield",
-      "state": "IL",
-      "pincode": "62704",
-      "id": "cb57"
-    },
-    {
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "phone": "987-654-3210",
-      "gender": "Female",
-      "address": "456 Elm St",
-      "city": "Shelbyville",
-      "state": "IN",
-      "pincode": "46176",
-      "id": "ba06"
-    },
-    {
-      "firstName": "Alice",
-      "lastName": "Johnson",
-      "phone": "555-123-4567",
-      "gender": "Female",
-      "address": "789 Oak St",
-      "city": "Capital City",
-      "state": "TX",
-      "pincode": "73301",
-      "id": "5412"
-    },
-    {
-      "firstName": "Bob",
-      "lastName": "Brown",
-      "phone": "321-654-9870",
-      "gender": "Male",
-      "address": "101 Pine St",
-      "city": "Metropolis",
+      "gender": "male",
+      "presentAddress": "123 Main St",
+      "permanentAddress": "456 Elm St",
+      "birthDate": "1990-01-01",
+      "company": "Acme Corp",
+      "country": "usa",
+      "hometown": "Springfield",
+      "language": "english",
+      "maritalStatus": "single",
+      "city": "New York",
       "state": "NY",
       "pincode": "10001",
-      "id": "1b85"
+      "education": [
+        {
+          "description": "Bachelor of Science in Computer Science",
+          "duration": "2010 - 2014",
+          "label": "University of Example"
+        },
+        {
+          "description": "Master of Science in Software Engineering",
+          "duration": "2015 - 2017",
+          "label": "Tech University"
+        }
+      ],
+      "profession": [
+        {
+          "description": "Software Engineer",
+          "duration": "2014 - Present",
+          "label": "Acme Corp"
+        },
+        {
+          "description": "Senior Software Engineer",
+          "duration": "2017 - Present",
+          "label": "Acme Corp"
+        }
+      ]
     },
     {
-      "firstName": "Charlie",
-      "lastName": "Davis",
-      "phone": "111-222-3333",
-      "gender": "Non-binary",
-      "address": "202 Maple St",
-      "city": "Gotham",
-      "state": "CA",
-      "pincode": "90001",
-      "id": "aedc"
-    },
-    {
-      "id": "1159",
-      "firstName": "Samir",
-      "lastName": "halder updated",
-      "phone": "9878767656",
-      "gender": "male",
-      "address": "garia staion road",
-      "city": "kolkata",
-      "state": "wb",
-      "pincode": "54654"
+      "id": "1b85",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "phone": "987-654-3210",
+      "gender": "female",
+      "presentAddress": "789 Oak St",
+      "permanentAddress": "101 Pine St",
+      "birthDate": "1992-02-15",
+      "company": "Tech Solutions",
+      "country": "canada",
+      "hometown": "Toronto",
+      "language": "french",
+      "maritalStatus": "married",
+      "city": "Vancouver",
+      "state": "BC",
+      "pincode": "V5K 0A1",
+      "education": [
+        {
+          "description": "Master of Arts in Graphic Design",
+          "duration": "2014 - 2016",
+          "label": "Design Institute"
+        },
+        {
+          "description": "Certificate in User Experience Design",
+          "duration": "2017 - 2018",
+          "label": "UX Academy"
+        }
+      ],
+      "profession": [
+        {
+          "description": "UI/UX Designer",
+          "duration": "2016 - Present",
+          "label": "Creative Agency"
+        },
+        {
+          "description": "Lead UI/UX Designer",
+          "duration": "2018 - Present",
+          "label": "Creative Agency"
+        }
+      ]
     }
   ]
 }

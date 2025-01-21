@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FieldValues, SubmitHandler, useFormContext } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useFieldArray, useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import applicationService from '../services/application.service';
@@ -67,11 +67,35 @@ const useUserUpsert = () => {
       setPreview(null);
     }
   };
+
+  const {
+    fields: educationFields,
+    append: addEducation,
+    remove: removeEducation,
+  } = useFieldArray({
+    control: methods.control,
+    name: 'education',
+  });
+
+  const {
+    fields: professionalFields,
+    append: addProfessional,
+    remove: removeProfessional,
+  } = useFieldArray({
+    control: methods.control,
+    name: 'professional',
+  });
   return {
     methods,
     submit,
     handleFileChange,
     preview,
+    educationFields,
+    addEducation,
+    removeEducation,
+    professionalFields,
+    addProfessional,
+    removeProfessional,
   };
 };
 

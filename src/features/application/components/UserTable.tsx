@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line boundaries/no-unknown
@@ -5,22 +6,44 @@
 import { Link } from 'react-router-dom';
 import { BiPencil, BiTrashAlt } from 'react-icons/bi';
 import { BsEyeFill } from 'react-icons/bs';
-import useApplicationUserList from '../hooks/useApplicationUserlist';
+import { FC } from 'react';
 import { capitalize } from '@/lib/utils';
 import GlobalModal from '@/common/components/Modal';
 import { Button } from '@/common/components/Button';
+import { IApplicationUsersListRes } from '@/types/common.type';
 
-const UserTable = () => {
-  const { listData, headers, getDisplayValue, openModal, handleConfirm, closeModal, isModalOpen } =
-    useApplicationUserList();
+interface TableFileListProps {
+  // Function to set selected file info
+  openModal: (data: any) => void; // Function to open the modal
+  dataResource: {
+    read: () => IApplicationUsersListRes; // Function to read data, always returning FileInfo[]
+  } | null; // dataResource can be null,
 
-  const data = listData?.data || [];
+  headers: string[];
+  getDisplayValue: (defaultValue: unknown) => string;
+  handleConfirm: () => void;
+  closeModal: () => void;
+  isModalOpen: boolean;
+}
+const UserTable: FC<TableFileListProps> = ({
+  dataResource,
+  headers,
+  getDisplayValue,
+  openModal,
+  handleConfirm,
+  closeModal,
+  isModalOpen,
+}) => {
+  if (!dataResource) {
+    throw new Promise(() => {});
+  }
 
+  const data = dataResource.read();
   return (
     <>
       {' '}
       <div>
-        {data.length > 0 ? (
+        {data?.data?.length > 0 ? (
           <table className="table-auto border border-indigo-500/100 w-full">
             <thead>
               <tr className="text-indigo-500/100 bg-slate-900 text-sm md:text-base h-8">
@@ -33,7 +56,7 @@ const UserTable = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
+              {data?.data.map((item) => (
                 <tr key={item.id} className="bg-slate-900 transition-colors h-10">
                   <td className="flex gap-3 text-white px-2 bg-slate-900 items-center p-4  text-sm md:text-base whitespace-nowrap text-center  bg-opacity-80">
                     <Link className="bg-slate-900 " to={`/edit/${item.id}`}>

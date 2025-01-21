@@ -2,8 +2,11 @@
 /* eslint-disable boundaries/no-unknown */
 import { FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { Suspense } from 'react';
 import UserTable from '../components/UserTable';
+import useApplicationUserList from '../hooks/useApplicationUserlist';
 import { Button } from '@/common/components/Button';
+import TableSkeleton from '@/common/components/TableSkeleton';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,7 +30,8 @@ const Home = () => {
       description: 'Connect with popular tools and services effortlessly.',
     },
   ];
-
+  const { dataResource, headers, getDisplayValue, openModal, handleConfirm, closeModal, isModalOpen } =
+    useApplicationUserList();
   return (
     <div className="bg-slate-800 text-gray-800">
       {/* Hero Section */}
@@ -85,7 +89,7 @@ const Home = () => {
 
       {/* table */}
       <section className="bg-slate-800 py-16 pb-24 mx-auto px-6">
-        <h3 className="font-bold text-indigo-500/100 text-4xl mb-4 text-center">Table Demo</h3>
+        <h3 className="font-bold text-indigo-500/100 text-4xl mb-4 text-center">Users List</h3>
         <div
           className="container py-4 overflow-x-auto mx-auto rounded-lg bg-slate-800 [&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
@@ -93,7 +97,17 @@ const Home = () => {
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
-          <UserTable />
+          <Suspense fallback={<TableSkeleton />}>
+            <UserTable
+              dataResource={dataResource}
+              headers={headers}
+              getDisplayValue={getDisplayValue}
+              openModal={openModal}
+              handleConfirm={handleConfirm}
+              closeModal={closeModal}
+              isModalOpen={isModalOpen}
+            />
+          </Suspense>
         </div>
       </section>
 

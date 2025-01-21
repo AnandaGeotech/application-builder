@@ -149,6 +149,7 @@ const AddForm = () => {
             ))}
             <div className="flex col-span-full justify-end pt-3">
               <Button
+                type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addProfessional({ label: '', duration: '', description: '' })}
                 className="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-600  "
@@ -183,6 +184,7 @@ const AddForm = () => {
                 </div>
 
                 <Button
+                  type="button"
                   disabled={professionalFields.length < 2}
                   onClick={() => professionalFields.length > 1 && removeProfessional(index)}
                   className="text-red-500 hover:underline"

@@ -8,34 +8,6 @@ import { useEffect, useState } from 'react';
 import applicationService from '../services/application.service';
 import { IApplicationUser } from '@/types/application.type';
 
-// const userDetails = [
-//   { icon: <FaIdCardClip />, label: 'ID', value: '12345' },
-//   { icon: <MdEmail />, label: 'Email', value: 'john.doe@exampse.com' },
-//   { icon: <FaPhoneAlt />, label: 'Ph. No', value: '+98 98999 98999' },
-//   { icon: <MdCorporateFare />, label: 'Company', value: 'GeoTech' },
-// ];
-
-const personalInfo = [
-  { label: 'Gender', value: 'M' },
-  { label: 'Date of Birth', value: '29/12/1994' },
-  { label: 'Hometown', value: 'Michigan' },
-  { label: 'Country', value: 'USA' },
-  { label: 'Language', value: 'English' },
-  { label: 'Marital Status', value: 'Single' },
-];
-
-const educationInfo = [
-  { label: 'College', duration: '2017-2021', description: 'Lorem ipsum dolor sit' },
-  { label: 'Higher Secondary', duration: '2015-2017', description: 'Lorem ipsum dolor sit' },
-  { label: 'Secondary', duration: '2013-2015', description: 'Lorem ipsum dolor sit' },
-];
-
-const professionalInfo = [
-  { label: 'Company-3', duration: '2023-2024', description: 'Lorem ipsum dolor sit' },
-  { label: 'Company-2', duration: '2022-2023', description: 'Lorem ipsum dolor sit' },
-  { label: 'Company-1', duration: '2021-2022', description: 'Lorem ipsum dolor sit' },
-];
-
 const socialLinks = [
   {
     icon: <FaLinkedin size={20} />,
@@ -148,13 +120,28 @@ export const Component = () => {
           <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
             Personal Information
           </h3>
+
           <div className="grid grid-cols-2 gap-y-4 md:gap-y-8 py-4">
-            {personalInfo.map(({ label, value }) => (
-              <div key={label}>
-                <h6 className="font-bold text-indigo-500/100">{label}</h6>
-                <p className="text-slate-400">{value}</p>
-              </div>
-            ))}
+            <div>
+              <h6 className="font-bold text-indigo-500/100">Gender</h6>
+              <p className="text-slate-400"> {userInfoData?.gender}</p>
+            </div>
+            <div>
+              <h6 className="font-bold text-indigo-500/100">Date of Birth</h6>
+              <p className="text-slate-400">{userInfoData?.birthDate}</p>
+            </div>
+            <div>
+              <h6 className="font-bold text-indigo-500/100">Hometown</h6>
+              <p className="text-slate-400">{userInfoData?.hometown}</p>
+            </div>
+            <div>
+              <h6 className="font-bold text-indigo-500/100">Language</h6>
+              <p className="text-slate-400">{userInfoData?.language}</p>
+            </div>
+            <div>
+              <h6 className="font-bold text-indigo-500/100">Marital Status</h6>
+              <p className="text-slate-400">{userInfoData?.maritalStatus}</p>
+            </div>
           </div>
           <div className="grid grid-cols-1 gap-y-6 py-4">
             <div>
@@ -170,27 +157,38 @@ export const Component = () => {
 
         {/* Education & Professional Info */}
         <div className="w-full md:w-1/2 rounded-xl space-y-6">
-          {[
-            { title: 'Education Information', data: educationInfo },
-            { title: 'Professional Information', data: professionalInfo },
-          ].map(({ title, data }) => (
-            <div className="bg-slate-900 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100" key={title}>
-              <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
-                {title}
-              </h3>
-              <div className="grid grid-cols-1 space-y-4 md:space-y-8 py-4">
-                {data.map(({ label, duration, description }) => (
-                  <div key={label}>
-                    <h6 className="font-bold text-indigo-500/100 flex justify-between">
-                      {label}
-                      <span className="font-bold text-slate-700 text-sm">{duration}</span>
-                    </h6>
-                    <p className="text-slate-400">{description}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="bg-slate-900 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
+            <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
+              Education Information
+            </h3>
+            <div className="grid grid-cols-1 space-y-4 md:space-y-8 py-4">
+              {userInfoData?.education.map(({ label, duration, description }) => (
+                <div key={label}>
+                  <h6 className="font-bold text-indigo-500/100 flex justify-between">
+                    {label}
+                    <span className="font-bold text-slate-700 text-sm">{duration}</span>
+                  </h6>
+                  <p className="text-slate-400">{description}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          <div className="bg-slate-900 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
+            <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
+              Professional Information
+            </h3>
+            <div className="grid grid-cols-1 space-y-4 md:space-y-8 py-4">
+              {userInfoData?.profession?.map(({ label, duration, description }) => (
+                <div key={label}>
+                  <h6 className="font-bold text-indigo-500/100 flex justify-between">
+                    {label}
+                    <span className="font-bold text-slate-700 text-sm">{duration}</span>
+                  </h6>
+                  <p className="text-slate-400">{description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

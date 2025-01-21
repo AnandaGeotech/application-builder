@@ -11,7 +11,7 @@ import { IApplicationUsersListRes } from '@/types/common.type';
 const { getAllDataFromDBFn, deleteDataFromDBFn } = applicationService();
 
 const useApplicationUserList = () => {
-  const [limitperPage, setlimitperPage] = useState(3);
+  const [limitperPage, setlimitperPage] = useState(10);
   const [searchTerm, setsearchTerm] = useState('');
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms

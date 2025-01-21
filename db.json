@@ -100,6 +100,11 @@
           "description": "sadsa",
           "duration": "2year",
           "label": "Geotech"
+        },
+        {
+          "label": "sdsa",
+          "duration": "dsf",
+          "description": "tryr"
         }
       ],
       "firstName": "Ramesh",
@@ -113,10 +118,200 @@
       "company": "te hwens",
       "maritalStatus": "single",
       "presentAddress": "Present Address garia",
-      "permanentAddress": "Permanent Address kolkata",
+      "permanentAddress": "Permanent Address kolkata updateddsds",
       "city": "kolkata",
       "state": "wb",
       "pincode": "4535"
+    },
+    {
+      "id": "b8db",
+      "education": [
+        {
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
+        },
+        {
+          "label": "Graduage",
+          "duration": "fdgf",
+          "description": "retretr"
+        }
+      ],
+      "professional": [
+        {
+          "description": "",
+          "duration": "",
+          "label": ""
+        },
+        {
+          "label": "",
+          "duration": "",
+          "description": ""
+        }
+      ],
+      "firstName": "Mohon",
+      "lastName": "das",
+      "phone": "9796787686",
+      "gender": "female",
+      "hometown": "kolkata",
+      "language": "german",
+      "birthDate": "2009-02-05",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "divorced",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "kolkata",
+      "state": "wb",
+      "pincode": "54654"
+    },
+    {
+      "id": "f1d7",
+      "education": [
+        {
+          "description": "dfsfds",
+          "duration": "dsfds",
+          "label": "dsfds"
+        },
+        {
+          "label": "dsfd",
+          "duration": "dsfds",
+          "description": "dsfds"
+        },
+        {
+          "label": "dsf",
+          "duration": "ddfgr",
+          "description": "ret"
+        }
+      ],
+      "professional": [
+        {
+          "description": "",
+          "duration": "",
+          "label": ""
+        },
+        {
+          "label": "",
+          "duration": "",
+          "description": ""
+        }
+      ],
+      "firstName": "Mohon",
+      "lastName": "halder",
+      "phone": "9878767656",
+      "gender": "male",
+      "language": "english",
+      "birthDate": "2025-01-07",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "married",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "sfd",
+      "state": "dsfds",
+      "pincode": "dsfds"
+    },
+    {
+      "id": "4579",
+      "education": [
+        {
+          "description": "dfsfds",
+          "duration": "dsfds",
+          "label": "dsfds"
+        },
+        {
+          "label": "dsfd",
+          "duration": "dsfds",
+          "description": "dsfds"
+        },
+        {
+          "label": "dsf",
+          "duration": "ddfgr",
+          "description": "ret"
+        }
+      ],
+      "professional": [
+        {
+          "description": "dsfdsf",
+          "duration": "dsfds",
+          "label": "dsfdsf"
+        },
+        {
+          "label": "dsfdsf",
+          "duration": "dsfdsf",
+          "description": "dsfdsf"
+        },
+        {
+          "label": "",
+          "duration": "",
+          "description": ""
+        }
+      ],
+      "firstName": "Mohon",
+      "lastName": "halder",
+      "phone": "9878767656",
+      "gender": "male",
+      "language": "english",
+      "birthDate": "2025-01-07",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "married",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "sfd",
+      "state": "dsfds",
+      "pincode": "dsfds"
+    },
+    {
+      "id": "00dc",
+      "education": [
+        {
+          "description": "dfsfds",
+          "duration": "dsfds",
+          "label": "dsfds"
+        },
+        {
+          "label": "dsfd",
+          "duration": "dsfds",
+          "description": "dsfds"
+        },
+        {
+          "label": "dsf",
+          "duration": "ddfgr",
+          "description": "ret"
+        }
+      ],
+      "professional": [
+        {
+          "description": "dsfdsf",
+          "duration": "dsfds",
+          "label": "dsfdsf"
+        },
+        {
+          "label": "dsfdsf",
+          "duration": "dsfdsf",
+          "description": "dsfdsf"
+        },
+        {
+          "label": "dfds",
+          "duration": "dsfds",
+          "description": "dsfds"
+        }
+      ],
+      "firstName": "Mohon",
+      "lastName": "halder",
+      "phone": "9878767656",
+      "gender": "male",
+      "language": "english",
+      "birthDate": "2025-01-07",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "married",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "sfd",
+      "state": "dsfds",
+      "pincode": "dsfds"
     }
   ]
 }

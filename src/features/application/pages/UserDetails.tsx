@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable boundaries/no-unknown */
-// import { FaXTwitter } from 'react-icons/fa6';
-// import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import applicationService from '../services/application.service';
@@ -10,27 +8,6 @@ import UserDetailSkeletonLoader from '../components/UserDetailSkeletonLoader';
 import { IApplicationUser } from '@/types/application.type';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import { createResource, delay } from '@/lib/utils';
-
-// const socialLinks = [
-//   {
-//     icon: <FaLinkedin size={20} />,
-//     label: 'LinkedIn',
-//     value: 'linkedIn/username',
-//     link: '/',
-//   },
-//   {
-//     icon: <FaXTwitter size={20} />,
-//     label: 'Twitter',
-//     value: 'x/username',
-//     link: '/',
-//   },
-//   {
-//     icon: <FaGithub size={20} />,
-//     label: 'GitHub',
-//     value: 'github/username',
-//     link: '/',
-//   },
-// ];
 
 const serviceMethods = applicationService();
 
@@ -83,10 +60,7 @@ export const Component = () => {
       <ErrorBoundary fallback={<h2 className="text-white text-center text-3xl">Oops! An error occurred.</h2>}>
         <Suspense fallback={<UserDetailSkeletonLoader />}>
           {/* User Info Card */}
-          <UserInfo
-            dataResource={dataResource}
-            // socialLinks={socialLinks}
-          />
+          <UserInfo dataResource={dataResource} />
         </Suspense>
       </ErrorBoundary>
     </main>

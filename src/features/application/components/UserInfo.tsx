@@ -1,24 +1,38 @@
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { FC } from 'react';
-import { FaPhoneAlt } from 'react-icons/fa';
-import { FaIdCardClip } from 'react-icons/fa6';
+import { FaPhoneAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaIdCardClip, FaXTwitter } from 'react-icons/fa6';
 import { MdCorporateFare, MdEmail } from 'react-icons/md';
 import { IApplicationUser } from '@/types/application.type';
 import { capitalize } from '@/lib/utils';
 
+const socialLinks = [
+  {
+    icon: <FaLinkedin size={20} />,
+    label: 'LinkedIn',
+    value: 'linkedIn/username',
+    link: '/',
+  },
+  {
+    icon: <FaXTwitter size={20} />,
+    label: 'Twitter',
+    value: 'x/username',
+    link: '/',
+  },
+  {
+    icon: <FaGithub size={20} />,
+    label: 'GitHub',
+    value: 'github/username',
+    link: '/',
+  },
+];
 type TProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // socialLinks:any;
   dataResource: {
-    read: () => IApplicationUser; // Function to read data, always returning FileInfo[]
-  } | null; // dataResource can be null,
+    read: () => IApplicationUser;
+  } | null;
 };
-const UserInfo: FC<TProps> = ({
-  //   socialLinks,
-
-  dataResource,
-}) => {
+const UserInfo: FC<TProps> = ({ dataResource }) => {
   if (!dataResource) {
     throw new Promise(() => {});
   }
@@ -165,9 +179,7 @@ const UserInfo: FC<TProps> = ({
         <h3 className="text-2xl font-bold text-indigo-500/100 border-b-2 md:border-b-0 md:border-r-2 pr-2 border-indigo-800/100">
           Social Links
         </h3>
-        {/* {socialLinks.map(({
-          icon, label, value, link,
-        }) => (
+        {socialLinks.map(({ icon, label, value, link }) => (
           <div className="flex items-center space-x-2" key={label}>
             <a
               href={link}
@@ -180,7 +192,7 @@ const UserInfo: FC<TProps> = ({
               <a href={`${link}`}>{value}</a>
             </p>
           </div>
-        ))} */}
+        ))}
       </section>
     </>
   );

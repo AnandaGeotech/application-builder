@@ -17,7 +17,7 @@ export interface TableApplicationUserListProps {
     read: () => IApplicationUsersListRes; // Function to read data, always returning FileInfo[]
   } | null; // dataResource can be null,
 
-  headers: string[];
+  headers: (keyof IApplicationUser)[];
   getDisplayValue: (defaultValue: unknown) => string;
   handleConfirm: () => void;
   closeModal: () => void;

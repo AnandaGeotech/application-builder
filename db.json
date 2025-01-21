@@ -85,6 +85,38 @@
           "label": "Creative Agency"
         }
       ]
+    },
+    {
+      "id": "be06",
+      "education": [
+        {
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
+        }
+      ],
+      "professional": [
+        {
+          "description": "sadsa",
+          "duration": "2year",
+          "label": "Geotech"
+        }
+      ],
+      "firstName": "Ramesh",
+      "lastName": "Jana",
+      "phone": "9878987678",
+      "gender": "male",
+      "hometown": "kolkata",
+      "language": "french",
+      "birthDate": "2009-01-29",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "single",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "kolkata",
+      "state": "wb",
+      "pincode": "4535"
     }
   ]
 }

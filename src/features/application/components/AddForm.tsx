@@ -7,6 +7,7 @@ import { ADD_FORMBUILDER_FORM_FIELDS } from '../contstant/addbuilder-form.consta
 import ABInput from '@/common/components/form/ABInput';
 import ABSelect from '@/common/components/form/ABSelect';
 import useUserUpsert from '@/features/application/hooks/useUserUpsert';
+import { Button } from '@/common/components/Button';
 
 const AddForm = () => {
   const {
@@ -20,7 +21,6 @@ const AddForm = () => {
     removeProfessional,
   } = useUserUpsert();
 
-  console.log(educationFields, 'educationFields');
   return (
     <form onSubmit={methods.handleSubmit(submit)} className="mx-auto mt-16 max-w-xl sm:mt-20 relative z-20">
       <div className="grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-2">
@@ -94,16 +94,16 @@ const AddForm = () => {
           </div>
         </div>
         <div className="flex col-span-full justify-end pt-3">
-          <button
+          <Button
             type="button"
             onClick={() => addEducation({ label: '', duration: '', description: '' })}
             className="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-600  "
           >
             Add Education
-          </button>
+          </Button>
         </div>
         {educationFields.map((field, index) => (
-          <div key={field.id} className="col-span-full border-b border-gray-900/10 flex gap-2 ">
+          <div key={field.id} className="col-span-full items-center border-b border-gray-900/10 flex gap-2 ">
             <div
               key={field.id}
               className="col-span-full border-b border-gray-900/10 grid grid-cols-1 gap-x-6  sm:grid-cols-6"
@@ -128,22 +128,26 @@ const AddForm = () => {
               </div>
             </div>
 
-            <button type="button" onClick={() => removeEducation(index)} className="text-red-500 hover:underline">
+            <Button
+              type="button"
+              disabled={educationFields.length < 2}
+              onClick={() => educationFields.length > 1 && removeEducation(index)}
+              className="text-red-500 hover:underline"
+            >
               <RiCloseCircleLine size={25} />
-            </button>
+            </Button>
           </div>
         ))}
         <div className="flex col-span-full justify-end pt-3">
-          <button
-            type="button"
+          <Button
             onClick={() => addProfessional({ label: '', duration: '', description: '' })}
             className="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-600  "
           >
             Add Professional
-          </button>
+          </Button>
         </div>
         {professionalFields.map((field, index) => (
-          <div key={field.id} className="col-span-full border-b border-gray-900/10 flex gap-2 ">
+          <div key={field.id} className="col-span-full items-center border-b border-gray-900/10 flex gap-2 ">
             <div
               key={field.id}
               className="col-span-full border-b border-gray-900/10 grid grid-cols-1 gap-x-6  sm:grid-cols-6"
@@ -168,19 +172,23 @@ const AddForm = () => {
               </div>
             </div>
 
-            <button type="button" onClick={() => removeProfessional(index)} className="text-red-500 hover:underline">
+            <Button
+              disabled={professionalFields.length < 2}
+              onClick={() => professionalFields.length > 1 && removeProfessional(index)}
+              className="text-red-500 hover:underline"
+            >
               <RiCloseCircleLine size={25} />
-            </button>
+            </Button>
           </div>
         ))}
       </div>
       <div className="mt-10">
-        <button
+        <Button
           type="submit"
           className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Submit
-        </button>
+        </Button>
       </div>
     </form>
   );

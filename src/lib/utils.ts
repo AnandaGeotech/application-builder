@@ -222,3 +222,32 @@ export const initialData = {
   pincode: '123456',
   fileUrl: 'https://example.com/preview.jpg', // URL of an existing uploaded file
 };
+
+export const createResource = <T>(fetchFn: () => Promise<T>) => {
+  let status = 'pending';
+  let result: T;
+
+  const suspender = fetchFn().then(
+    (res) => {
+      status = 'success';
+      result = res;
+    },
+    (err) => {
+      status = 'error';
+      result = err;
+    }
+  );
+
+  return {
+    read() {
+      if (status === 'pending') throw suspender;
+      if (status === 'error') throw result;
+      return result;
+    },
+  };
+};
+
+export const delay = (ms: number): Promise<void> =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });

@@ -1,5 +1,7 @@
 // /* eslint-disable no-unused-vars */
 
+import { IApplicationUser } from './application.type';
+
 // import React from 'react';
 // import { VariantProps } from 'class-variance-authority';
 // import type { ToastActionElement, ToastProps } from '@/common/components/toast';
@@ -104,3 +106,19 @@
 //   theme: ITheme;
 //   setTheme: (theme: ITheme) => void;
 // };
+
+export interface IApplicationUsersListRes {
+  data: Required<IApplicationUser>[];
+  first?: number;
+  items?: number;
+  last?: number;
+  next?: number;
+  pages?: number;
+  prev?: null | number;
+}
+
+export interface IQueryFile {
+  currentPage?: number;
+  limitperPage?: number;
+  searchTerm?: string;
+}

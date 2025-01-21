@@ -1,53 +1,15 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import { FieldValues, SubmitHandler, useFormContext } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { useState } from 'react';
 import { ADD_FORMBUILDER_FORM_FIELDS } from '../contstant/addbuilder-form.constant';
 import ABInput from '@/common/components/form/ABInput';
 import ABSelect from '@/common/components/form/ABSelect';
 import ABFileInput from '@/common/components/form/ABFileUpload';
+import useUserUpsert from '@/features/application/hooks/useUserUpsert';
 
 const AddForm = () => {
-  const methods = useFormContext();
-
-  const submit: SubmitHandler<FieldValues> = (() => {
-    let toastId: string | undefined;
-
-    return async (data) => {
-      if (toastId) return;
-
-      toastId = toast.loading('Uploading file...');
-
-      const formData = new FormData();
-      if (data.file && data.file[0]) {
-        formData.append('file', data.file[0]);
-      }
-
-      setTimeout(() => {
-        toast.success('User added successfully', { id: toastId });
-        toastId = undefined;
-      }, 2000);
-    };
-  })();
-  const [preview, setPreview] = useState<string | null>(null);
-
-  const handleFileChange = (fileList: FileList | null) => {
-    if (fileList && fileList[0]) {
-      const file = fileList[0];
-      methods.setValue('file', fileList);
-
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setPreview(null);
-    }
-  };
+  const { methods, submit, handleFileChange, preview } = useUserUpsert();
   return (
-    <form onSubmit={methods.handleSubmit(submit)} className="mx-auto mt-16 max-w-xl sm:mt-20">
+    <form onSubmit={methods.handleSubmit(submit)} className="mx-auto mt-16 max-w-xl sm:mt-20 relative z-20">
       <div className="grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-2">
         <div className="col-span-full  grid grid-cols-1 gap-x-6  sm:grid-cols-6">
           <div className="col-span-3">

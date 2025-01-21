@@ -7,6 +7,7 @@ import applicationService from '../services/application.service';
 import { createResource, delay } from '@/lib/utils';
 import useDebounce from '@/common/hooks/use-debounce';
 import { IApplicationUsersListRes } from '@/types/common.type';
+import { IApplicationUser } from '@/types/application.type';
 
 const { getAllDataFromDBFn, deleteDataFromDBFn } = applicationService();
 
@@ -17,6 +18,7 @@ const useApplicationUserList = () => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectuserInfo, setselectuserInfo] = useState<undefined | Required<IApplicationUser>>();
   const [listData, setlistData] = useState<IApplicationUsersListRes | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const [dataResource, setdataResource] = useState<{
@@ -38,13 +40,13 @@ const useApplicationUserList = () => {
     setdataResource(resource);
   };
 
-  // const handleDelete = async (id: string) => {
-  //   await deleteDataFromDBFn(id);
-  //   setdataResource(null);
+  const handleDelete = async () => {
+    await deleteDataFromDBFn(selectuserInfo?.id as string);
+    setdataResource(null);
 
-  //   toast.success('File deleted successfully!');
-  //   loadData();
-  // };
+    toast.success('File deleted successfully!');
+    loadData();
+  };
   // Load data from IndexedDB
 
   const handlePageChange = (page: number) => {
@@ -86,6 +88,43 @@ const useApplicationUserList = () => {
     }
   };
 
+  function getDisplayValue(defaultValue: unknown): string {
+    if (defaultValue === '' || defaultValue === false || defaultValue === undefined) {
+      return 'N/A';
+    }
+    if (defaultValue === true) {
+      return 'null';
+    }
+    if (Array.isArray(defaultValue)) {
+      return defaultValue
+        .map((item) => (typeof item === 'object' && item !== null ? Object.values(item).join(', ') : String(item)))
+        .join(', ');
+    }
+    if (typeof defaultValue === 'object' && defaultValue !== null) {
+      // Handle objects: join all values with commas
+      return Object.values(defaultValue).join(', ');
+    }
+    return String(defaultValue);
+  }
+
+  // console.log(listData.data, 'listData');
+
+  // Dynamically extract headers if data exists
+  const headers =
+    listData?.data?.length && listData.data.length > 0
+      ? (Object.keys(listData.data[0]) as (keyof IApplicationUser)[])
+      : [];
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (info: Required<IApplicationUser>) => {
+    setselectuserInfo(info);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleConfirm = () => {
+    handleDelete();
+  };
   return {
     dataResource,
     setdataResource,
@@ -102,6 +141,15 @@ const useApplicationUserList = () => {
     handleRowSelect,
     listData,
     setlistData,
+    handleDelete,
+    selectuserInfo,
+    setselectuserInfo,
+    headers,
+    getDisplayValue,
+    openModal,
+    handleConfirm,
+    closeModal,
+    isModalOpen,
   };
 };
 

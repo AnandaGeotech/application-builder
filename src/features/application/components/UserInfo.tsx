@@ -5,6 +5,7 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { FaIdCardClip } from 'react-icons/fa6';
 import { MdCorporateFare, MdEmail } from 'react-icons/md';
 import { IApplicationUser } from '@/types/application.type';
+import { capitalize } from '@/lib/utils';
 
 type TProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,7 +39,7 @@ const UserInfo: FC<TProps> = ({
           />
           <div className="mt-4 md:mt-0 text-center md:text-left">
             <h3 className="text-2xl md:text-3xl font-bold text-indigo-500/100">
-              {userInfoData?.firstName} {userInfoData?.lastName}
+              {capitalize(userInfoData?.firstName)} {capitalize(userInfoData?.lastName)}
             </h3>
             <p className="text-slate-400 mt-1">UI-UX Designer | Product Department</p>
             <p className="text-sm text-slate-500">Based in New York, USA</p>

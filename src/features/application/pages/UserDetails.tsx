@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable boundaries/no-unknown */
-import { FaXTwitter } from 'react-icons/fa6';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+// import { FaXTwitter } from 'react-icons/fa6';
+// import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import applicationService from '../services/application.service';

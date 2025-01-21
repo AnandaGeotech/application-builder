@@ -7,6 +7,7 @@ import UserTable from '../components/UserTable';
 import useApplicationUserList from '../hooks/useApplicationUserlist';
 import { Button } from '@/common/components/Button';
 import TableSkeleton from '@/common/components/TableSkeleton';
+import ErrorBoundary from '@/common/components/ErrorBoundary';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -97,17 +98,19 @@ const Home = () => {
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
-          <Suspense fallback={<TableSkeleton />}>
-            <UserTable
-              dataResource={dataResource}
-              headers={headers}
-              getDisplayValue={getDisplayValue}
-              openModal={openModal}
-              handleConfirm={handleConfirm}
-              closeModal={closeModal}
-              isModalOpen={isModalOpen}
-            />
-          </Suspense>
+          <ErrorBoundary fallback={<h2 className="text-white text-center text-3xl">Oops! An error occurred.</h2>}>
+            <Suspense fallback={<TableSkeleton />}>
+              <UserTable
+                dataResource={dataResource}
+                headers={headers}
+                getDisplayValue={getDisplayValue}
+                openModal={openModal}
+                handleConfirm={handleConfirm}
+                closeModal={closeModal}
+                isModalOpen={isModalOpen}
+              />
+            </Suspense>
+          </ErrorBoundary>
         </div>
       </section>
 

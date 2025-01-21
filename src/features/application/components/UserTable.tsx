@@ -7,25 +7,12 @@ import { Link } from 'react-router-dom';
 import { BiPencil, BiTrashAlt } from 'react-icons/bi';
 import { BsEyeFill } from 'react-icons/bs';
 import { FC } from 'react';
+import { TableApplicationUserListProps } from '../type/application.type';
 import { capitalize } from '@/lib/utils';
 import GlobalModal from '@/common/components/Modal';
 import { Button } from '@/common/components/Button';
-import { IApplicationUsersListRes } from '@/types/common.type';
 
-interface TableFileListProps {
-  // Function to set selected file info
-  openModal: (data: any) => void; // Function to open the modal
-  dataResource: {
-    read: () => IApplicationUsersListRes; // Function to read data, always returning FileInfo[]
-  } | null; // dataResource can be null,
-
-  headers: string[];
-  getDisplayValue: (defaultValue: unknown) => string;
-  handleConfirm: () => void;
-  closeModal: () => void;
-  isModalOpen: boolean;
-}
-const UserTable: FC<TableFileListProps> = ({
+const UserTable: FC<TableApplicationUserListProps> = ({
   dataResource,
   headers,
   getDisplayValue,

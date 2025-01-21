@@ -1,13 +1,8 @@
+/* eslint-disable boundaries/no-unknown */
 import React from 'react';
+import { LabelProps } from '@/types/common.type';
 
 // Define the props for the Label component
-interface LabelProps {
-  htmlFor: string;
-  label: string;
-  required?: boolean;
-  error?: string;
-  className?: string; // For additional styling overrides
-}
 
 const ABLabel: React.FC<LabelProps> = ({ htmlFor, label, required, error, className }) => {
   // Base styles

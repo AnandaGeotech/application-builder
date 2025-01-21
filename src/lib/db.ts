@@ -51,7 +51,7 @@ export const getAllDataFromApiServer = async (props: IQueryFile): Promise<IAppli
     queryParams.append('q', searchTerm); // Assuming the API supports `q` for search
   }
 
-  const url = `${API_BASE_URL}/files?${queryParams.toString()}`;
+  const url = `${API_BASE_URL}/users?${queryParams.toString()}`;
 
   const response = await fetch(url);
   if (!response.ok) {
@@ -89,7 +89,7 @@ export const patchDataInApiServerById = async (
 
 // Delete data by ID in the API server
 export const deleteDataFromApiServerById = async (id: string): Promise<void> => {
-  const response = await fetch(`${API_BASE_URL}/files/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/users/${id}`, {
     method: 'DELETE',
   });
 

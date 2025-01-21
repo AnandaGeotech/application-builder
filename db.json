@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "phone": "123-456-7890",
+      "gender": "Male",
+      "address": "123 Main St",
+      "city": "Springfield",
+      "state": "IL",
+      "pincode": "62704",
+      "id": "cb57"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "phone": "987-654-3210",
+      "gender": "Female",
+      "address": "456 Elm St",
+      "city": "Shelbyville",
+      "state": "IN",
+      "pincode": "46176",
+      "id": "ba06"
+    },
+    {
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "phone": "555-123-4567",
+      "gender": "Female",
+      "address": "789 Oak St",
+      "city": "Capital City",
+      "state": "TX",
+      "pincode": "73301",
+      "id": "5412"
+    },
+    {
+      "firstName": "Bob",
+      "lastName": "Brown",
+      "phone": "321-654-9870",
+      "gender": "Male",
+      "address": "101 Pine St",
+      "city": "Metropolis",
+      "state": "NY",
+      "pincode": "10001",
+      "id": "1b85"
+    },
+    {
+      "firstName": "Charlie",
+      "lastName": "Davis",
+      "phone": "111-222-3333",
+      "gender": "Non-binary",
+      "address": "202 Maple St",
+      "city": "Gotham",
+      "state": "CA",
+      "pincode": "90001",
+      "id": "aedc"
+    },
+    {
+      "id": "1159",
+      "firstName": "Samir",
+      "lastName": "halder updated",
+      "phone": "9878767656",
+      "gender": "male",
+      "address": "garia staion road",
+      "city": "kolkata",
+      "state": "wb",
+      "pincode": "54654"
+    }
+  ]
+}

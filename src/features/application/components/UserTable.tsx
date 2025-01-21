@@ -1,7 +1,29 @@
+/* eslint-disable boundaries/no-unknown */
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line boundaries/no-unknown
+
+import useApplicationUserList from '../hooks/useApplicationUserlist';
 import { capitalize, staticFormData } from '@/lib/utils';
 
 const UserTable = () => {
+  const {
+    dataResource,
+    setdataResource,
+    handlePageChange,
+    currentPage,
+    setCurrentPage,
+    handleSearch,
+    searchTerm,
+    setsearchTerm,
+    limitperPage,
+    setlimitperPage,
+    handleSelectAll,
+    selectedRows,
+    handleRowSelect,
+    setlistData,
+    listData,
+  } = useApplicationUserList();
+
   function getDisplayValue(defaultValue: string | number | boolean | string[]): string {
     if (defaultValue === false) {
       return 'N/A';
@@ -11,6 +33,8 @@ const UserTable = () => {
     }
     return String(defaultValue);
   }
+
+  console.log(listData, 'listData');
 
   return (
     <table className="table-auto border border-indigo-500/100 w-full">

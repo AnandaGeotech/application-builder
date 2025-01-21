@@ -11,7 +11,7 @@ import { IApplicationUser } from '@/types/application.type';
 import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
 
 // Function to get a single file data by ID
-const getSingleFileDataFn = async (fileId: string): Promise<Required<IApplicationUser> | undefined> =>
+const getSingleFileDataFn = async (fileId: string): Promise<Required<IApplicationUser>> =>
   getDataFromApiServerById(fileId);
 
 // Function to get all data from JsonApiDB

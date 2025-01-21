@@ -28,8 +28,8 @@ const socialLinks = [
 ];
 type TProps = {
   dataResource: {
-    read: () => IApplicationUser; // Function to read data, always returning FileInfo[]
-  } | null; // dataResource can be null,
+    read: () => IApplicationUser;
+  } | null;
 };
 const UserInfo: FC<TProps> = ({ dataResource }) => {
   if (!dataResource) {

@@ -1,22 +1,10 @@
+/* eslint-disable boundaries/no-unknown */
 /* eslint-disable max-len */
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import ABLabel from './ABLabel';
-
-interface InputProps {
-  name: string;
-  label?: string;
-  type?: string;
-  placeholder?: string;
-  rules?: Record<string, unknown>;
-  required?: boolean;
-  disabled?: boolean;
-}
-
-interface SelectProps extends InputProps {
-  options: { value: string; label: string }[];
-}
+import { SelectProps } from '@/types/common.type';
 
 const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required = false, disabled = false }) => {
   const { search } = useLocation();

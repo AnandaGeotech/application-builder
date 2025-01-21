@@ -1,16 +1,7 @@
+/* eslint-disable boundaries/no-unknown */
 /* eslint-disable max-len */
 import React from 'react';
-
-interface GlobalModalProps {
-  isOpen: boolean;
-  title: string;
-  description: string;
-  onClose: () => void;
-  onConfirm?: () => void;
-  confirmLabel?: string;
-  cancelLabel?: string;
-  children?: React.ReactNode;
-}
+import { GlobalModalProps } from '@/types/modal.type';
 
 const GlobalModal: React.FC<GlobalModalProps> = ({
   isOpen,

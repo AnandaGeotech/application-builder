@@ -1,14 +1,11 @@
+/* eslint-disable boundaries/no-unknown */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { TbPhotoCircle } from 'react-icons/tb';
-
-interface FileInputProps {
-  handleFileChange: (fileList: FileList | null) => void;
-  preview: string | null;
-}
+import { FileInputProps } from '@/types/common.type';
 
 const ABFileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (
   <div className="col-span-full border-b border-gray-900/10">

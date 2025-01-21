@@ -98,7 +98,11 @@ const Home = () => {
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
-          <ErrorBoundary fallback={<h2 className="text-white text-center text-3xl">Oops! An error occurred.</h2>}>
+          <ErrorBoundary
+            fallback={
+              <h2 className="text-white text-center text-3xl">Oops! An error occurred.Please reload the page</h2>
+            }
+          >
             <Suspense fallback={<TableSkeleton />}>
               <UserTable
                 dataResource={dataResource}

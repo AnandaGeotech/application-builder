@@ -60,7 +60,7 @@ export const getAllDataFromApiServer = async (props: IQueryFile): Promise<IAppli
   return response.json();
 };
 // Get data by ID from the API server
-export const getDataFromApiServerById = async (id: string): Promise<Required<IApplicationUser> | undefined> => {
+export const getDataFromApiServerById = async (id: string): Promise<Required<IApplicationUser>> => {
   const response = await fetch(`${API_BASE_URL}/users/${id}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch record with ID: ${id}`);

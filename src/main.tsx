@@ -8,9 +8,9 @@ import './index.css';
 const rootElement = document.getElementById('root') as HTMLElement;
 
 createRoot(rootElement).render(
-  <React.StrictMode>
+  <>
     <App />
     <Toaster />
-  </React.StrictMode>
+  </>
 );
 // 1.1.28

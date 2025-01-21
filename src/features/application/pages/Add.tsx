@@ -1,10 +1,12 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import AddForm from '../components/AddForm';
+import SkeletonFormLoader from '@/common/components/form/FormLoader';
 import ABPHForm from '@/common/components/form/ABForm';
 
 /* eslint-disable max-len */
 
-export const Component = () => (
+export const Component: React.FC<{ uiLoading: boolean }> = ({ uiLoading }) => (
   <div className="px-6 py-24 sm:py-32 lg:px-8">
     <div className="isolate bg-white  -z-10 relative">
       <div
@@ -25,25 +27,29 @@ export const Component = () => (
       </div>
     </div>
 
-    <ABPHForm
-      defaultValues={{
-        education: [
-          {
-            description: '',
-            duration: '',
-            label: '',
-          },
-        ],
-        professional: [
-          {
-            description: '',
-            duration: '',
-            label: '',
-          },
-        ],
-      }}
-    >
-      <AddForm />
-    </ABPHForm>
+    {uiLoading ? (
+      <SkeletonFormLoader />
+    ) : (
+      <ABPHForm
+        defaultValues={{
+          education: [
+            {
+              description: '',
+              duration: '',
+              label: '',
+            },
+          ],
+          professional: [
+            {
+              description: '',
+              duration: '',
+              label: '',
+            },
+          ],
+        }}
+      >
+        <AddForm />
+      </ABPHForm>
+    )}
   </div>
 );

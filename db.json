@@ -85,6 +85,85 @@
           "label": "Creative Agency"
         }
       ]
+    },
+    {
+      "id": "be06",
+      "education": [
+        {
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
+        }
+      ],
+      "professional": [
+        {
+          "description": "sadsa",
+          "duration": "2year",
+          "label": "Geotech"
+        },
+        {
+          "label": "sdsa",
+          "duration": "dsf",
+          "description": "tryr"
+        }
+      ],
+      "firstName": "Ramesh",
+      "lastName": "Jana",
+      "phone": "9878987678",
+      "gender": "male",
+      "hometown": "kolkata",
+      "language": "french",
+      "birthDate": "2009-01-29",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "single",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata updateddsds",
+      "city": "kolkata",
+      "state": "wb",
+      "pincode": "4535"
+    },
+    {
+      "id": "b8db",
+      "education": [
+        {
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
+        },
+        {
+          "label": "Graduage",
+          "duration": "fdgf",
+          "description": "retretr"
+        }
+      ],
+      "professional": [
+        {
+          "description": "",
+          "duration": "",
+          "label": ""
+        },
+        {
+          "label": "",
+          "duration": "",
+          "description": ""
+        }
+      ],
+      "firstName": "Mohon",
+      "lastName": "das",
+      "phone": "9796787686",
+      "gender": "female",
+      "hometown": "kolkata",
+      "language": "german",
+      "birthDate": "2009-02-05",
+      "country": "canada",
+      "company": "te hwens",
+      "maritalStatus": "divorced",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "kolkata",
+      "state": "wb",
+      "pincode": "54654"
     }
   ]
 }

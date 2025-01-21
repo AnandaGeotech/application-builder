@@ -38,12 +38,63 @@ export const ADD_FORMBUILDER_FORM_FIELDS = {
     ],
   },
 
-  ADDRESS: {
-    // rules: addFormbuilderValidation.lastName,
-    // required: true,
-    label: 'Address',
-    name: 'address',
+  PRESENT_ADDRESS: {
+    label: 'Present Address',
+    name: 'presentAddress',
   },
+  PARMANENT_ADDRESS: {
+    label: 'Permanent Address',
+    name: 'permanentAddress',
+  },
+  BIRTH_DATE: {
+    label: 'Birth Date',
+    name: 'birthDate',
+    type: 'date',
+  },
+  COMPANY: {
+    label: 'Company',
+    name: 'company',
+  },
+  COUNTRY: {
+    label: 'Country',
+    name: 'country',
+    options: [
+      { value: 'usa', label: 'United States' },
+      { value: 'canada', label: 'Canada' },
+      { value: 'uk', label: 'United Kingdom' },
+      { value: 'india', label: 'India' },
+      { value: 'australia', label: 'Australia' },
+      { value: 'germany', label: 'Germany' },
+    ],
+  },
+  HOMETOWN: {
+    label: 'Hometown',
+    name: 'hometown',
+  },
+  LANGUAGE: {
+    label: 'Language',
+    name: 'language',
+    options: [
+      { value: 'english', label: 'English' },
+      { value: 'spanish', label: 'Spanish' },
+      { value: 'french', label: 'French' },
+      { value: 'german', label: 'German' },
+      { value: 'mandarin', label: 'Mandarin' },
+      { value: 'hindi', label: 'Hindi' },
+    ],
+  },
+  MARITUAL_STATUS: {
+    label: 'Marital Status',
+    name: 'maritalStatus',
+    options: [
+      { value: 'single', label: 'Single' },
+      { value: 'married', label: 'Married' },
+      { value: 'divorced', label: 'Divorced' },
+      { value: 'widowed', label: 'Widowed' },
+      { value: 'separated', label: 'Separated' },
+    ],
+  },
+
   CITY: {
     // rules: addFormbuilderValidation.lastName,
     // required: true,
@@ -61,5 +112,33 @@ export const ADD_FORMBUILDER_FORM_FIELDS = {
     // required: true,
     label: 'ZIP / Postal code',
     name: 'pincode',
+  },
+  EDUCATION: {
+    DESCRIPTION: {
+      label: 'Description',
+      name: 'description',
+    },
+    DURATION: {
+      label: 'Duration',
+      name: 'duration',
+    },
+    LABEL: {
+      label: 'Label',
+      name: 'label',
+    },
+  },
+  PROFESSION: {
+    DESCRIPTION: {
+      label: 'Description',
+      name: 'description',
+    },
+    DURATION: {
+      label: 'Duration',
+      name: 'duration',
+    },
+    LABEL: {
+      label: 'Label',
+      name: 'label',
+    },
   },
 };

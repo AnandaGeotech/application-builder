@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import AddForm from '../components/AddForm';
 import ABPHForm from '@/common/components/form/ABForm';
@@ -24,7 +25,24 @@ export const Component = () => (
       </div>
     </div>
 
-    <ABPHForm defaultValues={{}}>
+    <ABPHForm
+      defaultValues={{
+        education: [
+          {
+            description: '',
+            duration: '',
+            label: '',
+          },
+        ],
+        professional: [
+          {
+            description: '',
+            duration: '',
+            label: '',
+          },
+        ],
+      }}
+    >
       <AddForm />
     </ABPHForm>
   </div>

@@ -1,31 +1,46 @@
+/* eslint-disable boundaries/no-unknown */
 import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useFieldArray, useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import applicationService from '../services/application.service';
+import { delay } from '@/lib/utils';
+import { IApplicationUser } from '@/types/application.type';
 
 const serviceMethods = applicationService();
 
 const useUserUpsert = () => {
   const methods = useFormContext();
 
-  const { id: userId } = useParams();
+  const [uiLoading, setUiLoading] = useState(true);
 
+  const { id: userId } = useParams();
+  const navigate = useNavigate();
+  const { search } = useLocation();
   const getSingleUser = async () => {
     const toastId = toast.loading('Uploading data...');
+    await delay(2000);
     try {
       const resDta = await serviceMethods.getSingleFileDataFn(userId as string);
+      if (search.includes('notFound')) {
+        navigate(`/edit/${userId}`, { replace: true });
+      }
 
       methods.reset(resDta);
       toast.dismiss(toastId);
     } catch (error) {
       toast.error('Something went wrong!', { id: toastId });
+      navigate(`/edit/${userId}?notFound=true`, { replace: true });
+    } finally {
+      setUiLoading(false);
     }
   };
 
   useEffect(() => {
     if (userId) {
       getSingleUser();
+    } else {
+      setUiLoading(false);
     }
   }, [userId]);
 
@@ -42,7 +57,7 @@ const useUserUpsert = () => {
         formData.append('file', data.file[0]);
       }
       try {
-        await serviceMethods.upsertDataToDBFn(data);
+        await serviceMethods.upsertDataToDBFn(data as IApplicationUser);
         toast.success(`User ${userId ? 'updated' : 'added'} successfully`, { id: toastId });
         toastId = undefined;
       } catch (error) {
@@ -96,6 +111,8 @@ const useUserUpsert = () => {
     professionalFields,
     addProfessional,
     removeProfessional,
+    search,
+    uiLoading,
   };
 };
 

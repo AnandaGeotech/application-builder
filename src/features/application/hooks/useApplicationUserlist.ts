@@ -38,13 +38,13 @@ const useApplicationUserList = () => {
     setdataResource(resource);
   };
 
-  const handleDelete = async (id: string) => {
-    await deleteDataFromDBFn(id);
-    setdataResource(null);
+  // const handleDelete = async (id: string) => {
+  //   await deleteDataFromDBFn(id);
+  //   setdataResource(null);
 
-    toast.success('File deleted successfully!');
-    loadData();
-  };
+  //   toast.success('File deleted successfully!');
+  //   loadData();
+  // };
   // Load data from IndexedDB
 
   const handlePageChange = (page: number) => {

@@ -26,7 +26,7 @@ const ABInput = ({ type = 'text', name, label, required, disabled, rules = {} }:
             type={type}
             id={name}
             disabled={search.includes('notFound') || disabled}
-            className={`block w-full rounded-md bg-white px-3.5 py-2 text-base 
+            className={`block w-full rounded-md bg-slate-900 text-slate-200 px-3.5 py-2 text-base 
               ${fieldState.error?.message ? 'text-red-500 border-red-500' : 'text-gray-900 border-gray-300'} 
               outline outline-1 placeholder:text-gray-400 
               focus:outline focus:outline-2 focus:outline-indigo-600`}

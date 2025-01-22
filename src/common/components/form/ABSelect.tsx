@@ -21,7 +21,7 @@ const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required
               {...field}
               disabled={search.includes('notFound') || disabled}
               id={name}
-              className={`block w-full rounded-md bg-slate-900 text-slate-200 px-3.5 py-2 text-base outline outline-1 -outline-offset-1 focus:outline focus:outline-2 focus:-outline-offset-2  ${fieldState.error?.message ? 'border-red-500' : 'border-gray-300'}`}
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500  ${fieldState.error?.message ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Select an option</option>
               {options.map((option) => (

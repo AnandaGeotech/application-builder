@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import ABLabel from './ABLabel';
@@ -26,10 +27,8 @@ const ABInput = ({ type = 'text', name, label, required, disabled, rules = {} }:
             type={type}
             id={name}
             disabled={search.includes('notFound') || disabled}
-            className={`block w-full rounded-md bg-slate-900 text-slate-200 px-3.5 py-2 text-base 
-              ${fieldState.error?.message ? 'text-red-500 border-red-500' : 'text-gray-900 border-gray-300'} 
-              outline outline-1 placeholder:text-gray-400 
-              focus:outline focus:outline-2 focus:outline-indigo-600`}
+            className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500   
+              ${fieldState.error?.message ? 'text-red-500 border-red-500' : 'dark:text-white dark:border-gray-600'}`}
           />
 
           <div className="mt-1 min-h-[1.25rem]">

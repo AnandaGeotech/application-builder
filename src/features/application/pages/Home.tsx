@@ -49,11 +49,11 @@ const Home = () => {
   return (
     <div className="">
       {/* Hero Section */}
-      <section className=" py-16">
+      <section className="bg-slate-950 dark:bg-white py-16">
         <div className="container mx-auto px-6 text-center md:text-left md:flex md:items-center md:justify-between">
           <div className="md:w-1/2">
             <h1 className="text-4xl font-bold text-indigo-500/100 mb-4">Build Applications Faster</h1>
-            <p className="text-lg text-slate-400 mb-6">
+            <p className="text-lg text-slate-400 dark:text-slate-700 mb-6">
               Create powerful and customizable applications without writing a single line of code.
             </p>
             <div className="space-x-4">
@@ -83,33 +83,30 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 pb-24 bg-slate-900 text-slate-200">
+      <section className="py-16 pb-24 bg-slate-900/100 dark:bg-slate-300 text-slate-200 dark:text-slate-700">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-indigo-500/100 mb-8">Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-4/5 mx-auto md:w-full">
             {featureDetails.map(({ icon, featureName, description }) => (
               <div
-                className="p-6 bg-slate-800 shadow-sm shadow-black rounded-lg text-center border-x-4 border-indigo-500/100"
+                className="p-6 bg-slate-950 dark:bg-white shadow-sm shadow-black dark:shadow-none rounded-lg text-center border-x-4 border-indigo-500/100"
                 key={featureName}
               >
-                <div className="text-blue-600 text-4xl mb-4">{icon}</div>
+                <div className="text-4xl mb-4">{icon}</div>
                 <h3 className="text-xl font-bold mb-2">{featureName}</h3>
-                <p className="text-slate-400">{description}</p>
+                <p className="text-slate-400 dark:text-slate-500">{description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* table */}
-      <section className=" py-16 pb-24 mx-auto px-6">
-        <h3 className="font-bold text-indigo-500/100 text-4xl mb-4 text-center">Users List</h3>
+      <section className="bg-slate-950 dark:bg-white py-16 pb-24 mx-auto px-6">
+        <h3 className="font-bold text-indigo-500/100 text-4xl mb-8 text-center">Users List</h3>
         <div
-          className="container py-4 overflow-x-auto mx-auto rounded-lg  [&::-webkit-scrollbar]:h-2
-  [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
-  [&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full
-  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
-  dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+          className="container overflow-x-auto pb-5 mx-auto rounded-lg bg-slate-950 dark:bg-white [&::-webkit-scrollbar]:h-2
+  [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:dark:bg-slate-200 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
+  [&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full"
         >
           <div className="p-4 ">
             <label htmlFor="table-search" className="sr-only">
@@ -167,7 +164,7 @@ const Home = () => {
       </section>
 
       {/* Demo Section */}
-      <section className="bg-slate-900 text-slate-400 py-16">
+      <section className="bg-slate-900/100 dark:bg-slate-300 text-slate-400 dark:text-slate-700 py-16">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-4 text-indigo-500/100">Try the Demo</h2>
           <p className="text-lg mb-6">Explore the features of our application builder and see how it works.</p>

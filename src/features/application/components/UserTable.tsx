@@ -6,12 +6,12 @@
 import { Link } from 'react-router-dom';
 import { BiPencil, BiTrashAlt } from 'react-icons/bi';
 import { BsEyeFill, BsThreeDotsVertical } from 'react-icons/bs';
-import { FC, useState } from 'react';
+import { FC, useRef, useState } from 'react';
+import { useClickAway } from 'react-use';
 import { TableApplicationUserListProps } from '../type/application.type';
 import { capitalize } from '@/lib/utils';
 import GlobalModal from '@/common/components/Modal';
 import { Button } from '@/common/components/Button';
-// import { useClickAway } from 'ahooks';
 
 const UserTable: FC<TableApplicationUserListProps> = ({
   dataResource,
@@ -25,24 +25,35 @@ const UserTable: FC<TableApplicationUserListProps> = ({
   if (!dataResource) {
     throw new Promise(() => {});
   }
+
   const data = dataResource.read();
-  // console.log(data.data);
+
+  const firstObjKeys = Object.keys(data.data[0]);
+
+  const columns = firstObjKeys.map((item) => ({
+    Header: capitalize(item),
+    accessor: item,
+  }));
+  console.log(columns);
 
   const [activeRowId, setActiveRowId] = useState<string | null>(null);
 
   const toggleIcons = (id: string) => {
     setActiveRowId((prevId) => (prevId === id ? null : id)); // Toggle or close the icon list
   };
-  // const iconListRef = useRef(null); // Ref for the icon list container
 
-  // useClickAway(() => {
-  //   setActiveRowId(null); // Close any open icon list when clicking outside
-  // }, iconListRef);
+  // Ref for the icon list
+  const iconListRef = useRef(null);
+
+  // for clicking outside of the table-div
+  useClickAway(iconListRef, () => {
+    setActiveRowId(null);
+  });
 
   return (
     <>
       {' '}
-      <div>
+      <div ref={iconListRef}>
         {data?.data?.length > 0 ? (
           <table className="table-auto w-full relative">
             <thead>

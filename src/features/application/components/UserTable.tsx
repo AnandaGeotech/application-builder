@@ -31,10 +31,10 @@ const UserTable: FC<TableApplicationUserListProps> = ({
       {' '}
       <div>
         {data?.data?.length > 0 ? (
-          <table className="table-auto border border-indigo-500/100 w-full">
+          <table className="table-auto w-full">
             <thead>
-              <tr className="text-indigo-500/100 bg-slate-900 text-sm md:text-base h-8">
-                <th className="p-4 font-bold whitespace-nowrap text-center">Actions</th>
+              <tr className="text-indigo-500/100 bg-slate-800 text-sm md:text-base h-8">
+                <th className="font-bold whitespace-nowrap text-center">Actions</th>
                 {headers.map((header) => (
                   <th key={header} className="p-4 font-bold whitespace-nowrap text-center">
                     {capitalize(header)}
@@ -44,22 +44,22 @@ const UserTable: FC<TableApplicationUserListProps> = ({
             </thead>
             <tbody>
               {data?.data.map((item) => (
-                <tr key={item.id} className="bg-slate-900 transition-colors h-10">
-                  <td className="flex gap-3 text-white px-2 bg-slate-900 items-center p-4  text-sm md:text-base whitespace-nowrap text-center  bg-opacity-80">
-                    <Link className="bg-slate-900 " to={`/edit/${item.id}`}>
-                      <BiPencil size={20} />
+                <tr key={item.id} className="bg-slate-950 transition-colors h-10 relative">
+                  <td className="flex gap-3 h-full text-slate-200 items-center p-4 bg-opacity-50 text-sm md:text-base whitespace-nowrap text-center">
+                    <Link className="" to={`/edit/${item.id}`}>
+                      <BiPencil size={20} className="hover:text-slate-400" />
                     </Link>
                     <Button onClick={() => openModal(item)}>
-                      <BiTrashAlt className="text-red-500" size={20} />
+                      <BiTrashAlt className="text-red-500 hover:text-red-400" size={20} />
                     </Button>
                     <Link to={`user/${item.id}`}>
-                      <BsEyeFill className="text-indigo-500" size={20} />
+                      <BsEyeFill className="text-indigo-500 hover:text-indigo-400" size={20} />
                     </Link>
                   </td>
                   {headers.map((header) => (
                     <td
                       key={header}
-                      className="p-4 text-slate-300 text-sm md:text-base whitespace-nowrap text-center bg-slate-900 bg-opacity-80"
+                      className="p-4 text-slate-300 text-sm md:text-base whitespace-nowrap text-center bg-slate-950 border-b-2 border-slate-700"
                     >
                       <p>{getDisplayValue(item[header])}</p>
                     </td>

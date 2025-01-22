@@ -89,10 +89,10 @@ const Home = () => {
       </section>
 
       {/* table */}
-      <section className="bg-slate-800 py-16 pb-24 mx-auto px-6">
-        <h3 className="font-bold text-indigo-500/100 text-4xl mb-4 text-center">Users List</h3>
+      <section className="bg-slate-950 py-16 pb-24 mx-auto px-6">
+        <h3 className="font-bold text-indigo-500/100 text-4xl mb-8 text-center">Users List</h3>
         <div
-          className="container py-4 overflow-x-auto mx-auto rounded-lg bg-slate-800 [&::-webkit-scrollbar]:h-2
+          className="container overflow-x-auto pb-5 mx-auto rounded-lg bg-slate-950 [&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
   [&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700

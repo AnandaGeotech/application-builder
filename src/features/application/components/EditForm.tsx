@@ -10,7 +10,7 @@ import useUserUpsert from '@/features/application/hooks/useUserUpsert';
 import { Button } from '@/common/components/Button';
 import SkeletonFormLoader from '@/common/components/form/FormLoader';
 
-const AddForm = () => {
+const EditForm = () => {
   const {
     methods,
     submit,
@@ -208,4 +208,4 @@ const AddForm = () => {
   );
 };
 
-export default AddForm;
+export default EditForm;

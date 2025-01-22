@@ -16,7 +16,7 @@ const useUserUpsert = () => {
 
   const { id: userId } = useParams();
   const navigate = useNavigate();
-  const { search } = useLocation();
+  const { search, pathname } = useLocation();
   const getSingleUser = async () => {
     const toastId = toast.loading('Fetching data...');
     await delay(2000);
@@ -51,15 +51,19 @@ const useUserUpsert = () => {
       if (toastId) return;
 
       toastId = toast.loading('Uploading data...');
-
+      await delay(2000);
       const formData = new FormData();
       if (data.file && data.file[0]) {
         formData.append('file', data.file[0]);
       }
       try {
-        await serviceMethods.upsertDataToDBFn(data as IApplicationUser);
+        const newData = await serviceMethods.upsertDataToDBFn(data as IApplicationUser);
         toast.success(`User ${userId ? 'updated' : 'added'} successfully`, { id: toastId });
         toastId = undefined;
+        methods.reset({});
+        if (newData?.id && pathname.includes('add')) {
+          navigate(`/edit/${newData.id}`);
+        }
       } catch (error) {
         toast.error('Something went wrong!', { id: toastId });
         toastId = undefined;

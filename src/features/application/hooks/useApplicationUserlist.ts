@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { createColumnHelper } from '@tanstack/react-table';
 import applicationService from '../services/application.service';
 
 import { createResource, delay } from '@/lib/utils';
@@ -18,6 +19,7 @@ const useApplicationUserList = () => {
   const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms
 
   const [currentPage, setCurrentPage] = useState(1);
+
   const [selectuserInfo, setselectuserInfo] = useState<undefined | Required<IApplicationUser>>();
   const [listData, setlistData] = useState<IApplicationUsersListRes | null>(null);
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -107,13 +109,14 @@ const useApplicationUserList = () => {
     return String(defaultValue);
   }
 
-  // console.log(listData.data, 'listData');
-
   // Dynamically extract headers if data exists
   const headers =
     listData?.data?.length && listData.data.length > 0
-      ? (Object.keys(listData.data[0]) as (keyof IApplicationUser)[])
+      ? (Object.keys(listData.data[0]) as (keyof IApplicationUser)[]).filter(
+          (it) => !['profession', 'education', 'id', 'professional'].includes(it)
+        )
       : [];
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = (info: Required<IApplicationUser>) => {
@@ -125,6 +128,15 @@ const useApplicationUserList = () => {
   const handleConfirm = () => {
     handleDelete();
   };
+
+  const columnHelper = createColumnHelper<Required<IApplicationUser>>();
+
+  const columns = headers.map((it) =>
+    columnHelper.accessor(it, {
+      cell: (info) => info.getValue(),
+    })
+  );
+
   return {
     dataResource,
     setdataResource,
@@ -150,6 +162,7 @@ const useApplicationUserList = () => {
     handleConfirm,
     closeModal,
     isModalOpen,
+    columns,
   };
 };
 

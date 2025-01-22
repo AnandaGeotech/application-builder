@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable boundaries/no-unknown */
 import { FaSearch } from 'react-icons/fa';
@@ -31,12 +33,23 @@ const Home = () => {
       description: 'Connect with popular tools and services effortlessly.',
     },
   ];
-  const { dataResource, headers, getDisplayValue, openModal, handleConfirm, closeModal, isModalOpen } =
-    useApplicationUserList();
+  const {
+    dataResource,
+    headers,
+    getDisplayValue,
+    openModal,
+    handleConfirm,
+    closeModal,
+    isModalOpen,
+    columns,
+    handlePageChange,
+    currentPage,
+    handleSearch,
+  } = useApplicationUserList();
   return (
-    <div className="bg-slate-800 text-gray-800">
+    <div className="">
       {/* Hero Section */}
-      <section className="bg-slate-800 py-16">
+      <section className=" py-16">
         <div className="container mx-auto px-6 text-center md:text-left md:flex md:items-center md:justify-between">
           <div className="md:w-1/2">
             <h1 className="text-4xl font-bold text-indigo-500/100 mb-4">Build Applications Faster</h1>
@@ -89,15 +102,46 @@ const Home = () => {
       </section>
 
       {/* table */}
-      <section className="bg-slate-800 py-16 pb-24 mx-auto px-6">
+      <section className=" py-16 pb-24 mx-auto px-6">
         <h3 className="font-bold text-indigo-500/100 text-4xl mb-4 text-center">Users List</h3>
         <div
-          className="container py-4 overflow-x-auto mx-auto rounded-lg bg-slate-800 [&::-webkit-scrollbar]:h-2
+          className="container py-4 overflow-x-auto mx-auto rounded-lg  [&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
   [&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full
   dark:[&::-webkit-scrollbar-track]:bg-neutral-700
   dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
         >
+          <div className="p-4 ">
+            <label htmlFor="table-search" className="sr-only">
+              Search
+            </label>
+            <div className="relative mt-1">
+              <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg
+                  className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                onChange={(e) => handleSearch(e.target.value)}
+                type="text"
+                id="table-search"
+                className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search for items"
+              />
+            </div>
+          </div>
           <ErrorBoundary
             fallback={
               <h2 className="text-white text-center text-3xl">Oops! An error occurred.Please reload the page</h2>
@@ -105,6 +149,10 @@ const Home = () => {
           >
             <Suspense fallback={<TableSkeleton />}>
               <UserTable
+                handleSearch={handleSearch}
+                handlePageChange={handlePageChange}
+                currentPage={currentPage}
+                columns={columns}
                 dataResource={dataResource}
                 headers={headers}
                 getDisplayValue={getDisplayValue}

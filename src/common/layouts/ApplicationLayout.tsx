@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 
 function Layout() {
   return (
-    <div className="bg-slate-900">
+    <div className="">
       <Navbar />
       <main>
         <Outlet />

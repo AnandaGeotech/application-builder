@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 /* eslint-disable boundaries/no-unknown */
 import { useParams } from 'react-router-dom';
@@ -14,7 +15,7 @@ const serviceMethods = applicationService();
 export const Component = () => {
   const { id: userId } = useParams();
 
-  const [userInfoData, setUserInfoData] = useState<Required<IApplicationUser> | undefined>();
+  const [_, setUserInfoData] = useState<Required<IApplicationUser> | undefined>();
 
   const [dataResource, setdataResource] = useState<{
     read: () => Required<IApplicationUser>;
@@ -35,7 +36,7 @@ export const Component = () => {
   //   const toastId = toast.loading('Uploading data...');
   //   try {
   //     const resDta = await serviceMethods.getSingleFileDataFn(userId as string);
-  //     console.log(resDta, 'resDta');
+  //
   //     setUserInfoData(resDta);
   //     toast.dismiss(toastId);
   //   } catch (error) {

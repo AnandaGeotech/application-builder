@@ -1,10 +1,10 @@
-interface Education {
+export interface Education {
   description: string;
   duration: string;
   label: string;
 }
 
-interface Profession {
+export interface Profession {
   description: string;
   duration: string;
   label: string;

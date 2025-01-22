@@ -1,6 +1,7 @@
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
-import { IApplicationUser } from '@/types/application.type';
+import { AccessorKeyColumnDef } from '@tanstack/react-table';
+import { Education, IApplicationUser, Profession } from '@/types/application.type';
 import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
 
 export interface IApplicationJsonApiDBService {
@@ -22,4 +23,5 @@ export interface TableApplicationUserListProps {
   handleConfirm: () => void;
   closeModal: () => void;
   isModalOpen: boolean;
+  columns?: AccessorKeyColumnDef<Required<IApplicationUser>, string | Education[] | Profession[]>[];
 }

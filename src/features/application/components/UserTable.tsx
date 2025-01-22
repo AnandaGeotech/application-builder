@@ -8,6 +8,7 @@ import { BiPencil, BiTrashAlt } from 'react-icons/bi';
 import { BsEyeFill, BsThreeDotsVertical } from 'react-icons/bs';
 import { FC, useState } from 'react';
 import { TableApplicationUserListProps } from '../type/application.type';
+import TableTest from './TableTest';
 import { capitalize } from '@/lib/utils';
 import GlobalModal from '@/common/components/Modal';
 import { Button } from '@/common/components/Button';
@@ -21,6 +22,10 @@ const UserTable: FC<TableApplicationUserListProps> = ({
   handleConfirm,
   closeModal,
   isModalOpen,
+  columns,
+  handlePageChange,
+  currentPage,
+  handleSearch,
 }) => {
   if (!dataResource) {
     throw new Promise(() => {});
@@ -43,6 +48,16 @@ const UserTable: FC<TableApplicationUserListProps> = ({
     <>
       {' '}
       <div>
+        <TableTest
+          handleSearch={handleSearch}
+          handlePageChange={handlePageChange}
+          currentPage={currentPage}
+          columns={columns}
+          data={data}
+          headers={headers}
+          getDisplayValue={getDisplayValue}
+        />
+        {/* <UserTaleList columns={columns} data={data?.data} headers={headers} /> */}
         {data?.data?.length > 0 ? (
           <table className="table-auto w-full relative">
             <thead>

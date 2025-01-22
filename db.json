@@ -266,46 +266,6 @@
       "gender": "male"
     },
     {
-      "id": "d409",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
-      "id": "1074",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
       "id": "1d4d",
       "education": [
         {

@@ -18,7 +18,7 @@ const useUserUpsert = () => {
   const navigate = useNavigate();
   const { search } = useLocation();
   const getSingleUser = async () => {
-    const toastId = toast.loading('Uploading data...');
+    const toastId = toast.loading('Fetching data...');
     await delay(2000);
     try {
       const resDta = await serviceMethods.getSingleFileDataFn(userId as string);

@@ -61,36 +61,40 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
         </div>
 
         {/* Details Section */}
-        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4 gap-y-6 text-indigo-500/100 ">
-          <div className="flex items-center">
-            <span className="text-indigo-500/100 mr-2">
-              <FaIdCardClip />
-            </span>
-            <span className="text-sm md:text-base font-bold">ID :</span>
-            <p className="ml-2 text-slate-400 break-all md:break-words">{userInfoData?.id} </p>
+        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2  text-indigo-500/100 ">
+          <div className="">
+            <div className="flex items-center">
+              <span className="text-indigo-500/100 mr-2">
+                <FaIdCardClip />
+              </span>
+              <span className="text-sm md:text-base font-bold">ID :</span>
+              <p className="ml-2 text-slate-400 break-all md:break-words">{userInfoData?.id} </p>
+            </div>
+            <div className="flex items-center">
+              <span className="text-indigo-500/100 mr-2">
+                <MdEmail />
+              </span>
+              <span className="text-sm md:text-base font-bold">Email :</span>
+              <p className="ml-2 text-slate-400 break-all md:break-words"> {userInfoData?.email}</p>
+            </div>
           </div>
+          <div className="">
+            <div className="flex items-center">
+              <span className="text-indigo-500/100 mr-2">
+                {' '}
+                <FaPhoneAlt />
+              </span>
+              <span className="text-sm md:text-base font-bold">Ph. No :</span>
+              <p className="ml-2 text-slate-400 break-all md:break-words"> {userInfoData?.phone}</p>
+            </div>
 
-          <div className="flex items-center">
-            <span className="text-indigo-500/100 mr-2">
-              <MdEmail />
-            </span>
-            <span className="text-sm md:text-base font-bold">Email :</span>
-            <p className="ml-2 text-slate-400 break-all md:break-words"> {userInfoData?.email}</p>
-          </div>
-          <div className="flex items-center">
-            <span className="text-indigo-500/100 mr-2">
-              {' '}
-              <FaPhoneAlt />
-            </span>
-            <span className="text-sm md:text-base font-bold">Ph. No :</span>
-            <p className="ml-2 text-slate-400 break-all md:break-words"> {userInfoData?.phone}</p>
-          </div>
-          <div className="flex items-center">
-            <span className="text-indigo-500/100 mr-2">
-              <MdCorporateFare />
-            </span>
-            <span className="text-sm md:text-base font-bold">Company :</span>
-            <p className="ml-2 text-slate-400 break-all md:break-words">{userInfoData?.company}</p>
+            <div className="flex items-center">
+              <span className="text-indigo-500/100 mr-2">
+                <MdCorporateFare />
+              </span>
+              <span className="text-sm md:text-base font-bold">Company :</span>
+              <p className="ml-2 text-slate-400 break-all md:break-words">{userInfoData?.company}</p>
+            </div>
           </div>
         </div>
       </section>

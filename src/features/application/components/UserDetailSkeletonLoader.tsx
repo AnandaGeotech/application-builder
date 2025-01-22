@@ -94,8 +94,6 @@ const UserDetailSkeletonLoader = () => (
       <div className="flex items-center space-x-2">
         <div className="flex flex-col space-y-4">
           <div className="h-6 bg-gray-300 rounded dark:bg-gray-700 w-1/2 animate-pulse" />
-          <div className="h-4 bg-gray-300 rounded dark:bg-gray-700 w-3/4 animate-pulse" />
-          <div className="h-4 bg-gray-300 rounded dark:bg-gray-700 w-2/3 animate-pulse" />
         </div>
       </div>
     </section>

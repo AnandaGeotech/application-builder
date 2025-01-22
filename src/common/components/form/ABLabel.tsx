@@ -8,7 +8,7 @@ const ABLabel: React.FC<LabelProps> = ({ htmlFor, label, required, error, classN
   // Base styles
   const baseLabelClass = 'block items-center gap-1 text-sm font-medium pb-2';
   const errorLabelClass = 'text-red-700 dark:text-red-500';
-  const successLabelClass = 'text-gray-900';
+  const successLabelClass = 'text-indigo-500/100 ';
 
   const computedClassName = `${baseLabelClass} ${error ? errorLabelClass : successLabelClass} ${className || ''}`;
 

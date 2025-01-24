@@ -13,10 +13,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BiPencil, BiTrashAlt } from 'react-icons/bi';
-import { BsEyeFill, BsThreeDotsVertical } from 'react-icons/bs';
-import { Button } from '@/common/components/Button';
+import TableActionButton from './TableActionButton';
 import { Education, IApplicationUser, Profession } from '@/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
 import { IApplicationUsersListRes } from '@/types/common.type';
@@ -139,7 +136,8 @@ const TableTest = ({
                   </td>
                 ))}
                 <td className="px-6 py-4 relative">
-                  {activeRowId === row.original?.id && (
+                  <TableActionButton />
+                  {/* {activeRowId === row.original?.id && (
                     <div className="absolute flex justify-center bg-slate-900 dark:bg-slate-300 items-center px-3 rounded-lg left-0">
                       <Link className="" to={`/edit/${row.original?.id}`}>
                         <BiPencil size={14} className="hover:text-slate-400" />
@@ -155,31 +153,31 @@ const TableTest = ({
                         <BsEyeFill className="text-indigo-500 hover:text-indigo-400" size={14} />
                       </Link>
                     </div>
-                  )}
+                  )} */}
 
-                  <Button onClick={() => toggleIcons(row.original?.id)}>
+                  {/* <Button onClick={() => toggleIcons(row.original?.id)}>
                     <BsThreeDotsVertical />
-                  </Button>
+                  </Button> */}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <nav
-          className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
-          aria-label="Table navigation"
-        >
-          <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-            Showing
-            <span className="font-semibold text-gray-900 dark:text-white">
-              {limitperPage * (currentPage - 1) + 1}-{Number(userData?.data?.length) + limitperPage * (currentPage - 1)}
-            </span>{' '}
-            of
-            <span className="font-semibold text-gray-900 dark:text-white">{userData?.items}</span>
-          </span>
-          <Pagination currentPage={currentPage} totalPages={Number(userData?.pages)} onPageChange={handlePageChange} />
-        </nav>
       </div>
+      <nav
+        className="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
+        aria-label="Table navigation"
+      >
+        <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
+          Showing
+          <span className="font-semibold text-gray-900 dark:text-white">
+            {limitperPage * (currentPage - 1) + 1}-{Number(userData?.data?.length) + limitperPage * (currentPage - 1)}
+          </span>{' '}
+          of
+          <span className="font-semibold text-gray-900 dark:text-white">{userData?.items}</span>
+        </span>
+        <Pagination currentPage={currentPage} totalPages={Number(userData?.pages)} onPageChange={handlePageChange} />
+      </nav>
     </div>
   );
 };

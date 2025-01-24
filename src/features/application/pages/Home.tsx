@@ -45,11 +45,18 @@ const Home = () => {
     handlePageChange,
     currentPage,
     handleSearch,
+    toggleHeader,
+    visibleHeaders,
+    handleConfirmOptionModalFn,
+    closeOptionModalFn,
+    openOptionModalFn,
+    isModalOptionOpen,
+    setIsModalOptionOpen,
   } = useApplicationUserList();
   return (
     <div className="">
       {/* Hero Section */}
-      <section className="bg-slate-950 dark:bg-white py-16">
+      <section className="dark:bg-slate-950 bg-white py-16">
         <div className="container mx-auto px-6 text-center md:text-left md:flex md:items-center md:justify-between">
           <div className="md:w-1/2">
             <h1 className="text-4xl font-bold text-indigo-500/100 mb-4">Build Applications Faster</h1>
@@ -83,17 +90,17 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 pb-24 bg-slate-900/100 dark:bg-slate-300 text-slate-200 dark:text-slate-700">
+      <section className="py-16 pb-24 dark:bg-slate-900/100 bg-slate-300 text-slate-200 dark:text-slate-700">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-indigo-500/100 mb-8">Features</h2>
+          <h2 className="text-4xl font-bold text-center   text-black  dark:text-indigo-500/100  mb-8">Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-4/5 mx-auto md:w-full">
             {featureDetails.map(({ icon, featureName, description }) => (
               <div
-                className="p-6 bg-slate-950 dark:bg-white shadow-sm shadow-black dark:shadow-none rounded-lg text-center border-x-4 border-indigo-500/100"
+                className="p-6 dark:bg-slate-950 bg-white shadow-sm shadow-black dark:shadow-none rounded-lg text-center border-x-4 border-indigo-500/100"
                 key={featureName}
               >
                 <div className="text-4xl mb-4">{icon}</div>
-                <h3 className="text-xl font-bold mb-2">{featureName}</h3>
+                <h3 className="text-xl font-bold mb-2  text-black  dark:text-indigo-500/100">{featureName}</h3>
                 <p className="text-slate-400 dark:text-slate-500">{description}</p>
               </div>
             ))}
@@ -101,14 +108,14 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-slate-950 dark:bg-white py-16 pb-24 mx-auto px-6">
+      <section className="dark:bg-slate-950 bg-white py-16 pb-24 mx-auto px-6">
         <h3 className="font-bold text-indigo-500/100 text-4xl mb-8 text-center">Users List</h3>
         <div
-          className="container overflow-x-auto pb-5 mx-auto rounded-lg bg-slate-950 dark:bg-white [&::-webkit-scrollbar]:h-2
+          className="container overflow-x-auto pb-5 mx-auto rounded-lg dark:bg-slate-950 bg-white [&::-webkit-scrollbar]:h-2
   [&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:dark:bg-slate-200 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
   [&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full"
         >
-          <div className="p-4 ">
+          <div className="py-4 flex justify-between">
             <label htmlFor="table-search" className="sr-only">
               Search
             </label>
@@ -138,6 +145,14 @@ const Home = () => {
                 placeholder="Search for items"
               />
             </div>
+            <Button
+              onClick={() => {
+                openOptionModalFn();
+              }}
+              className="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-600  "
+            >
+              Select Columns to Display
+            </Button>
           </div>
           <ErrorBoundary
             fallback={
@@ -157,6 +172,13 @@ const Home = () => {
                 handleConfirm={handleConfirm}
                 closeModal={closeModal}
                 isModalOpen={isModalOpen}
+                visibleHeaders={visibleHeaders}
+                toggleHeader={toggleHeader}
+                handleConfirmOptionModalFn={handleConfirmOptionModalFn}
+                closeOptionModalFn={closeOptionModalFn}
+                openOptionModalFn={openOptionModalFn}
+                isModalOptionOpen={isModalOptionOpen}
+                setIsModalOptionOpen={setIsModalOptionOpen}
               />
             </Suspense>
           </ErrorBoundary>
@@ -164,7 +186,7 @@ const Home = () => {
       </section>
 
       {/* Demo Section */}
-      <section className="bg-slate-900/100 dark:bg-slate-300 text-slate-400 dark:text-slate-700 py-16">
+      <section className="dark:bg-slate-900/100 bg-slate-300 text-slate-400 dark:text-slate-700 py-16">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-4 text-indigo-500/100">Try the Demo</h2>
           <p className="text-lg mb-6">Explore the features of our application builder and see how it works.</p>

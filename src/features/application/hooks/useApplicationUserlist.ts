@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { createColumnHelper } from '@tanstack/react-table';
+import { AccessorKeyColumnDef, createColumnHelper } from '@tanstack/react-table';
 import applicationService from '../services/application.service';
 
 import { createResource, delay } from '@/lib/utils';
@@ -128,15 +128,54 @@ const useApplicationUserList = () => {
   const handleConfirm = () => {
     handleDelete();
   };
+  const [isModalOptionOpen, setIsModalOptionOpen] = useState(false);
+
+  const openOptionModalFn = () => {
+    setIsModalOptionOpen(true);
+  };
+  const closeOptionModalFn = () => setIsModalOptionOpen(false);
+
+  const [visibleHeaders, setVisibleHeaders] = useState<Set<string>>(new Set());
 
   const columnHelper = createColumnHelper<Required<IApplicationUser>>();
 
-  const columns = headers.map((it) =>
-    columnHelper.accessor(it, {
-      cell: (info) => info.getValue(),
-    })
-  );
+  const [columns, setcolumns] = useState<AccessorKeyColumnDef<Required<IApplicationUser>, any>[]>([]);
+  useEffect(() => {
+    if (headers.length) {
+      const tt = new Set(headers.map((header) => header));
+      setVisibleHeaders(tt);
+      setcolumns(
+        headers?.map((it) =>
+          columnHelper.accessor(it, {
+            cell: (info) => info.getValue(),
+          })
+        )
+      );
+    }
+  }, [headers.length]);
 
+  const toggleHeader = (key: string) => {
+    setVisibleHeaders((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.size > 1 && newSet.has(key)) {
+        newSet.delete(key);
+      } else {
+        newSet.add(key);
+      }
+
+      return newSet;
+    });
+  };
+  const handleConfirmOptionModalFn = () => {
+    setcolumns(
+      Array.from(visibleHeaders).map((key) =>
+        columnHelper.accessor(key as keyof IApplicationUser, {
+          cell: (info) => info.getValue(),
+        })
+      ) as AccessorKeyColumnDef<Required<IApplicationUser>, any>[]
+    );
+    closeOptionModalFn();
+  };
   return {
     dataResource,
     setdataResource,
@@ -163,6 +202,13 @@ const useApplicationUserList = () => {
     closeModal,
     isModalOpen,
     columns,
+    toggleHeader,
+    visibleHeaders,
+    handleConfirmOptionModalFn,
+    closeOptionModalFn,
+    openOptionModalFn,
+    isModalOptionOpen,
+    setIsModalOptionOpen,
   };
 };
 

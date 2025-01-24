@@ -1,8 +1,17 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-import { AccessorKeyColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import {
+  AccessorKeyColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
+  useReactTable,
+} from '@tanstack/react-table';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiPencil, BiTrashAlt } from 'react-icons/bi';
@@ -17,12 +26,13 @@ const TableTest = ({
   columns,
   handlePageChange,
   currentPage,
+  openModal,
 }: {
   data: IApplicationUsersListRes;
   columns: AccessorKeyColumnDef<Required<IApplicationUser>, string | Education[] | Profession[]>[];
-
-  handlePageChange: () => void;
-  currentPage: () => void;
+  openModal: (data: Required<IApplicationUser>) => void;
+  handlePageChange: (query: number) => void;
+  currentPage: number;
 }) => {
   const [data, _setData] = useState<Required<IApplicationUser>[]>(() => []);
 
@@ -36,10 +46,24 @@ const TableTest = ({
   const toggleIcons = (id: string) => {
     setActiveRowId((prevId) => (prevId === id ? null : id)); // Toggle or close the icon list
   };
+  const [sorting, setSorting] = useState<SortingState>([]);
+
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting, // Update sorting state
+    getSortedRowModel: getSortedRowModel(), // Enable sorted row model
+    sortingFns: {
+      myCustomSorting: (rowA, rowB, columnId) => {
+        const valueA = rowA.getValue(columnId) as string | number;
+        const valueB = rowB.getValue(columnId) as string | number;
+        return valueA < valueB ? -1 : 1;
+      },
+    },
   });
   return (
     <div>
@@ -58,22 +82,29 @@ const TableTest = ({
                     checkbox
                   </label>
                 </th>
-
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} scope="col" className="px-6 py-3">
-                    <div className="flex items-center">
+                  <th key={header.id} className="px-6 py-3 border-b">
+                    <div
+                      className="flex items-center cursor-pointer"
+                      onClick={header.column.getToggleSortingHandler()}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          header.column.getToggleSortingHandler()?.(e);
+                        }
+                      }}
+                    >
                       {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                      <a href="#">
-                        <svg
-                          className="w-3 h-3 ms-1.5"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                        </svg>
-                      </a>
+                      {header.column.getCanSort() && (
+                        <span className="ml-2">
+                          {header.column.getIsSorted() === 'asc'
+                            ? '↑'
+                            : header.column.getIsSorted() === 'desc'
+                              ? '↓'
+                              : '↕'}
+                        </span>
+                      )}
                     </div>
                   </th>
                 ))}
@@ -110,7 +141,11 @@ const TableTest = ({
                         <BiPencil size={14} className="hover:text-slate-400" />
                       </Link>
                       <Button>
-                        <BiTrashAlt className="text-red-500 hover:text-red-400" size={14} />
+                        <BiTrashAlt
+                          onClick={() => openModal(row.original)}
+                          className="text-red-500 hover:text-red-400"
+                          size={14}
+                        />
                       </Button>
                       <Link to={`user/${row.original?.id}`}>
                         <BsEyeFill className="text-indigo-500 hover:text-indigo-400" size={14} />

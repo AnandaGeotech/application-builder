@@ -31,7 +31,6 @@ const UserTable: FC<TableApplicationUserListProps> = ({
     throw new Promise(() => {});
   }
   const data = dataResource.read();
-  // console.log(data.data);
 
   const [activeRowId, setActiveRowId] = useState<string | null>(null);
 

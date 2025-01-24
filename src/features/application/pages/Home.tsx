@@ -52,6 +52,11 @@ const Home = () => {
     openOptionModalFn,
     isModalOptionOpen,
     setIsModalOptionOpen,
+    limitperPage,
+    toggleIcons,
+    activeRowId,
+    sorting,
+    setSorting,
   } = useApplicationUserList();
   return (
     <div className="">
@@ -179,6 +184,11 @@ const Home = () => {
                 openOptionModalFn={openOptionModalFn}
                 isModalOptionOpen={isModalOptionOpen}
                 setIsModalOptionOpen={setIsModalOptionOpen}
+                limitperPage={limitperPage}
+                toggleIcons={toggleIcons}
+                activeRowId={activeRowId}
+                sorting={sorting}
+                setSorting={setSorting}
               />
             </Suspense>
           </ErrorBoundary>

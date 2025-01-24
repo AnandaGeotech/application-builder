@@ -37,11 +37,6 @@ const UserTable: FC<TableApplicationUserListProps> = ({
   const toggleIcons = (id: string) => {
     setActiveRowId((prevId) => (prevId === id ? null : id)); // Toggle or close the icon list
   };
-  // const iconListRef = useRef(null); // Ref for the icon list container
-
-  // useClickAway(() => {
-  //   setActiveRowId(null); // Close any open icon list when clicking outside
-  // }, iconListRef);
 
   return (
     <>

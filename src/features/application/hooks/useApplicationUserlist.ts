@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { AccessorKeyColumnDef, createColumnHelper } from '@tanstack/react-table';
+import { AccessorKeyColumnDef, createColumnHelper, SortingState } from '@tanstack/react-table';
 import applicationService from '../services/application.service';
 
 import { createResource, delay } from '@/lib/utils';
@@ -42,13 +42,6 @@ const useApplicationUserList = () => {
     setdataResource(resource);
   };
 
-  const handleDelete = async () => {
-    await deleteDataFromDBFn(selectuserInfo?.id as string);
-    setdataResource(null);
-
-    toast.success('File deleted successfully!');
-    loadData();
-  };
   // Load data from IndexedDB
 
   const handlePageChange = (page: number) => {
@@ -125,9 +118,6 @@ const useApplicationUserList = () => {
   };
   const closeModal = () => setIsModalOpen(false);
 
-  const handleConfirm = () => {
-    handleDelete();
-  };
   const [isModalOptionOpen, setIsModalOptionOpen] = useState(false);
 
   const openOptionModalFn = () => {
@@ -176,6 +166,26 @@ const useApplicationUserList = () => {
     );
     closeOptionModalFn();
   };
+
+  const handleDelete = async () => {
+    await deleteDataFromDBFn(selectuserInfo?.id as string);
+    setdataResource(null);
+
+    toast.success('File deleted successfully!');
+    loadData();
+    closeModal();
+  };
+
+  const [activeRowId, setActiveRowId] = useState<string | null>(null);
+
+  const toggleIcons = (id: string) => {
+    setActiveRowId((prevId) => (prevId === id ? null : id)); // Toggle or close the icon list
+  };
+
+  const handleConfirm = () => {
+    handleDelete();
+  };
+  const [sorting, setSorting] = useState<SortingState>([]);
   return {
     dataResource,
     setdataResource,
@@ -209,6 +219,10 @@ const useApplicationUserList = () => {
     openOptionModalFn,
     isModalOptionOpen,
     setIsModalOptionOpen,
+    toggleIcons,
+    activeRowId,
+    sorting,
+    setSorting,
   };
 };
 

@@ -23,7 +23,12 @@ const UserTable: FC<TableApplicationUserListProps> = ({
   toggleHeader,
   handleConfirmOptionModalFn,
   closeOptionModalFn,
+  limitperPage,
   isModalOptionOpen,
+  toggleIcons,
+  activeRowId,
+  sorting,
+  setSorting,
 }) => {
   if (!dataResource) {
     throw new Promise(() => {});
@@ -46,6 +51,11 @@ const UserTable: FC<TableApplicationUserListProps> = ({
           columns={columns}
           data={data}
           openModal={openModal}
+          limitperPage={limitperPage}
+          toggleIcons={toggleIcons}
+          activeRowId={activeRowId}
+          sorting={sorting}
+          setSorting={setSorting}
         />
         {/* <UserTaleList columns={columns} data={data?.data} headers={headers} /> */}
         {/* {data?.data?.length > 0 ? (

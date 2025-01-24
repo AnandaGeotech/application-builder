@@ -12,7 +12,7 @@ import {
   SortingState,
   useReactTable,
 } from '@tanstack/react-table';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BiPencil, BiTrashAlt } from 'react-icons/bi';
 import { BsEyeFill, BsThreeDotsVertical } from 'react-icons/bs';
@@ -27,12 +27,22 @@ const TableTest = ({
   handlePageChange,
   currentPage,
   openModal,
+  limitperPage,
+  toggleIcons,
+  activeRowId,
+  sorting,
+  setSorting,
 }: {
   data: IApplicationUsersListRes;
   columns: AccessorKeyColumnDef<Required<IApplicationUser>, string | Education[] | Profession[]>[];
   openModal: (data: Required<IApplicationUser>) => void;
   handlePageChange: (query: number) => void;
   currentPage: number;
+  limitperPage: number;
+  toggleIcons: (id: string) => void;
+  activeRowId: string | null;
+  sorting: SortingState;
+  setSorting: React.Dispatch<React.SetStateAction<SortingState>>;
 }) => {
   const [data, _setData] = useState<Required<IApplicationUser>[]>(() => []);
 
@@ -41,12 +51,6 @@ const TableTest = ({
       _setData(userData.data);
     }
   }, [userData.data.length]);
-  const [activeRowId, setActiveRowId] = useState<string | null>(null);
-
-  const toggleIcons = (id: string) => {
-    setActiveRowId((prevId) => (prevId === id ? null : id)); // Toggle or close the icon list
-  };
-  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data,
@@ -168,8 +172,7 @@ const TableTest = ({
           <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
             Showing
             <span className="font-semibold text-gray-900 dark:text-white">
-              1-
-              {userData?.data?.length}
+              {limitperPage * (currentPage - 1) + 1}-{Number(userData?.data?.length) + limitperPage * (currentPage - 1)}
             </span>{' '}
             of
             <span className="font-semibold text-gray-900 dark:text-white">{userData?.items}</span>

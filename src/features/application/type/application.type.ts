@@ -1,6 +1,6 @@
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
-import { AccessorKeyColumnDef } from '@tanstack/react-table';
+import { AccessorKeyColumnDef, SortingState } from '@tanstack/react-table';
 import React from 'react';
 import { Education, IApplicationUser, Profession } from '@/types/application.type';
 import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
@@ -35,4 +35,10 @@ export interface TableApplicationUserListProps {
   openOptionModalFn: () => void;
   setIsModalOptionOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   isModalOptionOpen: boolean;
+  limitperPage: number;
+  toggleIcons: (id: string) => void;
+  activeRowId: string | null;
+
+  sorting: SortingState;
+  setSorting: React.Dispatch<React.SetStateAction<SortingState>>;
 }

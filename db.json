@@ -166,106 +166,6 @@
       "pincode": "54654"
     },
     {
-      "id": "eddf",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
-      "id": "c4c3",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
-      "id": "5839",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
-      "id": "673f",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
-      "id": "a83e",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "retret",
-      "lastName": "ertret",
-      "gender": "male"
-    },
-    {
       "id": "1d4d",
       "education": [
         {
@@ -384,17 +284,6 @@
       "firstName": "Mohonfdsfsf",
       "lastName": "halder updated",
       "gender": "male"
-    },
-    {
-      "id": "cc0e",
-      "professional": [
-        {
-          "label": "",
-          "duration": "",
-          "description": ""
-        }
-      ],
-      "education": [{}]
     }
   ]
 }

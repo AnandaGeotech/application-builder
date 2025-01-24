@@ -3,33 +3,37 @@
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line boundaries/no-unknown
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { TableApplicationUserListProps } from '../type/application.type';
 import TableTest from './TableTest';
 import GlobalModal from '@/common/components/Modal';
 import ConfirmModal from '@/common/components/ConfirmModal';
 
-const UserTable: FC<TableApplicationUserListProps> = ({
-  dataResource,
-  headers,
-  openModal,
-  handleConfirm,
-  closeModal,
-  isModalOpen,
-  columns,
-  handlePageChange,
-  currentPage,
-  visibleHeaders,
-  toggleHeader,
-  handleConfirmOptionModalFn,
-  closeOptionModalFn,
-  limitperPage,
-  isModalOptionOpen,
-  toggleIcons,
-  activeRowId,
-  sorting,
-  setSorting,
-}) => {
+type hooksOptions = {
+  hooksOptions: TableApplicationUserListProps;
+};
+const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
+  const {
+    dataResource,
+    headers,
+    openModal,
+    handleConfirm,
+    closeModal,
+    isModalOpen,
+    columns,
+    handlePageChange,
+    currentPage,
+    visibleHeaders,
+    toggleHeader,
+    handleConfirmOptionModalFn,
+    closeOptionModalFn,
+    limitperPage,
+    isModalOptionOpen,
+    toggleIcons,
+    activeRowId,
+    sorting,
+    setSorting,
+  } = hooksOptions;
   if (!dataResource) {
     throw new Promise(() => {});
   }

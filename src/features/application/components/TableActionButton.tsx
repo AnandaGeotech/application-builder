@@ -16,7 +16,6 @@ const TableActionButton = ({
   openModal: (info: Required<IApplicationUser>) => void;
 }) => {
   const navigate = useNavigate();
-  console.log(openModal);
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>

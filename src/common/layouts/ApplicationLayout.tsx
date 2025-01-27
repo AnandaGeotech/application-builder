@@ -459,7 +459,7 @@ function Layout() {
           </ul>
         </div>
       </aside>
-      <div className=" sm:ml-64 bg-red">
+      <div className=" sm:ml-64">
         <div className="dark:border-gray-700 ">
           <Outlet />
         </div>

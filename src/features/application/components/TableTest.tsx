@@ -4,15 +4,8 @@
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
-import {
-  AccessorKeyColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  SortingState,
-  useReactTable,
-} from '@tanstack/react-table';
-import React, { useEffect, useState } from 'react';
+import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
+import { useEffect, useState } from 'react';
 import TableActionButton from './TableActionButton';
 import { IApplicationUser } from '@/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
@@ -54,7 +47,7 @@ const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
   });
   return (
     <div>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div className="relative overflow-x-auto  shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -70,7 +63,7 @@ const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
                   </label>
                 </th>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="px-6 py-3 border-b">
+                  <th key={header.id} className="px-6 py-3 ">
                     <div
                       className="flex items-center cursor-pointer"
                       onClick={header.column.getToggleSortingHandler()}
@@ -95,8 +88,11 @@ const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
                     </div>
                   </th>
                 ))}
-                <th scope="col" className="px-6 py-3 w-[1px]">
+                {/* <th scope="col" className="px-6 py-3 w-[1px] ">
                   Action
+                </th> */}
+                <th className="px-5 py-2 first:pl-3 last:pr-3 first:rounded-l last:rounded-r last:pl-5 last:sticky last:right-0   bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <div className="font-medium text-left ">Action</div>
                 </th>
               </tr>
             ))}
@@ -117,11 +113,19 @@ const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
                   </div>
                 </td>
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="px-6 py-4">
+                  <td
+                    key={cell.id}
+                    className="px-6 py-4  border-b border-slate-100 dark:border-slate-500  last:border-none"
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
-                <td className="px-6 py-4 relative">
+                <td
+                  className="px-6 py-4
+              first:pl-3 last:pr-3  last:to-[12px] last:pl-5 last:sticky last:right-0
+dark:bg-slate-950 bg-white
+                "
+                >
                   <TableActionButton info={row} openModal={openModal} />
                   {/* {activeRowId === row.original?.id && (
                     <div className="absolute flex justify-center bg-slate-900 dark:bg-slate-300 items-center px-3 rounded-lg left-0">

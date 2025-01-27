@@ -25,7 +25,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
   };
 
   return (
-    <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+    <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 gap-2">
       <li>
         <Button
           onClick={() => handlePageChange(currentPage - 1)}

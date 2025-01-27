@@ -42,10 +42,15 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
     throw new Error('User data is missing!');
   }
 
+  const infoTitleStyle = 'font-bold text-indigo-500/100';
+
   return (
     <>
-      <section className="w-11/12 md:w-4/5 bg-slate-900 dark:bg-slate-200 flex flex-col md:flex-row gap-6 p-4 py-10 md:p-8 rounded-xl shadow-lg border-b-2 border-indigo-500/100 ">
-        <div className="w-full md:w-1/3 flex flex-col items-center md:flex-row md:items-start md:space-x-6 text-slate-400 dark:text-slate-700">
+      <section
+        className="w-11/12 md:w-4/5  bg-slate-200 dark:bg-slate-900 flex flex-col md:flex-row gap-6 p-4 py-10 md:p-8 rounded-xl shadow-lg border-b-2
+       dark:text-slate-400 text-slate-700 border-indigo-500/100"
+      >
+        <div className="w-full md:w-1/3 flex flex-col items-center md:flex-row md:items-start md:space-x-6 ">
           <img
             src="/src/assets/jpgs/profile-img.jpg"
             alt="Profile"
@@ -61,7 +66,7 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
         </div>
 
         {/* Details Section */}
-        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2  text-slate-400 dark:text-slate-700">
+        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2  ">
           <div className="">
             <div className="flex items-center">
               <span className="text-indigo-500/100 mr-2">
@@ -100,42 +105,42 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
       </section>
 
       {/* More Information Section */}
-      <section className="w-11/12 md:w-4/5 flex flex-col md:flex-row gap-6 text-slate-400 dark:text-slate-700">
+      <section className="w-11/12 md:w-4/5 flex flex-col md:flex-row gap-6 dark:text-slate-400 text-slate-700">
         {/* Personal Info */}
-        <div className="bg-slate-900 dark:bg-slate-200 w-full md:w-1/2 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
-          <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
+        <div className="dark:bg-slate-900 bg-slate-200 w-full md:w-1/2 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
+          <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-500/100">
             Personal Information
           </h3>
 
           <div className="grid grid-cols-2 gap-y-4 md:gap-y-8 py-4">
             <div>
-              <h6 className="font-bold text-indigo-500/100">Gender</h6>
+              <h6 className={`${infoTitleStyle}`}>Gender</h6>
               <p>{userInfoData?.gender}</p>
             </div>
             <div>
-              <h6 className="font-bold text-indigo-500/100">Date of Birth</h6>
+              <h6 className={`${infoTitleStyle}`}>Date of Birth</h6>
               <p>{userInfoData?.birthDate}</p>
             </div>
             <div>
-              <h6 className="font-bold text-indigo-500/100">Hometown</h6>
+              <h6 className={`${infoTitleStyle}`}>Hometown</h6>
               <p>{userInfoData?.hometown}</p>
             </div>
             <div>
-              <h6 className="font-bold text-indigo-500/100">Language</h6>
+              <h6 className={`${infoTitleStyle}`}>Language</h6>
               <p>{userInfoData?.language}</p>
             </div>
             <div>
-              <h6 className="font-bold text-indigo-500/100">Marital Status</h6>
+              <h6 className={`${infoTitleStyle}`}>Marital Status</h6>
               <p>{userInfoData?.maritalStatus}</p>
             </div>
           </div>
           <div className="grid grid-cols-1 gap-y-6 py-4">
             <div>
-              <h6 className="font-bold text-indigo-500/100">Permanent Address</h6>
+              <h6 className={`${infoTitleStyle}`}>Permanent Address</h6>
               <p>{userInfoData?.permanentAddress}</p>
             </div>
             <div>
-              <h6 className="font-bold text-indigo-500/100">Current Address</h6>
+              <h6 className={`${infoTitleStyle}`}>Current Address</h6>
               <p>{userInfoData?.presentAddress}</p>
             </div>
           </div>
@@ -143,8 +148,8 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
 
         {/* Education & Professional Info */}
         <div className="w-full md:w-1/2 rounded-xl space-y-6 ">
-          <div className="bg-slate-900 dark:bg-slate-200 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
-            <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
+          <div className="dark:bg-slate-900 bg-slate-200 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
+            <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-500/100">
               Education Information
             </h3>
             <div className="grid grid-cols-1 space-y-4 md:space-y-8 py-4">
@@ -159,8 +164,8 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
               ))}
             </div>
           </div>
-          <div className="bg-slate-900 dark:bg-slate-200 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
-            <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-800/100">
+          <div className="dark:bg-slate-900 bg-slate-200 rounded-xl p-4 py-10 md:p-8 border-b-2 border-indigo-500/100">
+            <h3 className="text-2xl font-bold pb-6 text-indigo-500/100 border-b-2 border-b-indigo-500/100">
               Professional Information
             </h3>
             <div className="grid grid-cols-1 space-y-4 md:space-y-8 py-4 ">
@@ -180,10 +185,10 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
 
       {/* Social Links Section */}
       <section
-        className="w-11/12 md:w-4/5 flex flex-col md:flex-row gap-4 justify-between bg-slate-900 dark:bg-slate-200 mt-6 p-4 md:p-8 py-10 md:py-4 rounded-xl border-b-2 border-indigo-500/100
-       text-slate-400 dark:text-slate-700"
+        className="w-11/12 md:w-4/5 flex flex-col md:flex-row gap-4 justify-between dark:bg-slate-900 bg-slate-200 mt-6 p-4 md:p-8 py-10 md:py-4 rounded-xl border-b-2 border-indigo-500/100
+       dark:text-slate-400 text-slate-700"
       >
-        <h3 className="text-2xl font-bold text-indigo-500/100 border-b-2 md:border-b-0 md:border-r-2 pr-2 border-indigo-800/100">
+        <h3 className="text-2xl font-bold text-indigo-500/100 border-b-2 md:border-b-0 md:border-r-2 pr-2 border-indigo-500/100">
           Social Links
         </h3>
         {socialLinks.map(({ icon, label, value, link }) => (

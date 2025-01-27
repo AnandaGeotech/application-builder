@@ -52,7 +52,7 @@ export const Component = () => {
   }, [userId]);
 
   return (
-    <main className="bg-slate-800 dark:bg-white text-slate-200 min-h-screen flex flex-col items-center space-y-6 py-6">
+    <main className="dark:bg-slate-950 bg-white text-slate-200 min-h-screen flex flex-col items-center space-y-6 py-6">
       {/* Header Section */}
       <section className="w-11/12 md:w-4/5">
         <h3 className="text-indigo-500/100 text-3xl md:text-4xl font-bold text-center">User Information</h3>

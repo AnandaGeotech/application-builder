@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
@@ -13,7 +14,7 @@ import { IApplicationUser } from '@/types/application.type';
 const { getAllDataFromDBFn, deleteDataFromDBFn } = applicationService();
 
 const useApplicationUserList = () => {
-  const [limitperPage, setlimitperPage] = useState(10);
+  const [limitperPage, setlimitperPage] = useState(5);
   const [searchTerm, setsearchTerm] = useState('');
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms

@@ -30,6 +30,7 @@ export interface TableApplicationUserListProps {
   currentPage: number;
   visibleHeaders: Set<string>;
   toggleHeader: (key: string) => void;
+  setCurrentPage: (key: number) => void;
   handleConfirmOptionModalFn?: () => void;
   closeOptionModalFn: () => void;
   openOptionModalFn: () => void;
@@ -37,8 +38,18 @@ export interface TableApplicationUserListProps {
   isModalOptionOpen: boolean;
   limitperPage: number;
   toggleIcons: (id: string) => void;
+  setsearchTerm: React.Dispatch<React.SetStateAction<string>>;
   activeRowId: string | null;
-
+  searchTerm: string;
   sorting: SortingState;
   setSorting: React.Dispatch<React.SetStateAction<SortingState>>;
+  setlimitperPage: React.Dispatch<React.SetStateAction<number>>;
+  handleSelectAll: (isChecked: boolean) => void;
+  selectedRows: Set<string>;
+  handleRowSelect: (id: string) => void;
+  listData: IApplicationUsersListRes | null;
+  setlistData: React.Dispatch<React.SetStateAction<IApplicationUsersListRes | null>>;
+  handleDelete: () => Promise<void>;
+  selectuserInfo: Required<IApplicationUser> | undefined;
+  setselectuserInfo: React.Dispatch<React.SetStateAction<Required<IApplicationUser> | undefined>>;
 }

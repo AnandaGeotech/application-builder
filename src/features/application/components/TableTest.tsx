@@ -14,29 +14,21 @@ import {
 } from '@tanstack/react-table';
 import React, { useEffect, useState } from 'react';
 import TableActionButton from './TableActionButton';
-import { Education, IApplicationUser, Profession } from '@/types/application.type';
+import { IApplicationUser } from '@/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
-import { IApplicationUsersListRes } from '@/types/common.type';
 
-const TableTest = ({
-  data: userData,
-  columns,
-  handlePageChange,
-  currentPage,
-  limitperPage,
-  sorting,
-  setSorting,
-}: {
-  data: IApplicationUsersListRes;
-  columns: AccessorKeyColumnDef<Required<IApplicationUser>, string | Education[] | Profession[]>[];
-  handlePageChange: (query: number) => void;
-  currentPage: number;
-  limitperPage: number;
-  sorting: SortingState;
-  setSorting: React.Dispatch<React.SetStateAction<SortingState>>;
-}) => {
+const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
   const [data, _setData] = useState<Required<IApplicationUser>[]>(() => []);
-
+  const {
+    data: userData,
+    columns,
+    handlePageChange,
+    currentPage,
+    limitperPage,
+    sorting,
+    setSorting,
+    openModal,
+  } = hooksOptions;
   useEffect(() => {
     if (userData.data.length) {
       _setData(userData.data);
@@ -130,7 +122,7 @@ const TableTest = ({
                   </td>
                 ))}
                 <td className="px-6 py-4 relative">
-                  <TableActionButton />
+                  <TableActionButton info={row} openModal={openModal} />
                   {/* {activeRowId === row.original?.id && (
                     <div className="absolute flex justify-center bg-slate-900 dark:bg-slate-300 items-center px-3 rounded-lg left-0">
                       <Link className="" to={`/edit/${row.original?.id}`}>

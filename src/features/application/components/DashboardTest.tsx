@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable max-len */
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { TableApplicationUserListProps } from '../type/application.type';
 import UserListSection from './UserListSection';
 

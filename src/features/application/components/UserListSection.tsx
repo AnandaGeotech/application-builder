@@ -2,16 +2,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 import { Suspense } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TableApplicationUserListProps } from '../type/application.type';
 import UserTable from './UserTable';
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import TableSkeleton from '@/common/components/TableSkeleton';
 
-const UserListSection = ({ hooksOptions }) => {
+const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserListProps }) => {
   const { handleSearch, openOptionModalFn } = hooksOptions;
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleCreate = () => navigate('/add');
+  const handleCreate = () => navigate('/add');
 
   // const featureDetails = [
   //   {
@@ -119,14 +121,19 @@ const UserListSection = ({ hooksOptions }) => {
                 placeholder="Search for items"
               />
             </div>
-            <Button
-              onClick={() => {
-                openOptionModalFn();
-              }}
-              className=" bg-indigo-500 text-white rounded hover:bg-indigo-600  "
-            >
-              Select Columns to Display
-            </Button>
+            <div className="flex gap-2">
+              <Button onClick={handleCreate} className=" bg-indigo-500 text-white rounded hover:bg-indigo-600  ">
+                Add User
+              </Button>
+              <Button
+                onClick={() => {
+                  openOptionModalFn();
+                }}
+                className=" bg-indigo-500 text-white rounded hover:bg-indigo-600  "
+              >
+                Select Columns to Display
+              </Button>
+            </div>
           </div>
           <ErrorBoundary
             fallback={

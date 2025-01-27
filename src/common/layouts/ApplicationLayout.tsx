@@ -139,7 +139,7 @@ function Layout() {
       >
         <Sidebar />
       </aside>
-      <div className=" sm:ml-64 flex flex-col justify-between h-screen">
+      <div className=" sm:ml-64 flex flex-col justify-between h-screen bg-slate-950">
         <div className="dark:border-gray-700 ">
           <Outlet />
         </div>

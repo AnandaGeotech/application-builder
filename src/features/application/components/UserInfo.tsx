@@ -179,12 +179,10 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
 
       {/* Social Links Section */}
       <section
-        className="w-11/12 md:w-4/5 flex flex-col md:flex-row gap-4 justify-between dark:bg-gray-800 bg-slate-200 mt-6 p-4 md:p-8 py-10 md:py-4 rounded-xl border-b-2 border-gray-600
+        className="w-11/12 md:w-4/5 flex flex-col gap-4 justify-between dark:bg-gray-800 bg-slate-200 mt-6 p-4 md:p-8 py-10 rounded-xl border-b-2 border-gray-600
        dark:text-slate-400 text-slate-700"
       >
-        <h3 className={`text-2xl ${infoTitleStyle} border-b-2 md:border-b-0 md:border-r-2 pr-2 border-gray-600`}>
-          Social Links
-        </h3>
+        <h3 className={`text-2xl ${infoTitleStyle} border-b-2 pr-2 border-gray-600 pb-6`}>Social Links</h3>
         {socialLinks.map(({ icon, label, value, link }) => (
           <div className="flex items-center space-x-2" key={label}>
             <a

@@ -47,7 +47,11 @@ const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
   });
   return (
     <div>
-      <div className="relative overflow-x-auto  shadow-md sm:rounded-lg">
+      <div
+        className="relative overflow-x-auto shadow-md sm:rounded-lg dark:bg-slate-950 bg-white [&::-webkit-scrollbar]:h-2
+[&::-webkit-scrollbar-track]:bg-slate-300 [&::-webkit-scrollbar-track]:dark:bg-slate-800 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
+[&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full py-4"
+      >
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -160,13 +164,15 @@ dark:bg-slate-950 bg-white
       >
         <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
           Showing
-          <span className="font-semibold text-gray-900 dark:text-white">
-            {limitperPage * (currentPage - 1) + 1}-{Number(userData?.data?.length) + limitperPage * (currentPage - 1)}
-          </span>{' '}
+          <span className="font-semibold text-gray-900 dark:text-white p-2">
+            {limitperPage * (currentPage - 1) + 1} -{Number(userData?.data?.length) + limitperPage * (currentPage - 1)}
+          </span>
           of
-          <span className="font-semibold text-gray-900 dark:text-white">{userData?.items}</span>
+          <span className="font-semibold text-gray-900 dark:text-white p-2">{userData?.items}</span>
         </span>
-        <Pagination currentPage={currentPage} totalPages={Number(userData?.pages)} onPageChange={handlePageChange} />
+        <div className="">
+          <Pagination currentPage={currentPage} totalPages={Number(userData?.pages)} onPageChange={handlePageChange} />
+        </div>
       </nav>
     </div>
   );

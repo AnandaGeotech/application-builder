@@ -86,12 +86,8 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
 
       <section className="dark:bg-slate-950 bg-white py-16 pb-24 mx-auto px-6 pt-40">
         <h3 className="font-bold text-indigo-500/100 text-4xl mb-8 text-center">Users List</h3>
-        <div
-          className="container overflow-x-auto pb-5 mx-auto rounded-lg dark:bg-slate-950 bg-white [&::-webkit-scrollbar]:h-2
-[&::-webkit-scrollbar-track]:bg-slate-900 [&::-webkit-scrollbar-track]:dark:bg-slate-200 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-opacity-50
-[&::-webkit-scrollbar-thumb]:bg-indigo-500/100 [&::-webkit-scrollbar-thumb]:rounded-full"
-        >
-          <div className="py-4 flex justify-between items-center">
+        <div className="container overflow-x-auto pb-5 mx-auto rounded-lg">
+          <div className="py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-3">
             <label htmlFor="table-search" className="sr-only">
               Search
             </label>
@@ -117,7 +113,7 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
                 onChange={(e) => handleSearch(e.target.value)}
                 type="text"
                 id="table-search"
-                className="block py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="rounded-full block py-2 ps-10 text-sm outline-none text-gray-900 border border-gray-300 w-80 bg-gray-50 focus:ring-indigo-500/100 focus:border-indigo-500/100 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search for items"
               />
             </div>

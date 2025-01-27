@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { AccessorKeyColumnDef, createColumnHelper, SortingState } from '@tanstack/react-table';
 import applicationService from '../services/application.service';
 
+import { TableApplicationUserListProps } from '../type/application.type';
 import { createResource, delay } from '@/lib/utils';
 import useDebounce from '@/common/hooks/use-debounce';
 import { IApplicationUsersListRes } from '@/types/common.type';
@@ -187,9 +188,9 @@ const useApplicationUserList = () => {
     handleDelete();
   };
   const [sorting, setSorting] = useState<SortingState>([]);
-  return {
+
+  const hooksOptions: TableApplicationUserListProps = {
     dataResource,
-    setdataResource,
     handlePageChange,
     currentPage,
     setCurrentPage,
@@ -225,6 +226,7 @@ const useApplicationUserList = () => {
     sorting,
     setSorting,
   };
+  return hooksOptions;
 };
 
 export default useApplicationUserList;

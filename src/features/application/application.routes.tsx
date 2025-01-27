@@ -25,6 +25,10 @@ export const applicationcationRoutes: RouteObject[] = [
         path: 'user/:id',
         lazy: () => import('./pages/UserDetails'), // user details route
       },
+      {
+        path: 'users',
+        element: <Home />, // user details route
+      },
     ],
   },
   {

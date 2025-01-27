@@ -7,11 +7,17 @@
 /* eslint-disable max-len */
 import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useEffect, useState } from 'react';
+import { TableApplicationUserListProps } from '../type/application.type';
 import TableActionButton from './TableActionButton';
 import { IApplicationUser } from '@/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
+import { IApplicationUsersListRes } from '@/types/common.type';
 
-const TableTest = ({ hooksOptions }: { hooksOptions: any }) => {
+const TableTest = ({
+  hooksOptions,
+}: {
+  hooksOptions: TableApplicationUserListProps & { data: IApplicationUsersListRes };
+}) => {
   const [data, _setData] = useState<Required<IApplicationUser>[]>(() => []);
   const {
     data: userData,

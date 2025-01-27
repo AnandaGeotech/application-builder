@@ -106,7 +106,7 @@ const EditForm = () => {
                 type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addEducation({ label: '', duration: '', description: '' })}
-                className="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-600  "
+                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
               >
                 Add Education
               </Button>
@@ -152,7 +152,7 @@ const EditForm = () => {
                 type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addProfessional({ label: '', duration: '', description: '' })}
-                className="p-2 bg-indigo-500 text-white rounded hover:bg-indigo-600  "
+                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700  "
               >
                 Add Professional
               </Button>
@@ -197,7 +197,7 @@ const EditForm = () => {
           <div className="mt-10">
             <Button
               type="submit"
-              className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center  bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 border border-text-dark w-full"
+              className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 w-full"
             >
               Submit
             </Button>

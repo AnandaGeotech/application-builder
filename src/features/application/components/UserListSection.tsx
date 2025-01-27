@@ -84,9 +84,9 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
         </div>
       </section> */}
 
-      <section className="dark:bg-slate-950 bg-white py-16 pb-24 mx-auto px-6 pt-40">
-        <h3 className="font-bold text-indigo-500/100 text-4xl mb-8 text-center">Users List</h3>
-        <div className="container overflow-x-auto pb-5 mx-auto rounded-lg">
+      <section className="dark:bg-slate-950 bg-white py-16  mx-auto px-6 pt-20">
+        <h3 className="font-bold  dark:text-white text-gray-500  text-4xl ">Users</h3>
+        <div className=" pb-5 mx-auto rounded-lg">
           <div className="py-4 flex flex-wrap flex-col md:flex-row md:justify-between md:items-center space-y-3">
             <label htmlFor="table-search" className="sr-only">
               Search
@@ -118,14 +118,18 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
               />
             </div>
             <div className="flex gap-2">
-              <Button onClick={handleCreate} className=" bg-indigo-500 text-white rounded hover:bg-indigo-600  ">
+              <Button
+                onClick={handleCreate}
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700'
+          "
+              >
                 Add User
               </Button>
               <Button
                 onClick={() => {
                   openOptionModalFn();
                 }}
-                className=" bg-indigo-500 text-white rounded hover:bg-indigo-600  "
+                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700"
               >
                 Select Columns to Display
               </Button>

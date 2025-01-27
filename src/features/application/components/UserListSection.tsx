@@ -87,7 +87,7 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
       <section className="dark:bg-slate-950 bg-white py-16 pb-24 mx-auto px-6 pt-40">
         <h3 className="font-bold text-indigo-500/100 text-4xl mb-8 text-center">Users List</h3>
         <div className="container overflow-x-auto pb-5 mx-auto rounded-lg">
-          <div className="py-4 flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-3">
+          <div className="py-4 flex flex-wrap flex-col md:flex-row md:justify-between md:items-center space-y-3">
             <label htmlFor="table-search" className="sr-only">
               Search
             </label>

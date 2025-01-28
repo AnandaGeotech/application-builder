@@ -26,7 +26,7 @@ const getCommonPinningStyles = (column: Column<IApplicationUser>): CSSProperties
         ? '4px 0 4px -4px gray inset'
         : undefined,
     left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
-    right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
+    right: isPinned === 'right' ? `${column.getAfter('right')}px ` : undefined,
     opacity: isPinned ? 0.95 : 1,
     position: isPinned ? 'sticky' : 'relative',
     width: column.getSize(),
@@ -34,7 +34,7 @@ const getCommonPinningStyles = (column: Column<IApplicationUser>): CSSProperties
   };
 };
 
-export default function TestSTickTable({
+export default function UserListReactTable({
   hooksOptions,
 }: {
   hooksOptions: TableApplicationUserListProps & { data: IApplicationUsersListRes };
@@ -88,6 +88,7 @@ export default function TestSTickTable({
           style={{
             width: table.getTotalSize(),
           }}
+          className="text-sm"
         >
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             {table.getHeaderGroups().map((headerGroup) => (

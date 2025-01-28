@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react-refresh/only-export-components */
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
@@ -7,12 +8,12 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  `inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors 
-  focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50`,
+  'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors  focus-visible:ring-1  disabled:pointer-events-none disabled:opacity-50  px-3 leading-tight',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground  hover:bg-primary/90',
+        default:
+          'bg-primary text-primary-foreground  hover:bg-primary/90  text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700 ',
         destructive: 'bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90',
         outline: 'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',

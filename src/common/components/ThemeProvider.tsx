@@ -28,7 +28,7 @@ export default function ThemeProvider() {
   };
 
   return (
-    <Button onClick={toggleTheme} className="text-white px-4 py-2 rounded">
+    <Button onClick={toggleTheme} className=" px-4 py-2 border-0">
       {theme === THEME_OPTIONS.DARK ? <CiLight /> : <BiMoon color="#000" />}
     </Button>
   );

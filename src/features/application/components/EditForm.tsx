@@ -141,7 +141,7 @@ const EditForm = () => {
                   type="button"
                   disabled={educationFields.length < 2}
                   onClick={() => educationFields.length > 1 && removeEducation(index)}
-                  className="text-red-500 hover:underline"
+                  variant="danger"
                 >
                   <RiCloseCircleLine size={25} />
                 </Button>

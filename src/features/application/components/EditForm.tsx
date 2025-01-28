@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import { RiCloseCircleLine } from 'react-icons/ri';
-import { ADD_FORMBUILDER_FORM_FIELDS } from '../contstant/addbuilder-form.constant';
+import { ADD_FORMBUILDER_FORM_FIELDS } from '../constants/addbuilder-form.constant';
 
 import ABInput from '@/common/components/form/ABInput';
 import ABSelect from '@/common/components/form/ABSelect';
@@ -141,7 +141,7 @@ const EditForm = () => {
                   type="button"
                   disabled={educationFields.length < 2}
                   onClick={() => educationFields.length > 1 && removeEducation(index)}
-                  className="text-red-500 hover:underline"
+                  variant="danger"
                 >
                   <RiCloseCircleLine size={25} />
                 </Button>

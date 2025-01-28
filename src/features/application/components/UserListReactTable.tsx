@@ -4,8 +4,6 @@
 /* eslint-disable no-nested-ternary */
 import { CSSProperties } from 'react';
 
-import './tablecss.css';
-
 import { Column, flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { TableApplicationUserListProps } from '../type/application.type';
 import TableActionButton from './TableActionButton';

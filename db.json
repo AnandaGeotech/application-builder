@@ -23,11 +23,6 @@
           "description": "Bachelor of Science in Computer Science",
           "duration": "2010 - 2014",
           "label": "University of Example"
-        },
-        {
-          "description": "Master of Science in Software Engineering",
-          "duration": "2015 - 2017",
-          "label": "Tech University"
         }
       ],
       "profession": [
@@ -41,7 +36,8 @@
           "duration": "2017 - Present",
           "label": "Acme Corp"
         }
-      ]
+      ],
+      "professional": [{}]
     },
     {
       "id": "1b85",

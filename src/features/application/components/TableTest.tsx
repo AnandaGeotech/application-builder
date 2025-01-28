@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -5,8 +6,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable max-len */
+
 import { flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { useEffect, useState } from 'react';
 import { TableApplicationUserListProps } from '../type/application.type';
@@ -69,7 +69,8 @@ const TableTest = ({
                   <input
                     id="checkbox-table-search-1"
                     type="checkbox"
-                    className="w-4 h-4 text-blue-600  border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
+                    className="w-4 h-4 text-blue-600  border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
+                    dark:focus:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
                   />
                   <label htmlFor="checkbox-table-search-1" className="sr-only">
                     checkbox
@@ -118,7 +119,8 @@ const TableTest = ({
                     <input
                       id="checkbox-table-search-1"
                       type="checkbox"
-                      className="w-4 h-4 text-blue-600  border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
+                      className="w-4 h-4 text-blue-600  border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800
+                       dark:focus:ring-offset-gray-800 focus:ring-2 dark:border-gray-600"
                     />
                     <label htmlFor="checkbox-table-search-1" className="sr-only">
                       checkbox
@@ -133,12 +135,7 @@ const TableTest = ({
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
-                <td
-                  className="px-6 py-4
-              first:pl-3 last:pr-3  last:to-[12px] last:pl-5 last:sticky last:right-0
-dark:bg-slate-950 bg-white
-                "
-                >
+                <td className="px-6 py-4 first:pl-3 last:pr-3  last:to-[12px] last:pl-5 last:sticky last:right-0 dark:bg-slate-950 bg-white">
                   <TableActionButton info={row} openModal={openModal} />
                 </td>
               </tr>

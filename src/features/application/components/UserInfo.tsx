@@ -73,14 +73,14 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
                 <FaIdCardClip />
               </span>
               <span className={`text-sm md:text-base ${infoTitleStyle}`}>ID :</span>
-              <p className="ml-2 break-all md:break-words">{userInfoData?.id} </p>
+              <p className="ml-2 break-all md:break-words">{userInfoData?.id}</p>
             </div>
             <div className="flex items-center ">
               <span className="dark:text-white text-gray-800 mr-2">
                 <MdEmail />
               </span>
               <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Email :</span>
-              <p className="ml-2  break-all md:break-words"> {userInfoData?.email}</p>
+              <p className="ml-2  break-all md:break-words">{userInfoData?.email}</p>
             </div>
           </div>
           <div className="">
@@ -90,7 +90,7 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
                 <FaPhoneAlt />
               </span>
               <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Ph. No :</span>
-              <p className="ml-2 break-all md:break-words"> {userInfoData?.phone}</p>
+              <p className="ml-2 break-all md:break-words">{userInfoData?.phone}</p>
             </div>
 
             <div className="flex items-center">

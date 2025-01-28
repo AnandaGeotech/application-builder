@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-indent-props */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-vars */
@@ -138,27 +140,6 @@ dark:bg-slate-950 bg-white
                 "
                 >
                   <TableActionButton info={row} openModal={openModal} />
-                  {/* {activeRowId === row.original?.id && (
-                    <div className="absolute flex justify-center bg-slate-900 dark:bg-slate-300 items-center px-3 rounded-lg left-0">
-                      <Link className="" to={`/edit/${row.original?.id}`}>
-                        <BiPencil size={14} className="hover:text-slate-400" />
-                      </Link>
-                      <Button>
-                        <BiTrashAlt
-                          onClick={() => openModal(row.original)}
-                          className="text-red-500 hover:text-red-400"
-                          size={14}
-                        />
-                      </Button>
-                      <Link to={`user/${row.original?.id}`}>
-                        <BsEyeFill className="text-indigo-500 hover:text-indigo-400" size={14} />
-                      </Link>
-                    </div>
-                  )} */}
-
-                  {/* <Button onClick={() => toggleIcons(row.original?.id)}>
-                    <BsThreeDotsVertical />
-                  </Button> */}
                 </td>
               </tr>
             ))}

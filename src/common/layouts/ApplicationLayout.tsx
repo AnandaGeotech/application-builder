@@ -139,11 +139,11 @@ function Layout() {
       >
         <Sidebar />
       </aside>
-      <div className=" sm:ml-64 flex flex-col justify-between h-screen bg-slate-950">
+      <div className=" sm:ml-64 flex flex-col justify-between h-screen ">
         <div className="dark:border-gray-700 ">
           <Outlet />
         </div>
-        <footer className="dark:bg-slate-950 text-gray-400 py-6">
+        <footer className=" text-gray-400 py-6">
           <div className="container mx-auto px-6 text-center">
             <p>&copy; 2025 Application Builder. All rights reserved.</p>
           </div>

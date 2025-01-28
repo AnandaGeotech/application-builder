@@ -34,7 +34,7 @@ const getCommonPinningStyles = (column: Column<IApplicationUser>): CSSProperties
   };
 };
 
-export default function TestSTickTable({
+export default function UserListReactTable({
   hooksOptions,
 }: {
   hooksOptions: TableApplicationUserListProps & { data: IApplicationUsersListRes };

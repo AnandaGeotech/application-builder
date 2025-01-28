@@ -4,8 +4,8 @@
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { ADD_FORMBUILDER_FORM_FIELDS } from '../constants/addbuilder-form.constant';
 
-import ABInput from '@/common/components/form/ABInput';
-import ABSelect from '@/common/components/form/ABSelect';
+import ABInput from '@/common/components/form/Input';
+import ABSelect from '@/common/components/form/Select';
 import useUserUpsert from '@/features/application/hooks/useUserUpsert';
 import { Button } from '@/common/components/Button';
 import SkeletonFormLoader from '@/common/components/form/FormLoader';
@@ -106,7 +106,7 @@ const EditForm = () => {
                 type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addEducation({ label: '', duration: '', description: '' })}
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
+                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700 "
               >
                 Add Education
               </Button>
@@ -152,7 +152,7 @@ const EditForm = () => {
                 type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addProfessional({ label: '', duration: '', description: '' })}
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700  "
+                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700"
               >
                 Add Professional
               </Button>
@@ -187,7 +187,7 @@ const EditForm = () => {
                   type="button"
                   disabled={professionalFields.length < 2}
                   onClick={() => professionalFields.length > 1 && removeProfessional(index)}
-                  className="text-red-500 hover:underline"
+                  variant="danger"
                 >
                   <RiCloseCircleLine size={25} />
                 </Button>
@@ -197,7 +197,7 @@ const EditForm = () => {
           <div className="mt-10">
             <Button
               type="submit"
-              className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 w-full"
+              className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700 w-full"
             >
               Submit
             </Button>

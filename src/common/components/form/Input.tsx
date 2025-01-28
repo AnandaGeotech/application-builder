@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import ABLabel from './ABLabel';
+import ABLabel from './Label';
 
 type TInputProps = {
   type?: string;
@@ -12,7 +12,7 @@ type TInputProps = {
   rules?: Record<string, unknown>; // Add rules prop to handle validation rules
 };
 
-const ABInput = ({ type = 'text', name, label, required, disabled, rules = {} }: TInputProps) => {
+const Input = ({ type = 'text', name, label, required, disabled, rules = {} }: TInputProps) => {
   const { search } = useLocation();
   return (
     <Controller
@@ -40,4 +40,4 @@ const ABInput = ({ type = 'text', name, label, required, disabled, rules = {} }:
   );
 };
 
-export default ABInput;
+export default Input;

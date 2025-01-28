@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import EditForm from '../components/EditForm';
-import ABPHForm from '@/common/components/form/ABForm';
+import ABPHForm from '@/common/components/form/Form';
 
 /* eslint-disable max-len */
 

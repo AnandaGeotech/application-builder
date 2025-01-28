@@ -67,7 +67,7 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
 
         {/* Details Section */}
         <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2  ">
-          <div className="">
+          <div>
             <div className="flex items-center">
               <span className="dark:text-white text-gray-800 mr-2">
                 <FaIdCardClip />
@@ -79,17 +79,16 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
               <span className="dark:text-white text-gray-800 mr-2">
                 <MdEmail />
               </span>
-              <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Email :</span>
-              <p className="ml-2  break-all md:break-words">{userInfoData?.email}</p>
+              <span className={`text-sm md:text-base ${infoTitleStyle}`}>Email :</span>
+              <p className="ml-2 break-all md:break-words">{userInfoData?.email}</p>
             </div>
           </div>
-          <div className="">
+          <div>
             <div className="flex items-center">
               <span className="dark:text-white text-gray-800 mr-2">
-                {' '}
                 <FaPhoneAlt />
               </span>
-              <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Ph. No :</span>
+              <span className={`text-sm md:text-base ${infoTitleStyle}`}>Ph. No :</span>
               <p className="ml-2 break-all md:break-words">{userInfoData?.phone}</p>
             </div>
 
@@ -97,7 +96,7 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
               <span className="dark:text-white text-gray-800 mr-2">
                 <MdCorporateFare />
               </span>
-              <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Company :</span>
+              <span className={`text-sm md:text-base ${infoTitleStyle}`}>Company :</span>
               <p className="ml-2 break-all md:break-words">{userInfoData?.company}</p>
             </div>
           </div>

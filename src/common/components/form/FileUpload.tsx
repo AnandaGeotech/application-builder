@@ -7,7 +7,7 @@ import { Controller } from 'react-hook-form';
 import { TbPhotoCircle } from 'react-icons/tb';
 import { FileInputProps } from '@/types/common.type';
 
-const ABFileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (
+const FileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (
   <div className="col-span-full border-b border-gray-900/10">
     {preview && (
       <label htmlFor="file-upload" className="block text-sm font-medium text-gray-900">
@@ -48,4 +48,4 @@ const ABFileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) =>
   </div>
 );
 
-export default ABFileInput;
+export default FileInput;

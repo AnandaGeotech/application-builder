@@ -4,8 +4,8 @@
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { ADD_FORMBUILDER_FORM_FIELDS } from '../constants/addbuilder-form.constant';
 
-import ABInput from '@/common/components/form/ABInput';
-import ABSelect from '@/common/components/form/ABSelect';
+import ABInput from '@/common/components/form/Input';
+import ABSelect from '@/common/components/form/Select';
 import useUserUpsert from '@/features/application/hooks/useUserUpsert';
 import { Button } from '@/common/components/Button';
 import SkeletonFormLoader from '@/common/components/form/FormLoader';

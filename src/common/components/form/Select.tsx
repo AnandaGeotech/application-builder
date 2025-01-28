@@ -3,10 +3,10 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import ABLabel from './ABLabel';
+import Label from './Label';
 import { SelectProps } from '@/types/common.type';
 
-const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required = false, disabled = false }) => {
+const Select: React.FC<SelectProps> = ({ name, label, options, rules, required = false, disabled = false }) => {
   const { search } = useLocation();
 
   return (
@@ -16,7 +16,7 @@ const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required
         rules={rules}
         render={({ field, fieldState }) => (
           <>
-            {label && <ABLabel error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
+            {label && <Label error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
             <select
               {...field}
               disabled={search.includes('notFound') || disabled}
@@ -38,4 +38,4 @@ const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required
   );
 };
 
-export default ABSelect;
+export default Select;

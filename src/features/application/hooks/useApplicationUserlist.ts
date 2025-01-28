@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
@@ -136,16 +137,22 @@ const useApplicationUserList = () => {
     if (headers.length) {
       const tt = new Set(headers.map((header) => header));
       setVisibleHeaders(tt);
-      setcolumns(
-        headers?.map((it) =>
+      setcolumns([
+        ...headers?.map((it) =>
           columnHelper.accessor(it, {
             cell: (info) => info.getValue(),
           })
-        )
-      );
+        ),
+        {
+          accessorKey: 'action',
+          id: 'action',
+          header: 'Actions',
+          cell: (info) => info.getValue(),
+        },
+      ]);
     }
   }, [headers.length]);
-
+  console.log(columns, 'columns');
   const toggleHeader = (key: string) => {
     setVisibleHeaders((prev) => {
       const newSet = new Set(prev);

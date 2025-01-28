@@ -125,14 +125,6 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
               >
                 Add User
               </Button>
-              <Button
-                onClick={() => {
-                  openOptionModalFn();
-                }}
-                className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700"
-              >
-                Select Columns to Display
-              </Button>
             </div>
           </div>
           <ErrorBoundary

@@ -6,6 +6,7 @@
 import { FC } from 'react';
 import { TableApplicationUserListProps } from '../type/application.type';
 import TableTest from './TableTest';
+import TestSTickTable from './Testtt';
 import GlobalModal from '@/common/components/Modal';
 import ConfirmModal from '@/common/components/ConfirmModal';
 
@@ -33,9 +34,7 @@ const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
   return (
     <>
       {' '}
-      <div>
-        <TableTest hooksOptions={{ ...hooksOptions, data }} />
-      </div>
+      <div>{/* <TableTest hooksOptions={{ ...hooksOptions, data }} /> */}</div>
       <ConfirmModal
         isOpen={isModalOpen}
         title="Delete account"
@@ -71,6 +70,7 @@ const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
           </div>
         </div>
       </GlobalModal>
+      <TestSTickTable hooksOptions={{ ...hooksOptions, data }} />
     </>
   );
 };

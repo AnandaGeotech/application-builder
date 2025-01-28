@@ -1,6 +1,7 @@
 /* eslint-disable boundaries/no-unknown */
 /* eslint-disable max-len */
 import React from 'react';
+import { Button } from './Button';
 import { GlobalModalProps } from '@/types/modal.type';
 
 const GlobalModal: React.FC<GlobalModalProps> = ({
@@ -44,21 +45,21 @@ const GlobalModal: React.FC<GlobalModalProps> = ({
             {/* Footer Actions */}
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               {onConfirm && (
-                <button
+                <Button
                   type="button"
                   onClick={onConfirm}
-                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
                 >
                   {confirmLabel}
-                </button>
+                </Button>
               )}
-              <button
+              <Button
                 type="button"
                 onClick={onClose}
-                className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
               >
                 {cancelLabel}
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import { ReactNode } from 'react';
 import { IApplicationUser } from './application.type';
 
+export type TTheme = 'light' | 'dark';
 export interface IApplicationUsersListRes {
   data: Required<IApplicationUser>[];
   first?: number;

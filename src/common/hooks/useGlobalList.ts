@@ -1,21 +1,17 @@
-/* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable boundaries/element-types */
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { AccessorKeyColumnDef, createColumnHelper, SortingState } from '@tanstack/react-table';
-import applicationService from '../services/application.service';
-
-import { TableApplicationUserListProps } from '../type/application.type';
+import { AccessorKeyColumnDef, ColumnDef, createColumnHelper, SortingState } from '@tanstack/react-table';
 import { createResource, delay } from '@/lib/utils';
 import useDebounce from '@/common/hooks/use-debounce';
+import { IApplicationJsonApiDBService } from '@/features/application/type/application.type';
 import { IApplicationUsersListRes } from '@/types/common.type';
-import { IApplicationUser } from '@/types/application.type';
 
-const { getAllDataFromDBFn, deleteDataFromDBFn } = applicationService();
-
-const useApplicationUserList = () => {
+const useGlobalList = <T extends { id: string }>(applicationService: IApplicationJsonApiDBService) => {
+  const [selectuserInfo, setselectuserInfo] = useState<undefined | T>();
+  const { getAllDataFromDBFn, deleteDataFromDBFn } = applicationService;
   const [limitperPage, setlimitperPage] = useState(5);
   const [searchTerm, setsearchTerm] = useState('');
 
@@ -23,7 +19,6 @@ const useApplicationUserList = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const [selectuserInfo, setselectuserInfo] = useState<undefined | Required<IApplicationUser>>();
   const [listData, setlistData] = useState<IApplicationUsersListRes | null>(null);
   const [dataResource, setdataResource] = useState<{
     read: () => IApplicationUsersListRes;
@@ -105,14 +100,14 @@ const useApplicationUserList = () => {
   // Dynamically extract headers if data exists
   const headers =
     listData?.data?.length && listData.data.length > 0
-      ? (Object.keys(listData.data[0]) as (keyof IApplicationUser)[]).filter(
-          (it) => !['profession', 'education', 'id', 'professional'].includes(it)
+      ? (Object.keys(listData.data[0]) as (keyof T)[]).filter(
+          (it) => !['profession', 'education', 'id', 'professional'].includes(it as string)
         )
       : [];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (info: Required<IApplicationUser>) => {
+  const openModal = (info: T) => {
     setselectuserInfo(info);
     setIsModalOpen(true);
   };
@@ -127,16 +122,18 @@ const useApplicationUserList = () => {
 
   const [visibleHeaders, setVisibleHeaders] = useState<Set<string>>(new Set());
 
-  const columnHelper = createColumnHelper<Required<IApplicationUser>>();
+  const [columns, setcolumns] = useState<ColumnDef<T>[]>([]);
+  const columnHelper = createColumnHelper<T>(); // Initialize column helper
 
-  const [columns, setcolumns] = useState<AccessorKeyColumnDef<Required<IApplicationUser>, any>[]>([]);
   useEffect(() => {
     if (headers.length) {
       const tt = new Set(headers.map((header) => header));
-      setVisibleHeaders(tt);
+      setVisibleHeaders(tt as Set<string>); // Make sure this is typed correctly
+
       setcolumns([
-        ...headers?.map((it) =>
-          columnHelper.accessor(it, {
+        ...headers.map((it) =>
+          columnHelper.accessor(it as any, {
+            // Cast 'it' as keyof T
             cell: (info) => info.getValue(),
           })
         ),
@@ -148,7 +145,7 @@ const useApplicationUserList = () => {
         },
       ]);
     }
-  }, [headers.length]);
+  }, [headers]);
   const toggleHeader = (key: string) => {
     setVisibleHeaders((prev) => {
       const newSet = new Set(prev);
@@ -164,10 +161,10 @@ const useApplicationUserList = () => {
   const handleConfirmOptionModalFn = () => {
     setcolumns(
       Array.from(visibleHeaders).map((key) =>
-        columnHelper.accessor(key as keyof IApplicationUser, {
+        columnHelper.accessor(key as any, {
           cell: (info) => info.getValue(),
         })
-      ) as AccessorKeyColumnDef<Required<IApplicationUser>, any>[]
+      ) as AccessorKeyColumnDef<T, unknown>[]
     );
     closeOptionModalFn();
   };
@@ -192,7 +189,7 @@ const useApplicationUserList = () => {
   };
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  const hooksOptions: TableApplicationUserListProps = {
+  const hooksOptions = {
     dataResource,
     handlePageChange,
     currentPage,
@@ -232,4 +229,4 @@ const useApplicationUserList = () => {
   return hooksOptions;
 };
 
-export default useApplicationUserList;
+export default useGlobalList;

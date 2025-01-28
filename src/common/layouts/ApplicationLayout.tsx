@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { FaBarsStaggered } from 'react-icons/fa6';
 import ThemeProvider from '../components/ThemeProvider';
 import { Button } from '../components/Button';
 import Sidebar from '@/features/application/components/Sidebar';
@@ -24,22 +25,10 @@ function Layout() {
                 data-drawer-toggle="logo-sidebar"
                 aria-controls="logo-sidebar"
                 type="button"
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
+                className="border-0 md:hidden hover:bg-transparent"
               >
                 <span className="sr-only">Open sidebar</span>
-                <svg
-                  className="w-6 h-6"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    fillRule="evenodd"
-                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                  />
-                </svg>
+                <FaBarsStaggered />
               </Button>
               <Link to="/" className="flex ms-2 md:me-24">
                 <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 me-3" alt="FlowBite Logo" />
@@ -51,9 +40,9 @@ function Layout() {
             <div className="flex items-center">
               <div className="flex items-center ms-3">
                 <div className="flex">
-                  <button
+                  <Button
                     type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+                    className="border-0 "
                     aria-expanded="false"
                     data-dropdown-toggle="dropdown-user"
                   >
@@ -63,7 +52,7 @@ function Layout() {
                       src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                       alt="user "
                     />
-                  </button>
+                  </Button>
                   <ThemeProvider />
                 </div>
                 <div

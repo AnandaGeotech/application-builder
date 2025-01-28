@@ -106,7 +106,6 @@ const EditForm = () => {
                 type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addEducation({ label: '', duration: '', description: '' })}
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
               >
                 Add Education
               </Button>
@@ -152,7 +151,6 @@ const EditForm = () => {
                 type="button"
                 disabled={search.includes('notFound')}
                 onClick={() => addProfessional({ label: '', duration: '', description: '' })}
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700  "
               >
                 Add Professional
               </Button>
@@ -187,7 +185,8 @@ const EditForm = () => {
                   type="button"
                   disabled={professionalFields.length < 2}
                   onClick={() => professionalFields.length > 1 && removeProfessional(index)}
-                  className="text-red-500 hover:underline"
+                  // className="text-red-500 hover:underline"
+                  variant="danger"
                 >
                   <RiCloseCircleLine size={25} />
                 </Button>
@@ -195,10 +194,7 @@ const EditForm = () => {
             ))}
           </div>
           <div className="mt-10">
-            <Button
-              type="submit"
-              className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 w-full"
-            >
+            <Button type="submit" className="w-full">
               Submit
             </Button>
           </div>

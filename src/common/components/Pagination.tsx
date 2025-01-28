@@ -28,38 +28,19 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
   return (
     <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8 gap-2">
       <li>
-        <Button
-          onClick={() => handlePageChange(currentPage - 1)}
-          className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700 ${
-            currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'hover:text-gray-700'
-          }`}
-          disabled={currentPage === 1}
-        >
+        <Button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
           Previous
         </Button>
       </li>
       {getPageNumbers().map((page) => (
         <li key={page}>
-          <Button
-            onClick={() => handlePageChange(page)}
-            className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700 ${
-              currentPage === page
-                ? ' dark:bg-white dark:text-gray-800 bg-gray-300  cursor-not-allowed'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
+          <Button onClick={() => handlePageChange(page)} disabled={currentPage === page}>
             {page}
           </Button>
         </li>
       ))}
       <li>
-        <Button
-          onClick={() => handlePageChange(currentPage + 1)}
-          className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 border border-gray-300 rounded-s-lg bg-white hover:text-gray-700 hover:bg-gray-100 dark:text-white dark:bg-gray-800 dark:border-gray-600 dark:hover:text-gray-300 dark:hover:bg-gray-700 ${
-            currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'hover:text-gray-700'
-          }`}
-          disabled={currentPage === totalPages}
-        >
+        <Button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
           Next
         </Button>
       </li>

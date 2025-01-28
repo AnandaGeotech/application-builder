@@ -214,12 +214,7 @@ export default function UserListReactTable({
         </div>
       </nav>
       <div className="h-4" />
-      {/* <div className="flex flex-wrap gap-2">
 
-        <Button onClick={() => randomizeColumns()} className="border p-1">
-          Shuffle Columns
-        </Button>
-      </div> */}
       <div className="h-4" />
       <div className="inline-block border border-black shadow rounded">
         <div className="px-1 border-b border-black">

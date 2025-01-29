@@ -5,11 +5,11 @@ import React from 'react';
 import { Education, IApplicationUser, Profession } from '@/types/application.type';
 import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
 
-export interface IApplicationJsonApiDBService {
-  getSingleFileDataFn: (fileId: string) => Promise<Required<IApplicationUser>>;
+export interface IApplicatioDBService<T> {
+  getSingleFileDataFn: (fileId: string) => Promise<T>;
   getAllDataFromDBFn: (props: IQueryFile) => Promise<IApplicationUsersListRes>;
   deleteDataFromDBFn: (id: string) => Promise<void>;
-  upsertDataToDBFn: (payload: IApplicationUser) => Promise<IApplicationUser | void>;
+  upsertDataToDBFn: (payload: T) => Promise<T | void>;
 }
 
 export interface TableApplicationUserListProps {
@@ -20,7 +20,6 @@ export interface TableApplicationUserListProps {
   } | null; // dataResource can be null,
 
   headers: (keyof IApplicationUser)[];
-  getDisplayValue: (defaultValue: unknown) => string;
   handleConfirm: () => void;
   closeModal: () => void;
   isModalOpen: boolean;

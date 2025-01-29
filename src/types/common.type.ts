@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { ReactNode } from 'react';
-import { IApplicationUser } from './application.type';
+import { IApplicationUser } from '@/types/application.type';
 
 export type TTheme = 'light' | 'dark';
 export interface IApplicationUsersListRes {
-  data: Required<IApplicationUser>[];
+  data: IApplicationUser[];
   first?: number;
   items?: number;
   last?: number;

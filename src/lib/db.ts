@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-empty */
+/* eslint-disable import/no-unresolved */
 import { IApplicationUser } from '@/types/application.type';
-import { IApplicationUsersListRes } from '@/types/common.type';
-import { IQueryFile } from '@/types/file.type';
+import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
 
 export async function clearStore() {
   //   const db = await openDB<IMyDatabase>('my-database', 1);
@@ -60,7 +58,7 @@ export const getAllDataFromApiServer = async (props: IQueryFile): Promise<IAppli
   return response.json();
 };
 // Get data by ID from the API server
-export const getDataFromApiServerById = async (id: string): Promise<Required<IApplicationUser>> => {
+export const getDataFromApiServerById = async (id: string): Promise<IApplicationUser> => {
   const response = await fetch(`${API_BASE_URL}/users/${id}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch record with ID: ${id}`);
@@ -69,10 +67,7 @@ export const getDataFromApiServerById = async (id: string): Promise<Required<IAp
 };
 
 // Partially update data by ID in the API server
-export const patchDataInApiServerById = async (
-  id: string,
-  data: Required<IApplicationUser>
-): Promise<IApplicationUser> => {
+export const patchDataInApiServerById = async (id: string, data: IApplicationUser): Promise<IApplicationUser> => {
   const response = await fetch(`${API_BASE_URL}/users/${id}`, {
     method: 'PATCH',
     headers: {

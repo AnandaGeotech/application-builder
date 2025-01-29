@@ -3,8 +3,6 @@
 import AddForm from '../components/AddForm';
 import ABPHForm from '@/common/components/form/ABForm';
 
-/* eslint-disable max-len */
-
 export const Component = () => (
   <div className="px-6 py-24 sm:py-32 lg:px-8 ">
     <div className="mx-auto max-w-2xl text-center">

@@ -1,16 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable max-len */
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BiSearch } from 'react-icons/bi';
-import { TableApplicationUserListProps } from '../type/application.type';
+import { TUserListReturn } from '../hooks/useApplicationUserlist';
 import UserTable from './UserTable';
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import TableSkeleton from '@/common/components/TableSkeleton';
 
-const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserListProps }) => {
+const UserListSection = ({ hooksOptions }: { hooksOptions: TUserListReturn }) => {
   const { handleSearch } = hooksOptions;
   const navigate = useNavigate();
 
@@ -21,18 +18,15 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TableApplicationUserL
       <h3 className="font-bold  dark:text-white text-gray-500  text-4xl ">Users</h3>
       <div className=" pb-5 mx-auto rounded-lg">
         <div className="py-4 flex flex-wrap flex-col md:flex-row md:justify-between md:items-center space-y-3">
-          <label htmlFor="table-search" className="sr-only">
-            Search
-          </label>
-          <div className="relative mt-1">
-            <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+          <div className="relative mt-1 flex gap-2">
+            <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none px-2">
               <BiSearch />
             </div>
             <input
               onChange={(e) => handleSearch(e.target.value)}
               type="text"
               id="table-search"
-              className="rounded-full block py-2 ps-10 text-sm outline-none text-gray-900 border border-gray-300 w-80 bg-gray-50 focus:ring-indigo-500/100 focus:border-indigo-500/100 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="custom-input px-4"
               placeholder="Search for items"
             />
           </div>

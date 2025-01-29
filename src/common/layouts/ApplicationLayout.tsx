@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/element-types */
-/* eslint-disable max-len */
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';

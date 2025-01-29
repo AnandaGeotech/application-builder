@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable max-len */
 import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { Button } from './Button';

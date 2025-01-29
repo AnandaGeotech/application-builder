@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
@@ -22,10 +21,7 @@ const ABFileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) =>
           <TbPhotoCircle aria-hidden="true" className="mx-auto text-gray-300" size={48} />
         )}
         <div className="mt-4 flex text-sm text-gray-600">
-          <label
-            htmlFor="file-upload"
-            className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-          >
+          <label htmlFor="file-upload" className="custom-input">
             <span>Upload a file</span>
             <Controller
               name="file"

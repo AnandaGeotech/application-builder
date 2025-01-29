@@ -29,5 +29,27 @@ export type IApplicationUser = {
   pincode: string;
   education: Education[];
   profession: Profession[];
-  id?: string;
+  id: string;
+};
+
+export type IProduct = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  gender: string;
+  presentAddress: string;
+  permanentAddress: string;
+  birthDate: string;
+  company: string;
+  country: string;
+  hometown: string;
+  language: string;
+  maritalStatus: string;
+  city: string;
+  state: string;
+  pincode: string;
+  education: Education[];
+  profession: Profession[];
+  id: string;
 };

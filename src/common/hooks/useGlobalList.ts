@@ -29,7 +29,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
 
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [limitperPage, setlimitperPage] = useState(5);
+  const [record, setRecord] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms
   const [currentPage, setCurrentPage] = useState(1);
@@ -44,7 +44,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
 
     const allDataPromise = getAllDataFromDBFn({
       currentPage,
-      limitperPage,
+      record,
       searchTerm: debouncedSearchTerm,
     });
     allDataPromise.then((res) => {
@@ -97,8 +97,8 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     handleSearch,
     searchTerm,
     setSearchTerm,
-    limitperPage,
-    setlimitperPage,
+    record,
+    setRecord,
     listData,
     setlistData,
     handleDelete,

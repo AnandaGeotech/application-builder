@@ -24,7 +24,7 @@ export interface IApplicationUsersListRes {
 
 export interface IQueryFile {
   currentPage?: number;
-  limitperPage?: number;
+  record?: number;
   searchTerm?: string;
 }
 export interface FileInputProps {

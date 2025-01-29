@@ -2,8 +2,8 @@
 /* eslint-disable boundaries/no-unknown */
 import { CSSProperties } from 'react';
 import { Column, flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
-import { TUserListReturn } from '../hooks/useApplicationUserlist';
-import TableActionButton from './TableActionButton';
+import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
+import TableActionButton from '@/features/application/components/TableActionButton';
 import { IApplicationUser } from '@/common/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
 import { Button } from '@/common/components/Button';
@@ -53,7 +53,7 @@ export default function UserListReactTable({
     columns,
     handlePageChange,
     currentPage,
-    limitperPage,
+    record,
   } = hooksOptions;
   const table = useReactTable({
     data: userData?.data,
@@ -199,7 +199,7 @@ export default function UserListReactTable({
         <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
           Showing
           <span className="font-semibold text-gray-900 dark:text-white p-2">
-            {limitperPage * (currentPage - 1) + 1} -{Number(userData?.data?.length) + limitperPage * (currentPage - 1)}
+            {record * (currentPage - 1) + 1} -{Number(userData?.data?.length) + record * (currentPage - 1)}
           </span>
           of
           <span className="font-semibold text-gray-900 dark:text-white p-2">{userData?.items}</span>

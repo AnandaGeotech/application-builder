@@ -1,7 +1,7 @@
 /* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
-import { Button } from './Button';
+import { Button } from '@/common/components/Button';
 import { GlobalModalProps } from '@/common/types/modal.type';
 
 const ConfirmModal: React.FC<GlobalModalProps> = ({

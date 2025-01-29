@@ -36,7 +36,7 @@ export const addDataToApiServer = async (data: IApplicationUser): Promise<IAppli
 export const getAllDataFromApiServer = async (
   props: IQueryFile
 ): Promise<IApplicationGlobalListRes<IApplicationUser>> => {
-  const { currentPage, limitperPage = 5, searchTerm } = props;
+  const { currentPage, record = 5, searchTerm } = props;
 
   // Construct query parameters
   const queryParams = new URLSearchParams();
@@ -44,8 +44,8 @@ export const getAllDataFromApiServer = async (
   if (currentPage) {
     queryParams.append('_page', currentPage.toString());
   }
-  if (limitperPage) {
-    queryParams.append('_per_page', limitperPage.toString());
+  if (record) {
+    queryParams.append('_per_page', record.toString());
   }
   if (searchTerm) {
     queryParams.append('q', searchTerm); // Assuming the API supports `q` for search

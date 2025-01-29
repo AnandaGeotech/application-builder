@@ -36,6 +36,7 @@ module.exports = {
           'src/common/utils/**/*',
           'src/common/validators/**/*',
           'src/common/widgets/**/*',
+          'src/common/types/**/*',
         ],
       },
       {

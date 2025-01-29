@@ -2,7 +2,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import ABLabel from './Label';
+import Label from './Label';
 import { SelectProps } from '@/common/types/common.type';
 
 const Select: React.FC<SelectProps> = ({ name, label, options, rules, required = false, disabled = false }) => {
@@ -15,7 +15,7 @@ const Select: React.FC<SelectProps> = ({ name, label, options, rules, required =
         rules={rules}
         render={({ field, fieldState }) => (
           <>
-            {label && <ABLabel error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
+            {label && <Label error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
             <select
               {...field}
               disabled={search.includes('notFound') || disabled}

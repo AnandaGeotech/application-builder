@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable boundaries/no-unknown */
 import { useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import applicationService from '@/features/application/services/application.service';

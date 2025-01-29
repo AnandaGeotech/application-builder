@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { Button } from '@/common/components/Button';
 

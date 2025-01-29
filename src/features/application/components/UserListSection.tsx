@@ -1,7 +1,8 @@
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { TUserListReturn } from '../hooks/useApplicationUserList';
-import UserTable from './UserTable';
+
+import UserTable from '@/features/application/components/UserTable';
+import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import TableSkeleton from '@/common/components/TableSkeleton';

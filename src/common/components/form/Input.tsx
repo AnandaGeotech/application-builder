@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import ABLabel from './Label';
+import Label from './Label';
 
 type TInputProps = {
   type?: string;
@@ -19,7 +19,7 @@ const Input = ({ type = 'text', name, label, required, disabled, rules = {} }: T
       rules={rules}
       render={({ field, fieldState }) => (
         <>
-          {label && <ABLabel error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
+          {label && <Label error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
 
           <input
             {...field}

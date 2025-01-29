@@ -6,7 +6,7 @@ import UserInfo from '@/features/application/components/UserInfo';
 import applicationService from '@/features/application/services/application.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
-import { createResource, delay } from '@/lib/utils';
+import { createResource, delay } from '@/common/components/utils';
 
 const { USER_SERVICE } = applicationService();
 

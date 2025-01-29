@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { IApplicationUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
 

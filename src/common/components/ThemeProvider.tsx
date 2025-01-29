@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/no-unknown */
 import { useState, useEffect } from 'react';
 import { BiMoon } from 'react-icons/bi';
 import { CiLight } from 'react-icons/ci';

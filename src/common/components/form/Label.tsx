@@ -1,8 +1,5 @@
-/* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { LabelProps } from '@/common/types/common.type';
-
-// Define the props for the Label component
 
 const Label: React.FC<LabelProps> = ({ htmlFor, label, required, error, className }) => {
   // Base styles

@@ -1,10 +1,9 @@
-/* eslint-disable boundaries/no-unknown */
 import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useFieldArray, useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import applicationService from '../services/application.service';
-import { delay } from '@/lib/utils';
+import { delay } from '@/common/components/utils';
 import { IApplicationUser } from '@/common/types/application.type';
 
 const { USER_SERVICE } = applicationService();

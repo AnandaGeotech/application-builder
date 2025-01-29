@@ -1,17 +1,30 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { ColumnDef, createColumnHelper, SortingState } from '@tanstack/react-table';
+import { ColumnDef, SortingState } from '@tanstack/react-table';
 import { createResource, delay } from '@/lib/utils';
 import useDebounce from '@/common/hooks/use-debounce';
 import { IApplicationGlobalListRes } from '@/types/common.type';
 import { IApplicatioDBService } from '@/types/feature.type';
 
-const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
-  applicationService: IApplicatioDBService<T>
-) => {
-  const { getAllDataFromDBFn, deleteDataFromDBFn } = applicationService;
+export type GroupedColumnDef<T> = {
+  id: string;
+  header: string;
+  columns: ColumnDef<T>[];
+};
+
+export type ColumnDefinition<T> = ColumnDef<T> | GroupedColumnDef<T>;
+const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
+  serviceMethods,
+  generateColumns,
+  setcolumns,
+}: {
+  serviceMethods: IApplicatioDBService<T>;
+  generateColumns?: (headers: (keyof T)[], data: IApplicationGlobalListRes<T>) => ColumnDefinition<T>[];
+  setcolumns?: React.Dispatch<React.SetStateAction<ColumnDef<T>[]>>;
+}) => {
+  const { getAllDataFromDBFn, deleteDataFromDBFn } = serviceMethods;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectuserInfo, setselectuserInfo] = useState<T | undefined>();
@@ -25,27 +38,6 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
   } | null>(null);
   const [listData, setlistData] = useState<IApplicationGlobalListRes<T> | null>(null);
 
-  const [columns, setcolumns] = useState<ColumnDef<T>[]>([]);
-  const columnHelper = createColumnHelper<T>(); // Initialize column helper
-  const generateColumns = (headers: (keyof T)[], data: IApplicationGlobalListRes<T>) =>
-    headers.map((it) => {
-      const sampleValue = data?.data?.[0]?.[it]; // Sample value to check type
-      if (typeof sampleValue === 'object' && sampleValue !== null) {
-        // If value is an object, create grouped columns
-        return {
-          id: it as string, // Group identifier
-          header: it as string, // Group name
-          // columns: Object.keys(sampleValue).map((subKey) => columnHelper.accessor(`${it}.${subKey}` as any, {
-          //   header: subKey,
-          //   cell: (info) => info.getValue(),
-          // })),
-        };
-      }
-      // Regular column
-      return columnHelper.accessor(it as any, {
-        cell: (info) => info.getValue(),
-      });
-    });
   const loadData = async () => {
     setdataResource(null);
     await delay(1000);
@@ -57,16 +49,9 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
     });
     allDataPromise.then((res) => {
       const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
-
-      setcolumns([
-        ...generateColumns(headers, res),
-        {
-          accessorKey: 'action',
-          id: 'action',
-          header: 'Actions',
-          cell: (info) => info.getValue(),
-        },
-      ]);
+      if (generateColumns && setcolumns) {
+        setcolumns(generateColumns(headers, res));
+      }
 
       setlistData(res);
     });
@@ -123,7 +108,6 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
     handleConfirm,
     closeModal,
     isModalOpen,
-    columns,
     sorting,
     setSorting,
   };

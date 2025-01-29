@@ -26,7 +26,13 @@
         }
       ],
 
-      "professional": [{}]
+      "professional": [
+        {
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
+        }
+      ]
     },
     {
       "id": "1b85",

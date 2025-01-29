@@ -6,7 +6,7 @@ import { Suspense, useEffect, useState } from 'react';
 import applicationService from '../services/application.service';
 import UserInfo from '../components/UserInfo';
 import UserDetailSkeletonLoader from '../components/UserDetailSkeletonLoader';
-import { IApplicationUser } from '@/types/application.type';
+import { IApplicationUser } from '@/common/types/application.type';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import { createResource, delay } from '@/lib/utils';
 

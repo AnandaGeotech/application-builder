@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ReactNode } from 'react';
-import { IApplicationUser } from '@/types/application.type';
+import { IApplicationUser } from '@/common/types/application.type';
 
 export type TTheme = 'light' | 'dark';
 export interface IApplicationGlobalListRes<T> {

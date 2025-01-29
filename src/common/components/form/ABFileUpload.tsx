@@ -4,7 +4,7 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { TbPhotoCircle } from 'react-icons/tb';
-import { FileInputProps } from '@/types/common.type';
+import { FileInputProps } from '@/common/types/common.type';
 
 const ABFileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (
   <div className="col-span-full border-b border-gray-900/10">

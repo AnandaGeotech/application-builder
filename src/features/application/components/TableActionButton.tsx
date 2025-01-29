@@ -6,7 +6,7 @@ import { BsThreeDotsVertical } from 'react-icons/bs';
 import { Row } from '@tanstack/react-table';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/common/components/Button';
-import { IApplicationUser } from '@/types/application.type';
+import { IApplicationUser } from '@/common/types/application.type';
 
 const TableActionButton = ({
   info,
@@ -31,8 +31,6 @@ const TableActionButton = ({
           <DropdownMenu.Item
             onClick={() => navigate(`/edit/${info.original.id}`)}
             className="cursor-pointer group relative flex h-[25px] select-none items-center rounded-[3px] text-[13px] leading-none text-violet11 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1"
-            data-disabled={false}
-            data-highlighted
           >
             Edit{' '}
           </DropdownMenu.Item>

@@ -4,7 +4,7 @@ import { BiMoon } from 'react-icons/bi';
 import { CiLight } from 'react-icons/ci';
 import { THEME_OPTIONS } from '../constants/common.constant';
 import { Button } from './Button';
-import { TTheme } from '@/types/common.type';
+import { TTheme } from '@/common/types/common.type';
 
 export default function ThemeProvider() {
   const systemTheme: TTheme = window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -4,10 +4,10 @@ import { CSSProperties } from 'react';
 import { Column, flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
 import { TUserListReturn } from '../hooks/useApplicationUserlist';
 import TableActionButton from './TableActionButton';
-import { IApplicationUser } from '@/types/application.type';
+import { IApplicationUser } from '@/common/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
 import { Button } from '@/common/components/Button';
-import { IApplicationUsersListRes } from '@/types/common.type';
+import { IApplicationUsersListRes } from '@/common/types/common.type';
 
 const showArrow = (sort: string | boolean) => {
   let showIcon = '↕';

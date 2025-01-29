@@ -1,6 +1,7 @@
 /* eslint-disable boundaries/no-unknown */
 import React from 'react';
-import { Button } from './Button';
+import { Button } from '@/common/components/Button';
+
 import { GlobalModalProps } from '@/common/types/modal.type';
 
 const GlobalModal: React.FC<GlobalModalProps> = ({

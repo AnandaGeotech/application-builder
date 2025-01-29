@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable boundaries/no-unknown */
 import { useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
-import applicationService from '../services/application.service';
+import applicationService from '@/features/application/services/application.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';

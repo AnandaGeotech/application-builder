@@ -1,5 +1,5 @@
-import useApplicationUserList from '../hooks/useApplicationUserlist';
-import UserListSection from '../components/UserListSection';
+import UserListSection from '@/features/application/components/UserListSection';
+import useApplicationUserList from '@/features/application/hooks/useApplicationUserList';
 
 const Home = () => {
   const hooksOptions = useApplicationUserList();

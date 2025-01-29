@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BiSearch } from 'react-icons/bi';
-import { TUserListReturn } from '../hooks/useApplicationUserlist';
+import { TUserListReturn } from '../hooks/useApplicationUserList';
 import UserTable from './UserTable';
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
@@ -19,9 +18,6 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TUserListReturn }) =>
       <div className=" pb-5 mx-auto rounded-lg">
         <div className="py-4 flex flex-wrap flex-col md:flex-row md:justify-between md:items-center space-y-3">
           <div className="relative mt-1 flex gap-2">
-            <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none px-2">
-              <BiSearch />
-            </div>
             <input
               onChange={(e) => handleSearch(e.target.value)}
               type="text"

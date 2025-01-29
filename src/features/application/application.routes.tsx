@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Layout from '@/common/layouts/ApplicationLayout';
 import NotFoundPage from '@/common/components/NotFoundPage';
 
-export const applicationcationRoutes: RouteObject[] = [
+export const applicationRoutes: RouteObject[] = [
   {
     path: '/', // Root route
     element: <Layout />, // Use Layout as the wrapper

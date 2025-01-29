@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-plusplus */
 import React from 'react';
 import { Button } from './Button';
 
@@ -18,7 +17,7 @@ export const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages,
 
   const getPageNumbers = () => {
     const pages: number[] = [];
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i += 1) {
       pages.push(i);
     }
     return pages;

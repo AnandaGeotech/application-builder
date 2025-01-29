@@ -1,4 +1,4 @@
-export const addFormbuilderValidation = {
+export const addFormBuilderValidation = {
   firstName: {
     required: 'First name is required',
     minLength: { value: 3, message: 'First name min 3 characters' },

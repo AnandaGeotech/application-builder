@@ -32,19 +32,6 @@ export const Component = () => {
     setdataResource(resource);
   };
 
-  // const getSingleUser = async () => {
-  //   const toastId = toast.loading('Uploading data...');
-  //   try {
-  //     const resDta = await serviceMethods.getSingleFileDataFn(userId as string);
-  //
-  //     setUserInfoData(resDta);
-  //     toast.dismiss(toastId);
-  //   } catch (error) {
-  //     toast.error('Something went wrong!', { id: toastId });
-  //     throw error;
-  //   }
-  // };
-
   useEffect(() => {
     if (userId) {
       getSingleUser();

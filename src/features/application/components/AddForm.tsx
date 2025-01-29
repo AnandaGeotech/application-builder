@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { ADD_FORMBUILDER_FORM_FIELDS } from '../constants/addbuilder-form.constant';
 

@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable @typescript-eslint/no-empty-function */
 import React, { FC } from 'react';
 import { FaPhoneAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaIdCardClip, FaXTwitter } from 'react-icons/fa6';
@@ -67,7 +66,9 @@ const InformationSectionComponent: React.FC<InfoSectionProps> = ({ label, value 
 // Main component
 const UserInfo: FC<TProps> = ({ dataResource }) => {
   if (!dataResource) {
-    throw new Promise(() => {});
+    throw new Promise(() => {
+      // dummy comment
+    });
   }
 
   const userInfoData = dataResource.read();

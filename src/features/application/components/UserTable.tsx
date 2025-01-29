@@ -1,8 +1,4 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable boundaries/no-unknown */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line boundaries/no-unknown
 import { FC } from 'react';
 import { TableApplicationUserListProps } from '../type/application.type';
 import UserListReactTable from './UserListReactTable';
@@ -26,7 +22,9 @@ const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
     isModalOptionOpen,
   } = hooksOptions;
   if (!dataResource) {
-    throw new Promise(() => {});
+    throw new Promise(() => {
+      // dummy comment
+    });
   }
   const data = dataResource.read();
 

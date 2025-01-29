@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable max-len */
 import React from 'react';
 import { Button } from './Button';
 import { GlobalModalProps } from '@/types/modal.type';
@@ -48,7 +47,7 @@ const GlobalModal: React.FC<GlobalModalProps> = ({
                 <Button
                   type="button"
                   onClick={onConfirm}
-                  className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
+                  className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700 "
                 >
                   {confirmLabel}
                 </Button>
@@ -56,7 +55,7 @@ const GlobalModal: React.FC<GlobalModalProps> = ({
               <Button
                 type="button"
                 onClick={onClose}
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg  'hover:text-gray-700 "
+                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700 "
               >
                 {cancelLabel}
               </Button>

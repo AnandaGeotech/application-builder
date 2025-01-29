@@ -1,9 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import AddForm from '../components/AddForm';
-import ABPHForm from '@/common/components/form/Form';
-
-/* eslint-disable max-len */
+import Form from '@/common/components/form/Form';
 
 export const Component = () => (
   <div className="px-6 py-24 sm:py-32 lg:px-8 ">
@@ -14,7 +10,7 @@ export const Component = () => (
       </p>
     </div>
 
-    <ABPHForm
+    <Form
       defaultValues={{
         education: [
           {
@@ -33,6 +29,6 @@ export const Component = () => (
       }}
     >
       <AddForm />
-    </ABPHForm>
+    </Form>
   </div>
 );

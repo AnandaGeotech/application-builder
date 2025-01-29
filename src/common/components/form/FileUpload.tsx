@@ -1,14 +1,13 @@
-/* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { TbPhotoCircle } from 'react-icons/tb';
-import ABLabel from './Label';
+import Label from './Label';
 import { FileInputProps } from '@/common/types/common.type';
 
 const FileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (
   <div className="col-span-full border-b border-gray-900/10">
     {preview && (
-      <ABLabel htmlFor="file-upload" className="block text-sm font-medium text-gray-900" label=" Cover Photo" />
+      <Label htmlFor="file-upload" className="block text-sm font-medium text-gray-900" label=" Cover Photo" />
     )}
     <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
       <div className="text-center">
@@ -18,7 +17,7 @@ const FileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (
           <TbPhotoCircle aria-hidden="true" className="mx-auto text-gray-300" size={48} />
         )}
         <div className="mt-4 flex text-sm text-gray-600">
-          <ABLabel htmlFor="fileupload" className="custom-input" label="Upload a file" />
+          <Label htmlFor="fileupload" className="custom-input" label="Upload a file" />
 
           <Controller
             name="file"

@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import ThemeProvider from '../components/ThemeProvider';
-import { Button } from '../components/Button';
 import Sidebar from '@/features/application/components/Sidebar';
+import { Button } from '@/common/components/Button';
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

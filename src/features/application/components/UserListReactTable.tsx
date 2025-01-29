@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable boundaries/no-unknown */
 import { CSSProperties } from 'react';
 import { Column, flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
-import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 import TableActionButton from '@/features/application/components/TableActionButton';
 import { IApplicationUser } from '@/common/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
 import { Button } from '@/common/components/Button';
 import { IApplicationUsersListRes } from '@/common/types/common.type';
+import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 
 const showArrow = (sort: string | boolean) => {
   let showIcon = '↕';

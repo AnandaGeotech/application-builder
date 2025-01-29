@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { Button } from '@/common/components/Button';

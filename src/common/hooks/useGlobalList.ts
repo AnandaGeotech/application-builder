@@ -1,9 +1,8 @@
-/* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ColumnDef, SortingState } from '@tanstack/react-table';
-import { createResource, delay } from '@/lib/utils';
+import { createResource, delay } from '@/common/components/utils';
 import useDebounce from '@/common/hooks/use-debounce';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
 import { IApplicationDBService } from '@/common/types/feature.type';

@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 type TFormConfig = {
-  defaultValues?: Record<string, any>;
+  defaultValues?: Record<string, unknown>;
   resolver?: any;
   mode?: 'onSubmit' | 'onBlur' | 'onChange' | 'all';
 };

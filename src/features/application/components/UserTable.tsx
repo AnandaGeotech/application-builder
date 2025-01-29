@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { FC } from 'react';
-import { TUserListReturn } from '../hooks/useApplicationUserList';
-import UserListReactTable from './UserListReactTable';
+import UserListReactTable from '@/features/application/components/UserListReactTable';
+import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 import ConfirmModal from '@/common/components/ConfirmModal';
 
 type hooksOptions = {

@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/element-types */
 import { RouteObject } from 'react-router-dom';
 import Home from './pages/Home';
 import Layout from '@/common/layouts/ApplicationLayout';

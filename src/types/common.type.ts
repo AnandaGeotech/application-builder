@@ -3,6 +3,15 @@ import { ReactNode } from 'react';
 import { IApplicationUser } from '@/types/application.type';
 
 export type TTheme = 'light' | 'dark';
+export interface IApplicationGlobalListRes<T> {
+  data: T[];
+  first?: number;
+  items?: number;
+  last?: number;
+  next?: number;
+  pages?: number;
+  prev?: null | number;
+}
 export interface IApplicationUsersListRes {
   data: IApplicationUser[];
   first?: number;

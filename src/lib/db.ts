@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import { IApplicationUser } from '@/types/application.type';
-import { IApplicationGlobalListRes, IQueryFile } from '@/types/common.type';
+import { IApplicationUser } from '@/common/types/application.type';
+import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
 
 export async function clearStore() {
   //   const db = await openDB<IMyDatabase>('my-database', 1);

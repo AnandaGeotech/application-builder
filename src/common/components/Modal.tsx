@@ -1,7 +1,7 @@
 /* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { Button } from './Button';
-import { GlobalModalProps } from '@/types/modal.type';
+import { GlobalModalProps } from '@/common/types/modal.type';
 
 const GlobalModal: React.FC<GlobalModalProps> = ({
   isOpen,

@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import applicationService from '../services/application.service';
-import { IApplicationUser } from '@/types/application.type';
+import { IApplicationUser } from '@/common/types/application.type';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
-import { IApplicationGlobalListRes } from '@/types/common.type';
+import { IApplicationGlobalListRes } from '@/common/types/common.type';
 
 const { USER_SERVICE } = applicationService();
 const columnHelper = createColumnHelper<IApplicationUser>(); // Initialize column helper
@@ -35,8 +35,8 @@ const generateColumns = (
   },
 ];
 const useApplicationUserList = () => {
-  const [columns, setcolumns] = useState<ColumnDef<IApplicationUser>[]>([]);
-  const options = useGlobalList<IApplicationUser>({ serviceMethods: USER_SERVICE, generateColumns, setcolumns });
+  const [columns, setColumns] = useState<ColumnDef<IApplicationUser>[]>([]);
+  const options = useGlobalList<IApplicationUser>({ serviceMethods: USER_SERVICE, generateColumns, setColumns });
 
   return {
     ...options,

@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import applicationService from '../services/application.service';
 import { delay } from '@/lib/utils';
-import { IApplicationUser } from '@/types/application.type';
+import { IApplicationUser } from '@/common/types/application.type';
 
 const { USER_SERVICE } = applicationService();
 

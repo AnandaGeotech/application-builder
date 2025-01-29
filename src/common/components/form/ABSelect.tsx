@@ -3,7 +3,7 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import ABLabel from './ABLabel';
-import { SelectProps } from '@/types/common.type';
+import { SelectProps } from '@/common/types/common.type';
 
 const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required = false, disabled = false }) => {
   const { search } = useLocation();

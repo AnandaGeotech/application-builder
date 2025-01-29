@@ -1,6 +1,6 @@
 /* eslint-disable boundaries/no-unknown */
 import React from 'react';
-import { LabelProps } from '@/types/common.type';
+import { LabelProps } from '@/common/types/common.type';
 
 // Define the props for the Label component
 

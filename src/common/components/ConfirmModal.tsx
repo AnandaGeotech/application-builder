@@ -2,7 +2,7 @@
 import React from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { Button } from './Button';
-import { GlobalModalProps } from '@/types/modal.type';
+import { GlobalModalProps } from '@/common/types/modal.type';
 
 const ConfirmModal: React.FC<GlobalModalProps> = ({
   isOpen,

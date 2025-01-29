@@ -1,6 +1,7 @@
 /* eslint-disable boundaries/no-unknown */
+/* eslint-disable no-console */
 import { Component, ErrorInfo } from 'react';
-import { ErrorBoundaryProps, ErrorBoundaryState } from '@/types/common.type';
+import { ErrorBoundaryProps, ErrorBoundaryState } from '@/common/types/common.type';
 
 class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {

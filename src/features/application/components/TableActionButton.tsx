@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
-/* eslint-disable boundaries/no-unknown */
 import { DropdownMenu } from 'radix-ui';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { Row } from '@tanstack/react-table';

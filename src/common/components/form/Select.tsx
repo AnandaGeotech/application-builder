@@ -1,8 +1,7 @@
-/* eslint-disable boundaries/no-unknown */
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import Label from './Label';
+import Label from '@/common/components/form/Label';
 import { SelectProps } from '@/common/types/common.type';
 
 const Select: React.FC<SelectProps> = ({ name, label, options, rules, required = false, disabled = false }) => {

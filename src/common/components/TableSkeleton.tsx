@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React from 'react';
 
 const TableSkeleton: React.FC = () => (
@@ -20,9 +19,9 @@ const TableSkeleton: React.FC = () => (
       </tr>
     </thead>
     <tbody>
-      {Array.from({ length: 5 }).map((_, index) => (
+      {Array.from({ length: 5 }).map(() => (
         <tr
-          key={index}
+          key={`skeleton-row-${Date.now()}-${Math.random()}`}
           className="bg-gray-400 border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
         >
           {' '}

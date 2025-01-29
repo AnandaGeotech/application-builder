@@ -1,6 +1,6 @@
-/* eslint-disable boundaries/no-unknown */
-/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
+/* eslint-disable boundaries/no-unknown */
 import { DropdownMenu } from 'radix-ui';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { Row } from '@tanstack/react-table';
@@ -12,8 +12,8 @@ const TableActionButton = ({
   info,
   openModal,
 }: {
-  info: Row<Required<IApplicationUser>>;
-  openModal: (info: Required<IApplicationUser>) => void;
+  info: Row<IApplicationUser>;
+  openModal: (info: IApplicationUser) => void;
 }) => {
   const navigate = useNavigate();
   return (
@@ -31,6 +31,8 @@ const TableActionButton = ({
           <DropdownMenu.Item
             onClick={() => navigate(`/edit/${info.original.id}`)}
             className="cursor-pointer group relative flex h-[25px] select-none items-center rounded-[3px] text-[13px] leading-none text-violet11 outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[disabled]:text-mauve8 data-[highlighted]:text-violet1"
+            data-disabled={false}
+            data-highlighted
           >
             Edit{' '}
           </DropdownMenu.Item>

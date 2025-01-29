@@ -7,7 +7,7 @@ import applicationService from '../services/application.service';
 import { delay } from '@/lib/utils';
 import { IApplicationUser } from '@/types/application.type';
 
-const serviceMethods = applicationService();
+const { USER_SERVICE } = applicationService();
 
 const useUserUpsert = () => {
   const methods = useFormContext();
@@ -21,7 +21,7 @@ const useUserUpsert = () => {
     const toastId = toast.loading('Fetching data...');
     await delay(2000);
     try {
-      const resDta = await serviceMethods.getSingleFileDataFn(userId as string);
+      const resDta = await USER_SERVICE.getSingleFileDataFn(userId as string);
       if (search.includes('notFound')) {
         navigate(`/edit/${userId}`, { replace: true });
       }
@@ -57,7 +57,7 @@ const useUserUpsert = () => {
         formData.append('file', data.file[0]);
       }
       try {
-        const newData = await serviceMethods.upsertDataToDBFn(data as IApplicationUser);
+        const newData = await USER_SERVICE.upsertDataToDBFn(data as IApplicationUser);
         toast.success(`User ${userId ? 'updated' : 'added'} successfully`, { id: toastId });
         toastId = undefined;
         methods.reset({});

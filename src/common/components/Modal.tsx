@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable max-len */
 import React from 'react';
 import { Button } from './Button';
 import { GlobalModalProps } from '@/types/modal.type';

@@ -10,22 +10,22 @@ import { IApplicationUser } from '@/types/application.type';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import { createResource, delay } from '@/lib/utils';
 
-const serviceMethods = applicationService();
+const { USER_SERVICE } = applicationService();
 
 export const Component = () => {
   const { id: userId } = useParams();
 
-  const [_, setUserInfoData] = useState<Required<IApplicationUser> | undefined>();
+  const [_, setUserInfoData] = useState<IApplicationUser | undefined>();
 
   const [dataResource, setdataResource] = useState<{
-    read: () => Required<IApplicationUser>;
+    read: () => IApplicationUser;
   } | null>(null);
 
   const getSingleUser = async () => {
     setdataResource(null);
     await delay(1000);
 
-    const allDataPromise = serviceMethods.getSingleFileDataFn(userId as string);
+    const allDataPromise = USER_SERVICE.getSingleFileDataFn(userId as string);
     allDataPromise.then((res) => setUserInfoData(res));
 
     const resource = createResource(() => allDataPromise);

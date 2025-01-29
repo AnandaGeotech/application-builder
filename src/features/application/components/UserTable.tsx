@@ -1,16 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable boundaries/no-unknown */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line boundaries/no-unknown
 import { FC } from 'react';
-import { TableApplicationUserListProps } from '../type/application.type';
+import { TUserListReturn } from '../hooks/useApplicationUserlist';
 import UserListReactTable from './UserListReactTable';
-import GlobalModal from '@/common/components/Modal';
 import ConfirmModal from '@/common/components/ConfirmModal';
 
 type hooksOptions = {
-  hooksOptions: TableApplicationUserListProps;
+  hooksOptions: TUserListReturn;
 };
 const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
   const { dataResource, handleConfirm, closeModal, isModalOpen } = hooksOptions;

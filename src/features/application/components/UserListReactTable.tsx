@@ -1,28 +1,36 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable no-nested-ternary */
 import { CSSProperties } from 'react';
-
 import { Column, flexRender, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table';
-import { TableApplicationUserListProps } from '../type/application.type';
+import { TUserListReturn } from '../hooks/useApplicationUserlist';
 import TableActionButton from './TableActionButton';
 import { IApplicationUser } from '@/types/application.type';
 import { Pagination } from '@/common/components/Pagination';
 import { Button } from '@/common/components/Button';
 import { IApplicationUsersListRes } from '@/types/common.type';
 
+const showArrow = (sort: string | boolean) => {
+  let showIcon = '↕';
+  if (sort === 'asc') {
+    showIcon = '↑';
+  } else if (sort === 'desc') {
+    showIcon = '↓';
+  }
+  return showIcon;
+};
 const getCommonPinningStyles = (column: Column<IApplicationUser>): CSSProperties => {
   const isPinned = column.getIsPinned();
   const isLastLeftPinnedColumn = isPinned === 'left' && column.getIsLastColumn('left');
   const isFirstRightPinnedColumn = isPinned === 'right' && column.getIsFirstColumn('right');
 
+  let boxShadow;
+  if (isLastLeftPinnedColumn) {
+    boxShadow = '-4px 0 4px -4px gray inset';
+  } else if (isFirstRightPinnedColumn) {
+    boxShadow = '4px 0 4px -4px gray inset';
+  }
   return {
-    boxShadow: isLastLeftPinnedColumn
-      ? '-4px 0 4px -4px gray inset'
-      : isFirstRightPinnedColumn
-        ? '4px 0 4px -4px gray inset'
-        : undefined,
+    boxShadow,
     left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
     right: isPinned === 'right' ? `${column.getAfter('right')}px ` : undefined,
     opacity: isPinned ? 0.95 : 1,
@@ -35,7 +43,7 @@ const getCommonPinningStyles = (column: Column<IApplicationUser>): CSSProperties
 export default function UserListReactTable({
   hooksOptions,
 }: {
-  hooksOptions: TableApplicationUserListProps & { data: IApplicationUsersListRes };
+  hooksOptions: TUserListReturn & { data: IApplicationUsersListRes };
 }) {
   const {
     openModal,
@@ -68,13 +76,6 @@ export default function UserListReactTable({
       },
     },
   });
-
-  //   const randomizeColumns = () => {
-  //     table.setColumnOrder(
-  //       faker.helpers.shuffle(table.getAllLeafColumns().map((d) => d.id)),
-  //     );
-  //   };
-
   return (
     <div className="">
       <div
@@ -114,13 +115,7 @@ export default function UserListReactTable({
                       >
                         {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}{' '}
                         {header.column.getCanSort() && (
-                          <span className="ml-2">
-                            {header.column.getIsSorted() === 'asc'
-                              ? '↑'
-                              : header.column.getIsSorted() === 'desc'
-                                ? '↓'
-                                : '↕'}
-                          </span>
+                          <span className="ml-2">{showArrow(header.column.getIsSorted())}</span>
                         )}
                       </div>
                       {!header.isPlaceholder && header.column.getCanPin() && (
@@ -218,7 +213,7 @@ export default function UserListReactTable({
       <div className="h-4" />
       <div className="inline-block border border-black shadow rounded">
         <div className="px-1 border-b border-black">
-          <label>
+          <label htmlFor="search">
             <input
               {...{
                 type: 'checkbox',
@@ -231,7 +226,7 @@ export default function UserListReactTable({
         </div>
         {table.getAllLeafColumns().map((column) => (
           <div key={column.id} className="px-1 ">
-            <label>
+            <label htmlFor="searchw">
               <input
                 {...{
                   type: 'checkbox',

@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-/* eslint-disable max-len */
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
@@ -21,7 +20,7 @@ const ABSelect: React.FC<SelectProps> = ({ name, label, options, rules, required
               {...field}
               disabled={search.includes('notFound') || disabled}
               id={name}
-              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500  ${fieldState.error?.message ? 'border-red-500' : 'border-gray-300'}`}
+              className={`custom-input  ${fieldState.error?.message ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Select an option</option>
               {options.map((option) => (

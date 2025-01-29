@@ -8,33 +8,17 @@ export const content = ['./src/**/*.{js,jsx,ts,tsx}'];
 export const theme = {
   extend: {
     colors: {
-      bg: {
-        DEFAULT: 'hsl(var(--background))', // Use CSS variable for dynamic theming
-        secondary: 'hsl(var(--secondary))',
+      primary: {
+        500: '#6366F1', // Define your desired primary-500 color here
       },
-      text: {
-        DEFAULT: 'hsl(var(--foreground))', // Use CSS variable for dynamic theming
-        dark: '#1F2937', // Dark text for light mode
+      violet: {
+        1: '#F4EFFE',
+        9: '#8E7EFF',
+        11: '#6C63FF',
       },
-      accent: '#6366F1', // Accent color
-      success: '#22C55E',
-      warning: '#FACC15',
-      error: '#EF4444',
-      divider: '#3F3F3F',
-      disabled: '#6B7280',
-      buttonHover: '#4F46E5',
-      inputFocus: '#6366F1',
-    },
-    // Light theme colors
-    lightTheme: {
-      bg: {
-        DEFAULT: '#FFFFFF', // Light mode background
-        secondary: '#F9FAFB',
+      mauve: {
+        8: '#A79ABF',
       },
-      text: '#1F2937',
-      accent: '#4F46E5',
-      divider: '#E5E7EB',
-      disabled: '#D1D5DB',
     },
   },
 };

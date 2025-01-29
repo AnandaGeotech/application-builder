@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { FaShoppingBag } from 'react-icons/fa';
 import { FaUsersGear } from 'react-icons/fa6';
 import { GrHelpBook } from 'react-icons/gr';
@@ -7,7 +6,7 @@ import { PiChartPieSliceFill, PiSignInBold } from 'react-icons/pi';
 import { RiFileEditFill } from 'react-icons/ri';
 import { Link, useLocation } from 'react-router-dom';
 
-const Sidebar: FC = () => {
+const Sidebar = () => {
   const location = useLocation();
 
   return (

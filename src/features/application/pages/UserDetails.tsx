@@ -1,4 +1,3 @@
-/* eslint-disable boundaries/no-unknown */
 import { useParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import UserDetailSkeletonLoader from '../components/UserDetailSkeletonLoader';

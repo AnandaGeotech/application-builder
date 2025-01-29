@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ReactNode } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 type TFormConfig = {
   defaultValues?: Record<string, unknown>;
-  resolver?: any;
+  // resolver?: any;
   mode?: 'onSubmit' | 'onBlur' | 'onChange' | 'all';
 };
 
@@ -12,16 +11,16 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const Form = ({ children, defaultValues, resolver, mode = 'all' }: TFormProps) => {
+const Form = ({ children, defaultValues, mode = 'all' }: TFormProps) => {
   const formConfig: TFormConfig = { mode };
 
   if (defaultValues) {
     formConfig.defaultValues = defaultValues;
   }
 
-  if (resolver) {
-    formConfig.resolver = resolver;
-  }
+  // if (resolver) {
+  //   formConfig.resolver = resolver;
+  // }
 
   const methods = useForm(formConfig);
 

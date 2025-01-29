@@ -1,9 +1,8 @@
-/* eslint-disable boundaries/element-types */
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import ThemeProvider from '../components/ThemeProvider';
-import Sidebar from '@/features/application/components/Sidebar';
+import Sidebar from '@/common/components/Sidebar';
 import { Button } from '@/common/components/Button';
 
 function Layout() {

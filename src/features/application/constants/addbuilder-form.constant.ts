@@ -1,26 +1,26 @@
-import { addFormbuilderValidation } from '../validation/add-formbuilder-validation';
+import { addFormBuilderValidation } from '../validation/add-form-builder-validation';
 
-export const ADD_FORMBUILDER_FORM_FIELDS = {
+export const ADD_FORM_BUILDER_FORM_FIELDS = {
   FIRST_NAME: {
-    rules: addFormbuilderValidation.firstName,
+    rules: addFormBuilderValidation.firstName,
     required: true,
     label: 'First name',
     name: 'firstName',
   },
   LAST_NAME: {
-    rules: addFormbuilderValidation.lastName,
+    rules: addFormBuilderValidation.lastName,
     required: true,
     label: 'Last name',
     name: 'lastName',
   },
   EMAIL: {
-    rules: addFormbuilderValidation.email,
+    rules: addFormBuilderValidation.email,
     required: true,
     label: 'Email',
     name: 'email',
   },
   PHONE: {
-    // rules: addFormbuilderValidation.lastName,
+    // rules: addFormBuilderValidation.lastName,
     // required: true,
     label: 'Phone',
     name: 'phone',
@@ -30,7 +30,7 @@ export const ADD_FORMBUILDER_FORM_FIELDS = {
 
     name: 'gender',
     label: 'Gender',
-    rules: addFormbuilderValidation.gender,
+    rules: addFormBuilderValidation.gender,
     options: [
       { value: 'male', label: 'Male' },
       { value: 'female', label: 'Female' },
@@ -96,19 +96,19 @@ export const ADD_FORMBUILDER_FORM_FIELDS = {
   },
 
   CITY: {
-    // rules: addFormbuilderValidation.lastName,
+    // rules: addFormBuilderValidation.lastName,
     // required: true,
     label: 'City',
     name: 'city',
   },
   STATE: {
-    // rules: addFormbuilderValidation.lastName,
+    // rules: addFormBuilderValidation.lastName,
     // required: true,
     label: 'State / Province',
     name: 'state',
   },
   PINCODE: {
-    // rules: addFormbuilderValidation.lastName,
+    // rules: addFormBuilderValidation.lastName,
     // required: true,
     label: 'ZIP / Postal code',
     name: 'pincode',

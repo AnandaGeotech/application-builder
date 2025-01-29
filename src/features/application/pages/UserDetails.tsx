@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 /* eslint-disable boundaries/no-unknown */
 import { useParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
@@ -15,35 +13,22 @@ const { USER_SERVICE } = applicationService();
 export const Component = () => {
   const { id: userId } = useParams();
 
-  const [_, setUserInfoData] = useState<IApplicationUser | undefined>();
+  // const [userInfo, setUserInfoData] = useState<IApplicationUser | undefined>();
 
-  const [dataResource, setdataResource] = useState<{
+  const [dataResource, setDataResource] = useState<{
     read: () => IApplicationUser;
   } | null>(null);
 
   const getSingleUser = async () => {
-    setdataResource(null);
+    setDataResource(null);
     await delay(1000);
 
     const allDataPromise = USER_SERVICE.getSingleFileDataFn(userId as string);
-    allDataPromise.then((res) => setUserInfoData(res));
+    // allDataPromise.then((res) => setUserInfoData(res));
 
     const resource = createResource(() => allDataPromise);
-    setdataResource(resource);
+    setDataResource(resource);
   };
-
-  // const getSingleUser = async () => {
-  //   const toastId = toast.loading('Uploading data...');
-  //   try {
-  //     const resDta = await serviceMethods.getSingleFileDataFn(userId as string);
-  //
-  //     setUserInfoData(resDta);
-  //     toast.dismiss(toastId);
-  //   } catch (error) {
-  //     toast.error('Something went wrong!', { id: toastId });
-  //     throw error;
-  //   }
-  // };
 
   useEffect(() => {
     if (userId) {

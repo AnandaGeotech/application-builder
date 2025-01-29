@@ -1,5 +1,5 @@
-/* eslint-disable boundaries/no-unknown */
 /* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable boundaries/no-unknown */
 import { FC } from 'react';
 import { FaPhoneAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaIdCardClip, FaXTwitter } from 'react-icons/fa6';

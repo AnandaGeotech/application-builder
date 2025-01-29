@@ -12,7 +12,7 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const ABPHForm = ({ children, defaultValues, resolver, mode = 'all' }: TFormProps) => {
+const Form = ({ children, defaultValues, resolver, mode = 'all' }: TFormProps) => {
   const formConfig: TFormConfig = { mode };
 
   if (defaultValues) {
@@ -28,4 +28,4 @@ const ABPHForm = ({ children, defaultValues, resolver, mode = 'all' }: TFormProp
   return <FormProvider {...methods}>{children}</FormProvider>;
 };
 
-export default ABPHForm;
+export default Form;

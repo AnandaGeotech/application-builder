@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { IApplicationUser } from '@/types/application.type';
-import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
+import { IApplicationGlobalListRes, IQueryFile } from '@/types/common.type';
 
 export async function clearStore() {
   //   const db = await openDB<IMyDatabase>('my-database', 1);
@@ -33,7 +33,9 @@ export const addDataToApiServer = async (data: IApplicationUser): Promise<IAppli
 };
 
 // Get all data from the API server
-export const getAllDataFromApiServer = async (props: IQueryFile): Promise<IApplicationUsersListRes> => {
+export const getAllDataFromApiServer = async (
+  props: IQueryFile
+): Promise<IApplicationGlobalListRes<IApplicationUser>> => {
   const { currentPage, limitperPage = 5, searchTerm } = props;
 
   // Construct query parameters

@@ -3,14 +3,14 @@
 import { AccessorKeyColumnDef, SortingState } from '@tanstack/react-table';
 import React from 'react';
 import { Education, IApplicationUser, Profession } from '@/types/application.type';
-import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
+import { IApplicationUsersListRes } from '@/types/common.type';
 
-export interface IApplicatioDBService<T> {
-  getSingleFileDataFn: (fileId: string) => Promise<T>;
-  getAllDataFromDBFn: (props: IQueryFile) => Promise<IApplicationUsersListRes>;
-  deleteDataFromDBFn: (id: string) => Promise<void>;
-  upsertDataToDBFn: (payload: T) => Promise<T | void>;
-}
+// export interface IApplicatioDBService<T> {
+//   getSingleFileDataFn: (fileId: string) => Promise<T>;
+//   getAllDataFromDBFn: (props: IQueryFile) => Promise<IApplicationUsersListRes>;
+//   deleteDataFromDBFn: (id: string) => Promise<void>;
+//   upsertDataToDBFn: (payload: T) => Promise<T | void>;
+// }
 
 export interface TableApplicationUserListProps {
   // Function to set selected file info

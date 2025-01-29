@@ -1,5 +1,4 @@
 /* eslint-disable boundaries/no-unknown */
-import { IApplicatioDBService } from '../type/application.type';
 import {
   addDataToApiServer,
   deleteDataFromApiServerById,
@@ -8,13 +7,14 @@ import {
   patchDataInApiServerById,
 } from '@/lib/db';
 import { IApplicationUser } from '@/types/application.type';
-import { IApplicationUsersListRes, IQueryFile } from '@/types/common.type';
+import { IApplicationGlobalListRes, IQueryFile } from '@/types/common.type';
+import { IApplicatioDBService } from '@/types/feature.type';
 
 // Function to get a single file data by ID
 const getSingleFileDataFn = async (fileId: string): Promise<IApplicationUser> => getDataFromApiServerById(fileId);
 
 // Function to get all data from JsonApiDB
-const getAllDataFromDBFn = async (props: IQueryFile): Promise<IApplicationUsersListRes> =>
+const getAllDataFromDBFn = async (props: IQueryFile): Promise<IApplicationGlobalListRes<IApplicationUser>> =>
   getAllDataFromApiServer(props);
 
 // Function to delete data by ID

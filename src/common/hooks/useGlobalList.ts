@@ -1,12 +1,12 @@
-/* eslint-disable boundaries/element-types */
 /* eslint-disable boundaries/no-unknown */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { ColumnDef, createColumnHelper, SortingState } from '@tanstack/react-table';
 import { createResource, delay } from '@/lib/utils';
 import useDebounce from '@/common/hooks/use-debounce';
-import { IApplicatioDBService } from '@/features/application/type/application.type';
-import { IApplicationUsersListRes } from '@/types/common.type';
+import { IApplicationGlobalListRes } from '@/types/common.type';
+import { IApplicatioDBService } from '@/types/feature.type';
 
 const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
   applicationService: IApplicatioDBService<T>
@@ -21,13 +21,31 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
   const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms
   const [currentPage, setCurrentPage] = useState(1);
   const [dataResource, setdataResource] = useState<{
-    read: () => IApplicationUsersListRes;
+    read: () => IApplicationGlobalListRes<T>;
   } | null>(null);
-  const [listData, setlistData] = useState<IApplicationUsersListRes | null>(null);
+  const [listData, setlistData] = useState<IApplicationGlobalListRes<T> | null>(null);
 
   const [columns, setcolumns] = useState<ColumnDef<T>[]>([]);
   const columnHelper = createColumnHelper<T>(); // Initialize column helper
-
+  const generateColumns = (headers: (keyof T)[], data: IApplicationGlobalListRes<T>) =>
+    headers.map((it) => {
+      const sampleValue = data?.data?.[0]?.[it]; // Sample value to check type
+      if (typeof sampleValue === 'object' && sampleValue !== null) {
+        // If value is an object, create grouped columns
+        return {
+          id: it as string, // Group identifier
+          header: it as string, // Group name
+          // columns: Object.keys(sampleValue).map((subKey) => columnHelper.accessor(`${it}.${subKey}` as any, {
+          //   header: subKey,
+          //   cell: (info) => info.getValue(),
+          // })),
+        };
+      }
+      // Regular column
+      return columnHelper.accessor(it as any, {
+        cell: (info) => info.getValue(),
+      });
+    });
   const loadData = async () => {
     setdataResource(null);
     await delay(1000);
@@ -41,12 +59,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>(
       const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
 
       setcolumns([
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ...headers.map((it: keyof T) =>
-          columnHelper.accessor(it as any, {
-            cell: (info) => info.getValue(),
-          })
-        ),
+        ...generateColumns(headers, res),
         {
           accessorKey: 'action',
           id: 'action',

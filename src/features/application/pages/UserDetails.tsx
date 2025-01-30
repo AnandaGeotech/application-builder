@@ -1,35 +1,32 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
-/* eslint-disable boundaries/no-unknown */
-import { useParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
-import applicationService from '../services/application.service';
-import UserInfo from '../components/UserInfo';
-import UserDetailSkeletonLoader from '../components/UserDetailSkeletonLoader';
-import { IApplicationUser } from '@/types/application.type';
+import { useParams } from 'react-router-dom';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
-import { createResource, delay } from '@/lib/utils';
+import { createResource, delay } from '@/common/components/utils';
+import { IApplicationUser } from '@/common/types/application.type';
+import UserDetailSkeletonLoader from '@/features/application/components/UserDetailSkeletonLoader';
+import UserInfo from '@/features/application/components/UserInfo';
+import applicationService from '@/features/application/services/application.service';
 
-const serviceMethods = applicationService();
+const { USER_SERVICE } = applicationService();
 
 export const Component = () => {
   const { id: userId } = useParams();
 
-  const [_, setUserInfoData] = useState<Required<IApplicationUser> | undefined>();
+  // const [userInfo, setUserInfoData] = useState<IApplicationUser | undefined>();
 
-  const [dataResource, setdataResource] = useState<{
-    read: () => Required<IApplicationUser>;
+  const [dataResource, setDataResource] = useState<{
+    read: () => IApplicationUser;
   } | null>(null);
 
   const getSingleUser = async () => {
-    setdataResource(null);
+    setDataResource(null);
     await delay(1000);
 
-    const allDataPromise = serviceMethods.getSingleFileDataFn(userId as string);
-    allDataPromise.then((res) => setUserInfoData(res));
+    const allDataPromise = USER_SERVICE.getSingleFileDataFn(userId as string);
+    // allDataPromise.then((res) => setUserInfoData(res));
 
     const resource = createResource(() => allDataPromise);
-    setdataResource(resource);
+    setDataResource(resource);
   };
 
   useEffect(() => {

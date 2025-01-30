@@ -1,10 +1,32 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode } from 'react';
-import { IApplicationUser } from './application.type';
+import { ColumnDef, SortingState } from '@tanstack/react-table';
+import React, { ReactNode } from 'react';
+import { IApplicationUser } from '@/common/types/application.type';
 
 export type TTheme = 'light' | 'dark';
+export interface IApplicationGlobalListRes<T> {
+  data: T[];
+  first?: number;
+  items?: number;
+  last?: number;
+  next?: number;
+  pages?: number;
+  prev?: null | number;
+}
+
+export type TGlobalTableProps<T> = {
+  hooksOptions: Record<string, unknown> & {
+    data: IApplicationGlobalListRes<T>;
+    columns: ColumnDef<T>[];
+    setSorting: React.Dispatch<React.SetStateAction<SortingState>>;
+    sorting: SortingState;
+    handlePageChange: (page: number) => void;
+    currentPage: number;
+    record: number;
+  };
+};
 export interface IApplicationUsersListRes {
-  data: Required<IApplicationUser>[];
+  data: IApplicationUser[];
   first?: number;
   items?: number;
   last?: number;
@@ -15,7 +37,7 @@ export interface IApplicationUsersListRes {
 
 export interface IQueryFile {
   currentPage?: number;
-  limitperPage?: number;
+  record?: number;
   searchTerm?: string;
 }
 export interface FileInputProps {

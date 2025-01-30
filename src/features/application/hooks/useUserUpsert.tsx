@@ -1,13 +1,12 @@
-/* eslint-disable boundaries/no-unknown */
 import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useFieldArray, useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import applicationService from '../services/application.service';
-import { delay } from '@/lib/utils';
-import { IApplicationUser } from '@/types/application.type';
+import applicationService from '@/features/application/services/application.service';
+import { IApplicationUser } from '@/common/types/application.type';
+import { delay } from '@/common/components/utils';
 
-const serviceMethods = applicationService();
+const { USER_SERVICE } = applicationService();
 
 const useUserUpsert = () => {
   const methods = useFormContext();
@@ -21,7 +20,7 @@ const useUserUpsert = () => {
     const toastId = toast.loading('Fetching data...');
     await delay(2000);
     try {
-      const resDta = await serviceMethods.getSingleFileDataFn(userId as string);
+      const resDta = await USER_SERVICE.getSingleFileDataFn(userId as string);
       if (search.includes('notFound')) {
         navigate(`/edit/${userId}`, { replace: true });
       }
@@ -57,7 +56,7 @@ const useUserUpsert = () => {
         formData.append('file', data.file[0]);
       }
       try {
-        const newData = await serviceMethods.upsertDataToDBFn(data as IApplicationUser);
+        const newData = await USER_SERVICE.upsertDataToDBFn(data as IApplicationUser);
         toast.success(`User ${userId ? 'updated' : 'added'} successfully`, { id: toastId });
         toastId = undefined;
         methods.reset({});

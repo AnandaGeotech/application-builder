@@ -1,7 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import EditForm from '../components/EditForm';
 import Form from '@/common/components/form/Form';
+import EditForm from '@/features/application/components/EditForm';
 
 export const Component = () => (
   <div className="px-6 py-24 sm:py-32 lg:px-8 ">

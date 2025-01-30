@@ -1,26 +1,11 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import { FC } from 'react';
-import { TableApplicationUserListProps } from '../type/application.type';
-import UserListReactTable from './UserListReactTable';
-import GlobalModal from '@/common/components/Modal';
 import ConfirmModal from '@/common/components/ConfirmModal';
+import { Pagination } from '@/common/components/Pagination';
+import GlobalTable from '@/common/components/table/GlobalTable';
+import { IApplicationUser } from '@/common/types/application.type';
+import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 
-type hooksOptions = {
-  hooksOptions: TableApplicationUserListProps;
-};
-const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
-  const {
-    dataResource,
-    headers,
-    handleConfirm,
-    closeModal,
-    isModalOpen,
-    visibleHeaders,
-    toggleHeader,
-    handleConfirmOptionModalFn,
-    closeOptionModalFn,
-    isModalOptionOpen,
-  } = hooksOptions;
+const UserTable = ({ hooksOptions }: { hooksOptions: TUserListReturn }) => {
+  const { dataResource, handleConfirm, closeModal, isModalOpen } = hooksOptions;
   if (!dataResource) {
     throw new Promise(() => {
       // dummy comment
@@ -39,33 +24,15 @@ const UserTable: FC<hooksOptions> = ({ hooksOptions }) => {
         confirmLabel="Delete"
         cancelLabel="Cancel"
       />
-      <GlobalModal
-        isOpen={isModalOptionOpen}
-        title="Option Modal"
-        description=""
-        onClose={closeOptionModalFn}
-        onConfirm={handleConfirmOptionModalFn}
-        confirmLabel="Submit"
-        cancelLabel="Cancel"
-      >
-        <div className="mb-4">
-          <h2 className="text-lg font-semibold mb-2">Select Columns to Display:</h2>
-          <div className="grid grid-cols-2 gap-2 text-black">
-            {headers.map((key) => (
-              <label key={key as string} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  className="form-checkbox h-4 w-4 text-blue-600"
-                  checked={visibleHeaders.has(key)}
-                  onChange={() => toggleHeader(key)}
-                />
-                <span>{key}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      </GlobalModal>
-      <UserListReactTable hooksOptions={{ ...hooksOptions, data }} />
+
+      <GlobalTable<IApplicationUser> hooksOptions={{ ...hooksOptions, data }} />
+      <div className="flex justify-end mt-4">
+        <Pagination
+          currentPage={hooksOptions?.currentPage || 0}
+          totalPages={data?.pages || 0}
+          onPageChange={hooksOptions?.handlePageChange}
+        />
+      </div>
     </>
   );
 };

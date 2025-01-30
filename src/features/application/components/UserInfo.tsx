@@ -1,10 +1,9 @@
-/* eslint-disable boundaries/no-unknown */
 import React, { FC } from 'react';
 import { FaPhoneAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaIdCardClip, FaXTwitter } from 'react-icons/fa6';
 import { MdCorporateFare, MdEmail } from 'react-icons/md';
-import { IApplicationUser } from '@/types/application.type';
-import { capitalize } from '@/lib/utils';
+import { IApplicationUser } from '@/common/types/application.type';
+import { capitalize } from '@/common/components/utils';
 
 const socialLinks = [
   {

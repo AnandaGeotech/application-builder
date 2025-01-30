@@ -1,10 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { applicationcationRoutes } from '@/features/application';
+import { applicationRoutes } from '@/features/application';
 
 const routes = createBrowserRouter([
   {
     path: '',
-    children: applicationcationRoutes,
+    children: applicationRoutes,
   },
 ]);
 

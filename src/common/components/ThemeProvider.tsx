@@ -1,10 +1,9 @@
-/* eslint-disable boundaries/no-unknown */
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BiMoon } from 'react-icons/bi';
 import { CiLight } from 'react-icons/ci';
-import { THEME_OPTIONS } from '../constants/common.constant';
-import { Button } from './Button';
-import { TTheme } from '@/types/common.type';
+import { Button } from '@/common/components/Button';
+import { THEME_OPTIONS } from '@/common/constants/common.constant';
+import { TTheme } from '@/common/types/common.type';
 
 export default function ThemeProvider() {
   const systemTheme: TTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -28,7 +27,7 @@ export default function ThemeProvider() {
   };
 
   return (
-    <Button onClick={toggleTheme} className="text-white px-4 py-2 rounded">
+    <Button onClick={toggleTheme} className=" px-4 py-2 border-0">
       {theme === THEME_OPTIONS.DARK ? <CiLight /> : <BiMoon color="#000" />}
     </Button>
   );

@@ -1,7 +1,7 @@
-/* eslint-disable boundaries/no-unknown */
 import React from 'react';
-import { Button } from './Button';
-import { GlobalModalProps } from '@/types/modal.type';
+import { Button } from '@/common/components/Button';
+
+import { GlobalModalProps } from '@/common/types/modal.type';
 
 const GlobalModal: React.FC<GlobalModalProps> = ({
   isOpen,
@@ -44,19 +44,11 @@ const GlobalModal: React.FC<GlobalModalProps> = ({
             {/* Footer Actions */}
             <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
               {onConfirm && (
-                <Button
-                  type="button"
-                  onClick={onConfirm}
-                  className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700 "
-                >
+                <Button type="button" onClick={onConfirm}>
                   {confirmLabel}
                 </Button>
               )}
-              <Button
-                type="button"
-                onClick={onClose}
-                className="flex items-center justify-center px-3 h-8 leading-tight dark:text-white text-gray-500 border border-gray-300 rounded-s-lg hover:text-gray-700 "
-              >
+              <Button type="button" onClick={onClose}>
                 {cancelLabel}
               </Button>
             </div>

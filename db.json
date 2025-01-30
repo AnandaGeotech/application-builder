@@ -25,19 +25,14 @@
           "label": "University of Example"
         }
       ],
-      "profession": [
+
+      "professional": [
         {
-          "description": "Software Engineer",
-          "duration": "2014 - Present",
-          "label": "Acme Corp"
-        },
-        {
-          "description": "Senior Software Engineer",
-          "duration": "2017 - Present",
-          "label": "Acme Corp"
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
         }
-      ],
-      "professional": [{}]
+      ]
     },
     {
       "id": "1b85",
@@ -67,18 +62,6 @@
           "description": "Certificate in User Experience Design",
           "duration": "2017 - 2018",
           "label": "UX Academy"
-        }
-      ],
-      "profession": [
-        {
-          "description": "UI/UX Designer",
-          "duration": "2016 - Present",
-          "label": "Creative Agency"
-        },
-        {
-          "description": "Lead UI/UX Designer",
-          "duration": "2018 - Present",
-          "label": "Creative Agency"
         }
       ]
     },
@@ -282,73 +265,36 @@
       "gender": "male"
     },
     {
-      "id": "cbbb",
+      "id": "1f8b",
       "education": [
         {
-          "description": "dfgdfgdfg",
-          "duration": "gdfgdfg",
-          "label": "gdfgdf"
+          "description": "sadsad",
+          "duration": "3years",
+          "label": "MSC"
         }
       ],
       "professional": [
         {
-          "description": "gfdgdf",
-          "duration": "gdfgdf",
-          "label": "gdfgdf"
+          "description": "sadsa",
+          "duration": "2year",
+          "label": "Geotech"
         }
       ],
-      "firstName": "fgdgdfgdfgdfg",
-      "lastName": "dfgdfgdfg",
-      "phone": "fdgdfgdfg",
+      "firstName": "SSSSSS",
+      "lastName": "SSSSSS",
+      "phone": "8798798798798987",
       "gender": "male",
-      "hometown": "gdfgdfgdf",
+      "hometown": "kolkata",
       "language": "spanish",
-      "birthDate": "2025-01-09",
-      "country": "usa",
-      "company": "gdfgdfgdf",
-      "maritalStatus": "single",
-      "presentAddress": "gdfgdfgdfg",
-      "permanentAddress": "dfgdfgdfgdf",
-      "city": "dfgfdgdf",
-      "state": "gdfgdfgdf",
-      "pincode": "gdfgdfgdfgdf"
-    },
-    {
-      "id": "c9cc",
-      "education": [
-        {
-          "description": "ppppppppp",
-          "duration": "ppppppppppp",
-          "label": "ppppppppp"
-        }
-      ],
-      "professional": [
-        {
-          "description": "ppppppppp",
-          "duration": "ppppppppppppp",
-          "label": "ppppppppp"
-        },
-        {
-          "label": "ppppppppp",
-          "duration": "ppppppppppppp",
-          "description": "ppppppppp"
-        }
-      ],
-      "firstName": "ppppppp",
-      "lastName": "ppppp",
-      "phone": "pppppp",
-      "gender": "male",
-      "hometown": "ppppp",
-      "language": "english",
       "birthDate": "2025-01-02",
-      "country": "usa",
-      "company": "pppppppppp",
-      "maritalStatus": "widowed",
-      "presentAddress": "ppppppppppppppppp",
-      "permanentAddress": "pppppppppppppppppp",
-      "city": "ppppppppppp",
-      "state": "pppppppppppp",
-      "pincode": "ppppppppp"
+      "country": "canada",
+      "company": "sadasd",
+      "maritalStatus": "single",
+      "presentAddress": "Present Address garia",
+      "permanentAddress": "Permanent Address kolkata",
+      "city": "kolkata",
+      "state": "wb",
+      "pincode": "54654"
     }
   ]
 }

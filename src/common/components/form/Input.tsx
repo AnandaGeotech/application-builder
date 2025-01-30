@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import ABLabel from './Label';
+import Label from '@/common/components/form/Label';
 
 type TInputProps = {
   type?: string;
@@ -19,16 +19,14 @@ const Input = ({ type = 'text', name, label, required, disabled, rules = {} }: T
       rules={rules}
       render={({ field, fieldState }) => (
         <>
-          {label && <ABLabel error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
+          {label && <Label error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
 
           <input
             {...field}
             type={type}
             id={name}
             disabled={search.includes('notFound') || disabled}
-            className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-               focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700
-                dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500   
+            className={`custom-input   
               ${fieldState.error?.message ? 'text-red-500 border-red-500' : 'dark:text-white dark:border-gray-600'}`}
           />
 

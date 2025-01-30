@@ -1,18 +1,17 @@
-/* eslint-disable boundaries/no-unknown */
 /* eslint-disable no-unused-vars */
+import { Row } from '@tanstack/react-table';
 import { DropdownMenu } from 'radix-ui';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { Row } from '@tanstack/react-table';
 import { useNavigate } from 'react-router-dom';
+import { IApplicationUser } from '@/common/types/application.type';
 import { Button } from '@/common/components/Button';
-import { IApplicationUser } from '@/types/application.type';
 
 const TableActionButton = ({
   info,
   openModal,
 }: {
-  info: Row<Required<IApplicationUser>>;
-  openModal: (info: Required<IApplicationUser>) => void;
+  info: Row<IApplicationUser>;
+  openModal: (info: IApplicationUser) => void;
 }) => {
   const navigate = useNavigate();
   return (

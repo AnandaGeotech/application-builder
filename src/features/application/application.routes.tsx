@@ -1,10 +1,9 @@
-/* eslint-disable boundaries/element-types */
 import { RouteObject } from 'react-router-dom';
-import Home from './pages/Home';
-import Layout from '@/common/layouts/ApplicationLayout';
 import NotFoundPage from '@/common/components/NotFoundPage';
+import Layout from '@/common/layouts/ApplicationLayout';
+import Home from '@/features/application/pages/Home';
 
-export const applicationcationRoutes: RouteObject[] = [
+export const applicationRoutes: RouteObject[] = [
   {
     path: '/', // Root route
     element: <Layout />, // Use Layout as the wrapper

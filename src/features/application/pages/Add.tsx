@@ -1,5 +1,5 @@
-import AddForm from '../components/AddForm';
 import Form from '@/common/components/form/Form';
+import AddForm from '@/features/application/components/AddForm';
 
 export const Component = () => (
   <div className="px-6 py-24 sm:py-32 lg:px-8 ">

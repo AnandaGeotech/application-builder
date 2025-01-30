@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
 import { FaBarsStaggered } from 'react-icons/fa6';
-import ThemeProvider from '../components/ThemeProvider';
-import Sidebar from '@/common/components/Sidebar';
+import { Link, Outlet } from 'react-router-dom';
 import { Button } from '@/common/components/Button';
+import Sidebar from '@/common/components/Sidebar';
+import ThemeProvider from '@/common/components/ThemeProvider';
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

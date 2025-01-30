@@ -1,7 +1,8 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { TbPhotoCircle } from 'react-icons/tb';
-import Label from './Label';
+import Label from '@/common/components/form/Label';
+
 import { FileInputProps } from '@/common/types/common.type';
 
 const FileInput: React.FC<FileInputProps> = ({ handleFileChange, preview }) => (

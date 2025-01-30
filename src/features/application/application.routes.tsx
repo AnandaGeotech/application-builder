@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom';
-import Home from './pages/Home';
-import Layout from '@/common/layouts/ApplicationLayout';
 import NotFoundPage from '@/common/components/NotFoundPage';
+import Layout from '@/common/layouts/ApplicationLayout';
+import Home from '@/features/application/pages/Home';
 
 export const applicationRoutes: RouteObject[] = [
   {

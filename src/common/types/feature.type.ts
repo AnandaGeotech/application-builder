@@ -1,4 +1,4 @@
-import { IApplicationGlobalListRes, IQueryFile } from './common.type';
+import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
 
 /* eslint-disable no-unused-vars */
 export interface IApplicationDBService<T> {

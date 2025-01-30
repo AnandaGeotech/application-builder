@@ -1,6 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
-import Label from './Label';
+import Label from '@/common/components/form/Label';
 
 type TInputProps = {
   type?: string;

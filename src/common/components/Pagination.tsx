@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Button } from './Button';
+import { Button } from '@/common/components/Button';
 
 interface PaginationProps {
   currentPage: number;

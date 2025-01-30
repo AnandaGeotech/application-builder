@@ -29,7 +29,7 @@ export default function GlobalTable<T extends object>({
   });
 
   return (
-    <div className="">
+    <div>
       <div className={tableContainer}>
         <table
           style={{
@@ -42,7 +42,7 @@ export default function GlobalTable<T extends object>({
               <TableHeadRow headerGroup={headerGroup} />
             ))}
           </thead>
-          <tbody>
+          <tbody className="-z-20">
             {table.getRowModel().rows.map((row) => (
               <TBodyRow row={row} />
             ))}

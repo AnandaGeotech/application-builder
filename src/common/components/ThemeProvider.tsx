@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BiMoon } from 'react-icons/bi';
 import { CiLight } from 'react-icons/ci';
-import { THEME_OPTIONS } from '../constants/common.constant';
-import { Button } from './Button';
+import { Button } from '@/common/components/Button';
+import { THEME_OPTIONS } from '@/common/constants/common.constant';
 import { TTheme } from '@/common/types/common.type';
 
 export default function ThemeProvider() {

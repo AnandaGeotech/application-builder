@@ -3,14 +3,13 @@ import { getCommonPinningStyles } from '@/common/hooks/useReactTableUtility';
 
 export default function TBodyRow<T>({ row }: { row: Row<T> }) {
   return (
-    <tr key={row.id} className="">
+    <tr key={row.id}>
       {row.getVisibleCells().map((cell) => {
         const { column } = cell;
 
         return (
           <td
             key={cell.id}
-            // IMPORTANT: This is where the magic happens!
             style={{ ...getCommonPinningStyles(column as any) }}
             className="px-6 py-4  border-b border-slate-100 dark:border-slate-500  last:border-none bg-white dark:bg-slate-900"
           >

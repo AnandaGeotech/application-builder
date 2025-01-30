@@ -1,4 +1,4 @@
-import { addFormBuilderValidation } from '../validation/add-form-builder-validation';
+import { addFormBuilderValidation } from '@/features/application/validation/add-form-builder-validation';
 
 export const ADD_FORM_BUILDER_FORM_FIELDS = {
   FIRST_NAME: {

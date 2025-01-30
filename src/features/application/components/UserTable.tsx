@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import ConfirmModal from '@/common/components/ConfirmModal';
-import GlobalTable from '@/common/components/GlobalTable';
 import { Pagination } from '@/common/components/Pagination';
+import GlobalTable from '@/common/components/table/GlobalTable';
 import { IApplicationUser } from '@/common/types/application.type';
 import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 
@@ -24,13 +24,7 @@ const UserTable = ({ hooksOptions }: { hooksOptions: TUserListReturn }) => {
         cancelLabel="Cancel"
       />
 
-      {/* <UserListReactTable hooksOptions={{ ...hooksOptions, data }} /> */}
-
-      <GlobalTable<IApplicationUser> hooksOptions={{ ...hooksOptions, data }}>
-        <GlobalTable.TableHead<IApplicationUser> />
-        <GlobalTable.TableBody<IApplicationUser> />
-      </GlobalTable>
-
+      <GlobalTable<IApplicationUser> hooksOptions={{ ...hooksOptions, data }} />
       <div className="flex justify-end mt-4">
         <Pagination
           currentPage={hooksOptions?.currentPage || 0}

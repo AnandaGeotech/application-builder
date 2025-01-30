@@ -1,7 +1,7 @@
 import { flexRender, Row } from '@tanstack/react-table';
 import { getCommonPinningStyles } from '@/common/hooks/useReactTableUtility';
 
-export default function TBodyRow<T>({ row }: { row: Row<T> }) {
+export default function TableBodyRow<T>({ row }: { row: Row<T> }) {
   return (
     <tr key={row.id} style={{ width: '1px' }}>
       {row.getVisibleCells().map((cell) => {

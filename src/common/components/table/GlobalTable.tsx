@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import TableBodyRow from '@/common/components/table/TableBodyRow';
 import { TableHeadRow } from '@/common/components/table/TableHeadRow';
-import TBodyRow from '@/common/components/table/TBodyRow';
 import useReactTableUtility from '@/common/hooks/useReactTableUtility';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
 
@@ -44,7 +44,7 @@ export default function GlobalTable<T extends object>({
           </thead>
           <tbody className="-z-20">
             {table.getRowModel().rows.map((row) => (
-              <TBodyRow row={row} />
+              <TableBodyRow row={row} />
             ))}
           </tbody>
         </table>

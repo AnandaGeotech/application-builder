@@ -3,7 +3,7 @@ import { getCommonPinningStyles } from '@/common/hooks/useReactTableUtility';
 
 export default function TBodyRow<T>({ row }: { row: Row<T> }) {
   return (
-    <tr key={row.id}>
+    <tr key={row.id} style={{ width: '1px' }}>
       {row.getVisibleCells().map((cell) => {
         const { column } = cell;
 
@@ -11,7 +11,7 @@ export default function TBodyRow<T>({ row }: { row: Row<T> }) {
           <td
             key={cell.id}
             style={{ ...getCommonPinningStyles(column as any) }}
-            className="px-6 py-4  border-b border-slate-100 dark:border-slate-500  last:border-none bg-white dark:bg-slate-900"
+            className="px-6 py-4  border-b border-slate-100 dark:border-slate-500   bg-white dark:bg-slate-900"
           >
             {flexRender(cell.column.columnDef.cell, cell.getContext())}
           </td>

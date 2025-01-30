@@ -4,7 +4,7 @@ import { getCommonPinningStyles, showArrow } from '@/common/hooks/useReactTableU
 
 export function TableHeadRow<T>({ headerGroup }: { headerGroup: HeaderGroup<T> }) {
   return (
-    <tr key={headerGroup.id} className="bg-white dark:bg-slate-900">
+    <tr key={headerGroup.id} className="bg-white dark:bg-slate-900 " style={{ width: '1px' }}>
       {headerGroup.headers.map((header) => {
         const { column } = header;
 

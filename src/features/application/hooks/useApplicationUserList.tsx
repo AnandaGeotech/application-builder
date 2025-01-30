@@ -34,7 +34,11 @@ const generateColumns = (
     accessorKey: 'action',
     id: 'action',
     header: 'Actions',
-    cell: (info) => <TableActionButton info={info?.row} openModal={openModal} />,
+    cell: (info) => (
+      <div className="flex justify-center">
+        <TableActionButton info={info?.row} openModal={openModal} />
+      </div>
+    ),
   },
 ];
 const useApplicationUserList = () => {

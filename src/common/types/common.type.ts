@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { ReactNode } from 'react';
+import { ColumnDef, SortingState } from '@tanstack/react-table';
+import React, { ReactNode } from 'react';
 import { IApplicationUser } from '@/common/types/application.type';
 
 export type TTheme = 'light' | 'dark';
@@ -12,6 +13,18 @@ export interface IApplicationGlobalListRes<T> {
   pages?: number;
   prev?: null | number;
 }
+
+export type TGlobalTableProps<T> = {
+  hooksOptions: Record<string, unknown> & {
+    data: IApplicationGlobalListRes<T>;
+    columns: ColumnDef<T>[];
+    setSorting: React.Dispatch<React.SetStateAction<SortingState>>;
+    sorting: SortingState;
+    handlePageChange: (page: number) => void;
+    currentPage: number;
+    record: number;
+  };
+};
 export interface IApplicationUsersListRes {
   data: IApplicationUser[];
   first?: number;

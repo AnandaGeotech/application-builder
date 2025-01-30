@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
+import { useState } from 'react';
 import TableActionButton from '../components/TableActionButton';
-import applicationService from '@/features/application/services/application.service';
-import { IApplicationUser } from '@/common/types/application.type';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
+import { IApplicationUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
+import applicationService from '@/features/application/services/application.service';
 
 const { USER_SERVICE } = applicationService();
 const columnHelper = createColumnHelper<IApplicationUser>(); // Initialize column helper
@@ -39,7 +39,12 @@ const generateColumns = (
 ];
 const useApplicationUserList = () => {
   const [columns, setColumns] = useState<ColumnDef<IApplicationUser>[]>([]);
-  const options = useGlobalList<IApplicationUser>({ serviceMethods: USER_SERVICE, generateColumns, setColumns });
+
+  const options = useGlobalList<IApplicationUser>({
+    serviceMethods: USER_SERVICE,
+    generateColumns,
+    setColumns,
+  });
 
   return {
     ...options,

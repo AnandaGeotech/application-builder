@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 import { ColumnDef, SortingState } from '@tanstack/react-table';
+import React, { useEffect, useState } from 'react';
 import { createResource, delay } from '@/common/components/utils';
-import useDebounce from '@/common/hooks/use-debounce';
+import { useDeleteOperation } from '@/common/hooks/useDeleteOperation';
+import { usePagination } from '@/common/hooks/usePagination';
+import { useSearch } from '@/common/hooks/useSearch';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
 import { IApplicationDBService } from '@/common/types/feature.type';
 
@@ -14,11 +16,8 @@ export type GroupedColumnDef<T> = {
 };
 
 export type ColumnDefinition<T> = ColumnDef<T> | GroupedColumnDef<T>;
-const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
-  serviceMethods,
-  generateColumns,
-  setColumns,
-}: {
+
+interface UseGlobalListOptions<T> {
   serviceMethods: IApplicationDBService<T>;
   generateColumns?: (
     headers: (keyof T)[],
@@ -26,93 +25,72 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     openModal: (info: T) => void
   ) => ColumnDefinition<T>[];
   setColumns?: React.Dispatch<React.SetStateAction<ColumnDef<T>[]>>;
-}) => {
+  enablePagination?: boolean;
+  enableDelete?: boolean;
+}
+
+const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
+  serviceMethods,
+  generateColumns,
+  setColumns,
+}: UseGlobalListOptions<T>) => {
   const { getAllDataFromDBFn, deleteDataFromDBFn } = serviceMethods;
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [record, setRecord] = useState(5);
-  const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearchTerm = useDebounce(searchTerm, 500); // Debounce for 500ms
-  const [currentPage, setCurrentPage] = useState(1);
+
+  console.log(sorting, 'sorting');
   const [dataResource, setDataResource] = useState<{
     read: () => IApplicationGlobalListRes<T>;
   } | null>(null);
   const [listData, setlistData] = useState<IApplicationGlobalListRes<T> | null>(null);
-  const openModal = (info: T) => {
-    setSelectUserInfo(info);
-    setIsModalOpen(true);
-  };
+
+  // Optional pagination hook
+  const pagination = usePagination();
+
+  // Optional search hook
+  const search = useSearch();
+
+  // Optional delete hook
+  const deleteOps = useDeleteOperation<T>(deleteDataFromDBFn);
+
   const loadData = async () => {
     setDataResource(null);
     await delay(1000);
 
     const allDataPromise = getAllDataFromDBFn({
-      currentPage,
-      record,
-      searchTerm: debouncedSearchTerm,
+      currentPage: pagination.currentPage,
+      record: pagination.record,
+      searchTerm: search.debouncedSearchTerm,
     });
+
     allDataPromise.then((res) => {
       const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
       if (generateColumns && setColumns) {
-        setColumns(generateColumns(headers, res, openModal));
+        setColumns(generateColumns(headers, res, deleteOps?.openModal ?? (() => {})));
       }
-
       setlistData(res);
     });
-    // Dynamically extract headers if data exists
 
     const resource = createResource(() => allDataPromise);
     setDataResource(resource);
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-  const handleSearch = (query: string) => {
-    setDataResource(null);
-    setSearchTerm(query);
-  };
   useEffect(() => {
     loadData();
-  }, [debouncedSearchTerm, currentPage]);
-
-  const closeModal = () => setIsModalOpen(false);
-  const handleDelete = async () => {
-    await deleteDataFromDBFn(selectUserInfo?.id as string);
-    setDataResource(null);
-
-    toast.success('File deleted successfully!');
-    loadData();
-    closeModal();
-  };
-
-  const handleConfirm = () => {
-    handleDelete();
-  };
+  }, [search.debouncedSearchTerm, pagination.currentPage]);
 
   return {
     dataResource,
-    handlePageChange,
-    currentPage,
-    setCurrentPage,
-    handleSearch,
-    searchTerm,
-    setSearchTerm,
-    record,
-    setRecord,
     listData,
     setlistData,
-    handleDelete,
-    selectUserInfo,
-    setSelectUserInfo,
-    openModal,
-    handleConfirm,
-    closeModal,
-    isModalOpen,
     sorting,
     setSorting,
+    ...pagination,
+    ...deleteOps,
+    ...search,
+    selectUserInfo,
+    setSelectUserInfo,
   };
 };
 

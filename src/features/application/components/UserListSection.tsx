@@ -1,16 +1,15 @@
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import UserTable from '@/features/application/components/UserTable';
-import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import TableSkeleton from '@/common/components/TableSkeleton';
+import UserTable from '@/features/application/components/UserTable';
+import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 
 const UserListSection = ({ hooksOptions }: { hooksOptions: TUserListReturn }) => {
   const { handleSearch } = hooksOptions;
   const navigate = useNavigate();
-
   const handleCreate = () => navigate('/add');
 
   return (

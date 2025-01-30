@@ -7,7 +7,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import React, { CSSProperties } from 'react';
-import { IApplicationGlobalListRes } from '../types/common.type';
+import { IApplicationGlobalListRes } from '@/common/types/common.type';
 
 export const showArrow = (sort: string | boolean) => {
   let showIcon = '↕';
@@ -37,7 +37,7 @@ export function getCommonPinningStyles<T>(column: Column<T>): CSSProperties {
     opacity: 1,
     position: isPinned ? 'sticky' : 'relative',
     width: column.getSize(),
-    zIndex: isPinned ? 1 : 0,
+    zIndex: 0,
   };
 }
 export default function useReactTableUtility<T>({

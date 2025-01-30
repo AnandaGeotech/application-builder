@@ -1,3 +1,3 @@
-import { applicationcationRoutes } from './application.routes';
+import { applicationRoutes } from '@/features/application/application.routes';
 
-export { applicationcationRoutes };
+export { applicationRoutes };

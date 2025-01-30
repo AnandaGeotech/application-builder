@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { applicationRoutes } from '@/features/application/application.routes';
+import { applicationRoutes } from '@/features/application';
 
 const routes = createBrowserRouter([
   {

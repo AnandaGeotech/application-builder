@@ -1,7 +1,6 @@
-import userJsonApiDBService from '@/features/application/services/users.service';
-// import productJsonApiDBService from '../services/users.service';
-import { IApplicationDBService } from '@/common/types/feature.type';
 import { IApplicationUser } from '@/common/types/application.type';
+import { IApplicationDBService } from '@/common/types/feature.type';
+import userJsonApiDBService from '@/features/application/services/users.service';
 
 export const SELECTED_SERVICE_TYPE = 'JSON_SERVER';
 export const DB_TYPE_JSON_SERVER = 'JSON_SERVER';

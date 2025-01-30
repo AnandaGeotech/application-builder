@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useDebounce from './use-debounce';
+import useDebounce from '@/common/hooks/use-debounce';
 
 export const useSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');

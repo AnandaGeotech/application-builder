@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
+import { Row } from '@tanstack/react-table';
 import { DropdownMenu } from 'radix-ui';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { Row } from '@tanstack/react-table';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@/common/components/Button';
 import { IApplicationUser } from '@/common/types/application.type';
+import { Button } from '@/common/components/Button';
 
 const TableActionButton = ({
   info,

@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
-import UserDetailSkeletonLoader from '../components/UserDetailSkeletonLoader';
-import UserInfo from '@/features/application/components/UserInfo';
-import applicationService from '@/features/application/services/application.service';
-import { IApplicationUser } from '@/common/types/application.type';
+import { useParams } from 'react-router-dom';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import { createResource, delay } from '@/common/components/utils';
+import { IApplicationUser } from '@/common/types/application.type';
+import UserDetailSkeletonLoader from '@/features/application/components/UserDetailSkeletonLoader';
+import UserInfo from '@/features/application/components/UserInfo';
+import applicationService from '@/features/application/services/application.service';
 
 const { USER_SERVICE } = applicationService();
 

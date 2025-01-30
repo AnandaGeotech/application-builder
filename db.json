@@ -1,71 +1,6 @@
 {
   "users": [
     {
-      "id": "1159",
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "john.doe@example.com",
-      "phone": "123-456-7890",
-      "gender": "male",
-      "presentAddress": "123 Main St",
-      "permanentAddress": "456 Elm St",
-      "birthDate": "1990-01-01",
-      "company": "Acme Corp",
-      "country": "usa",
-      "hometown": "Springfield",
-      "language": "english",
-      "maritalStatus": "single",
-      "city": "New York",
-      "state": "NY",
-      "pincode": "10001",
-      "education": [
-        {
-          "description": "Bachelor of Science in Computer Science",
-          "duration": "2010 - 2014",
-          "label": "University of Example"
-        }
-      ],
-
-      "professional": [
-        {
-          "description": "sadsad",
-          "duration": "3years",
-          "label": "MSC"
-        }
-      ]
-    },
-    {
-      "id": "1b85",
-      "firstName": "Jane",
-      "lastName": "Smith",
-      "email": "jane.smith@example.com",
-      "phone": "987-654-3210",
-      "gender": "female",
-      "presentAddress": "789 Oak St",
-      "permanentAddress": "101 Pine St",
-      "birthDate": "1992-02-15",
-      "company": "Tech Solutions",
-      "country": "canada",
-      "hometown": "Toronto",
-      "language": "french",
-      "maritalStatus": "married",
-      "city": "Vancouver",
-      "state": "BC",
-      "pincode": "V5K 0A1",
-      "education": [
-        {
-          "description": "Master of Arts in Graphic Design",
-          "duration": "2014 - 2016",
-          "label": "Design Institute"
-        },
-        {
-          "description": "Certificate in User Experience Design",
-          "duration": "2017 - 2018",
-          "label": "UX Academy"
-        }
-      ]
-    },
-    {
       "id": "be06",
       "education": [
         {
@@ -166,26 +101,6 @@
     },
     {
       "id": "e99a",
-      "education": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "professional": [
-        {
-          "description": "",
-          "duration": "",
-          "label": ""
-        }
-      ],
-      "firstName": "dsfdsf",
-      "lastName": "dsfdsf",
-      "gender": "male"
-    },
-    {
-      "id": "70f8",
       "education": [
         {
           "description": "",

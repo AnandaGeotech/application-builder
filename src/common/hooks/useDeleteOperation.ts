@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 export const useDeleteOperation = <T extends { id: string }>(deleteDataFromDBFn: (id: string) => Promise<void>) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
+  const [invalidateTag, setInvalidateTag] = useState<boolean>(false);
 
   const openModal = (info: T) => {
     setSelectUserInfo(info);
@@ -17,6 +18,7 @@ export const useDeleteOperation = <T extends { id: string }>(deleteDataFromDBFn:
     if (!selectUserInfo?.id) return;
 
     await deleteDataFromDBFn(selectUserInfo.id);
+    setInvalidateTag((prev) => !prev);
     toast.success('File deleted successfully!');
     closeModal();
   };
@@ -29,5 +31,7 @@ export const useDeleteOperation = <T extends { id: string }>(deleteDataFromDBFn:
     closeModal,
     handleDelete,
     handleConfirm: handleDelete,
+    invalidateTag,
+    setInvalidateTag,
   };
 };

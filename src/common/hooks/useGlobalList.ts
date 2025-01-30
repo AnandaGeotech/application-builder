@@ -39,7 +39,6 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
   const [sorting, setSorting] = useState<SortingState>([]);
 
-  console.log(sorting, 'sorting');
   const [dataResource, setDataResource] = useState<{
     read: () => IApplicationGlobalListRes<T>;
   } | null>(null);
@@ -78,7 +77,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
 
   useEffect(() => {
     loadData();
-  }, [search.debouncedSearchTerm, pagination.currentPage]);
+  }, [search.debouncedSearchTerm, pagination.currentPage, deleteOps.invalidateTag]);
 
   return {
     dataResource,
@@ -91,6 +90,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     ...search,
     selectUserInfo,
     setSelectUserInfo,
+    loadData,
   };
 };
 

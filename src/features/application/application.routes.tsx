@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import NotFoundPage from '@/common/components/NotFoundPage';
-import Layout from '@/common/layouts/ApplicationLayout';
+import Layout from '@/common/layouts/DashboardLayout';
 import Home from '@/features/application/pages/Home';
 
 export const applicationRoutes: RouteObject[] = [

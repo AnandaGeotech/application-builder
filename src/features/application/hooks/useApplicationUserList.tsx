@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper, Row } from '@tanstack/react-table';
 import { useState } from 'react';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
 import { IApplicationUser } from '@/common/types/application.type';
@@ -15,28 +15,35 @@ const generateColumns = (
   headers: (keyof IApplicationUser)[],
   data: IApplicationGlobalListRes<IApplicationUser>,
   openModal: (info: IApplicationUser) => void
-): ColumnDefinition<IApplicationUser>[] => [
-  ...headers.map((it) => {
+): ColumnDefinition<IApplicationUser>[] => {
+  const columnsArray = [];
+
+  headers.map((it) => {
     const sampleValue = data?.data?.[0]?.[it]; // Sample value to check type
 
-    if (typeof sampleValue === 'object') {
-      return columnHelper.accessor(it as any, {
-        header: it as string,
-        cell: '',
-      });
+    if (typeof sampleValue !== 'object') {
+      columnsArray.push(
+        columnHelper.accessor(it as any, {
+          header: it as string,
+          cell: (info) => info.getValue(),
+        })
+      );
     }
-    return columnHelper.accessor(it as any, {
-      header: it as string,
-      cell: (info) => info.getValue(),
-    });
-  }),
-  {
+    return sampleValue;
+  });
+  columnsArray.push({
     accessorKey: 'action',
     id: 'action',
+    enableSorting: false,
     header: 'Actions',
-    cell: (info) => <TableActionButton info={info?.row} openModal={openModal} />,
-  },
-];
+    cell: (info: { row: Row<IApplicationUser> }) => (
+      <div className="flex justify-center">
+        <TableActionButton info={info?.row} openModal={openModal} />
+      </div>
+    ),
+  });
+  return columnsArray;
+};
 const useApplicationUserList = () => {
   const [columns, setColumns] = useState<ColumnDef<IApplicationUser>[]>([]);
 

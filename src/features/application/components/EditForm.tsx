@@ -1,5 +1,4 @@
 import { RiCloseCircleLine } from 'react-icons/ri';
-
 import { ADD_FORM_BUILDER_FORM_FIELDS } from '@/features/application/constants/add-builder-form.constant';
 import Input from '@/common/components/form/Input';
 import Select from '@/common/components/form/Select';
@@ -182,7 +181,6 @@ const EditForm = () => {
                   type="button"
                   disabled={professionalFields.length < 2}
                   onClick={() => professionalFields.length > 1 && removeProfessional(index)}
-                  // className="text-red-500 hover:underline"
                   variant="danger"
                 >
                   <RiCloseCircleLine size={25} />

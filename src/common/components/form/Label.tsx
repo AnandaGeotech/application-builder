@@ -11,7 +11,8 @@ const Label: React.FC<LabelProps> = ({ htmlFor, label, required, error, classNam
 
   return (
     <label htmlFor={htmlFor} className={computedClassName}>
-      {label} {required && <span className="text-red-700">*</span>}
+      {label}
+      {required && <span className="text-red-700">*</span>}
     </label>
   );
 };

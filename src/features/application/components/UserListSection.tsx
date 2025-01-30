@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import TableSkeleton from '@/common/components/TableSkeleton';
@@ -27,13 +26,7 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TUserListReturn }) =>
             />
           </div>
           <div className="flex gap-2">
-            <Button
-              onClick={handleCreate}
-              className="'
-          "
-            >
-              Add User
-            </Button>
+            <Button onClick={handleCreate}>Add User</Button>
           </div>
         </div>
         <ErrorBoundary

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import ConfirmModal from '@/common/components/ConfirmModal';
 import { Pagination } from '@/common/components/Pagination';
 import GlobalTable from '@/common/components/table/GlobalTable';
@@ -8,7 +7,9 @@ import { TUserListReturn } from '@/features/application/hooks/useApplicationUser
 const UserTable = ({ hooksOptions }: { hooksOptions: TUserListReturn }) => {
   const { dataResource, handleConfirm, closeModal, isModalOpen } = hooksOptions;
   if (!dataResource) {
-    throw new Promise(() => {});
+    throw new Promise(() => {
+      // dummy comment
+    });
   }
   const data = dataResource.read();
 

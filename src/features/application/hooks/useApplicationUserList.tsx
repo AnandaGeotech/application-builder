@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
+import TableActionButton from '../components/TableActionButton';
 import applicationService from '@/features/application/services/application.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
@@ -11,7 +13,8 @@ const columnHelper = createColumnHelper<IApplicationUser>(); // Initialize colum
 
 const generateColumns = (
   headers: (keyof IApplicationUser)[],
-  data: IApplicationGlobalListRes<IApplicationUser>
+  data: IApplicationGlobalListRes<IApplicationUser>,
+  openModal: (info: IApplicationUser) => void
 ): ColumnDefinition<IApplicationUser>[] => [
   ...headers.map((it) => {
     const sampleValue = data?.data?.[0]?.[it]; // Sample value to check type
@@ -31,7 +34,7 @@ const generateColumns = (
     accessorKey: 'action',
     id: 'action',
     header: 'Actions',
-    cell: (info) => info.getValue(),
+    cell: (info) => <TableActionButton info={info?.row} openModal={openModal} />,
   },
 ];
 const useApplicationUserList = () => {

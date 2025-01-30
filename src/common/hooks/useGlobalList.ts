@@ -20,7 +20,11 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
   setColumns,
 }: {
   serviceMethods: IApplicationDBService<T>;
-  generateColumns?: (headers: (keyof T)[], data: IApplicationGlobalListRes<T>) => ColumnDefinition<T>[];
+  generateColumns?: (
+    headers: (keyof T)[],
+    data: IApplicationGlobalListRes<T>,
+    openModal: (info: T) => void
+  ) => ColumnDefinition<T>[];
   setColumns?: React.Dispatch<React.SetStateAction<ColumnDef<T>[]>>;
 }) => {
   const { getAllDataFromDBFn, deleteDataFromDBFn } = serviceMethods;
@@ -36,7 +40,10 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     read: () => IApplicationGlobalListRes<T>;
   } | null>(null);
   const [listData, setlistData] = useState<IApplicationGlobalListRes<T> | null>(null);
-
+  const openModal = (info: T) => {
+    setSelectUserInfo(info);
+    setIsModalOpen(true);
+  };
   const loadData = async () => {
     setDataResource(null);
     await delay(1000);
@@ -49,7 +56,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     allDataPromise.then((res) => {
       const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
       if (generateColumns && setColumns) {
-        setColumns(generateColumns(headers, res));
+        setColumns(generateColumns(headers, res, openModal));
       }
 
       setlistData(res);
@@ -70,10 +77,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
   useEffect(() => {
     loadData();
   }, [debouncedSearchTerm, currentPage]);
-  const openModal = (info: T) => {
-    setSelectUserInfo(info);
-    setIsModalOpen(true);
-  };
+
   const closeModal = () => setIsModalOpen(false);
   const handleDelete = async () => {
     await deleteDataFromDBFn(selectUserInfo?.id as string);

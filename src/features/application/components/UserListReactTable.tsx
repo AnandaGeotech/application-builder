@@ -31,9 +31,9 @@ const getCommonPinningStyles = (column: Column<IApplicationUser>): CSSProperties
   }
   return {
     boxShadow,
-    left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
+    left: isPinned === 'left' ? `${column.getStart('left') - 100}px` : undefined,
     right: isPinned === 'right' ? `${column.getAfter('right')}px ` : undefined,
-    opacity: isPinned ? 0.95 : 1,
+    opacity: 1,
     position: isPinned ? 'sticky' : 'relative',
     width: column.getSize(),
     zIndex: isPinned ? 1 : 0,
@@ -91,7 +91,7 @@ export default function UserListReactTable({
         >
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
+              <tr key={headerGroup.id} className="bg-white dark:bg-slate-900">
                 {headerGroup.headers.map((header) => {
                   const { column } = header;
 

@@ -1,7 +1,9 @@
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
+import { IApplicationUser } from '@/common/types/application.type';
 import { ColumnDef, SortingState } from '@tanstack/react-table';
 import React, { ReactNode } from 'react';
-import { IApplicationUser } from '@/common/types/application.type';
 
 export type TTheme = 'light' | 'dark';
 export interface IApplicationGlobalListRes<T> {
@@ -13,7 +15,19 @@ export interface IApplicationGlobalListRes<T> {
   pages?: number;
   prev?: null | number;
 }
-
+export type TUserRole = 'admin' | 'customer' | 'user';
+export type ILoginUser = {
+  password: string;
+  email: string;
+};
+export type IRegisterUser = {
+  password: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  id?: string;
+  role: TUserRole;
+};
 export type TGlobalTableProps<T> = {
   hooksOptions: Record<string, unknown> & {
     data: IApplicationGlobalListRes<T>;

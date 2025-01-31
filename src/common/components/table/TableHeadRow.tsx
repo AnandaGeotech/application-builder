@@ -1,6 +1,8 @@
 import { flexRender, HeaderGroup } from '@tanstack/react-table';
-import { Button } from '@/common/components/Button';
+import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa';
+import { RxCross2 } from 'react-icons/rx';
 import { getCommonPinningStyles, showArrow } from '@/common/hooks/useReactTableUtility';
+import { Button } from '@/common/components/Button';
 
 export function TableHeadRow<T>({ headerGroup }: { headerGroup: HeaderGroup<T> }) {
   return (
@@ -16,7 +18,7 @@ export function TableHeadRow<T>({ headerGroup }: { headerGroup: HeaderGroup<T> }
             style={{ ...getCommonPinningStyles(column as any) }}
           >
             <div
-              className="whitespace-nowrap"
+              className="whitespace-nowrap flex"
               onClick={header.column.getToggleSortingHandler()}
               role="button"
               tabIndex={0}
@@ -38,7 +40,7 @@ export function TableHeadRow<T>({ headerGroup }: { headerGroup: HeaderGroup<T> }
                       header.column.pin('left');
                     }}
                   >
-                    {'<='}
+                    <FaLongArrowAltLeft />
                   </Button>
                 ) : null}
                 {header.column.getIsPinned() ? (
@@ -48,7 +50,7 @@ export function TableHeadRow<T>({ headerGroup }: { headerGroup: HeaderGroup<T> }
                       header.column.pin(false);
                     }}
                   >
-                    X
+                    <RxCross2 />
                   </Button>
                 ) : null}
                 {header.column.getIsPinned() !== 'right' ? (
@@ -58,7 +60,7 @@ export function TableHeadRow<T>({ headerGroup }: { headerGroup: HeaderGroup<T> }
                       header.column.pin('right');
                     }}
                   >
-                    {'=>'}
+                    <FaLongArrowAltRight />
                   </Button>
                 ) : null}
               </div>

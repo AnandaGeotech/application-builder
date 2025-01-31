@@ -1,14 +1,17 @@
 import { RouteObject } from 'react-router-dom';
 import Login from './pages/Login';
-import NotFoundPage from '@/common/components/NotFoundPage';
 
 export const authenticationRoutes: RouteObject[] = [
   {
-    path: 'login', // Root route
-    element: <Login />, // Use Layout as the wrapper
+    index: true,
+    element: <Login />, // Home route
   },
   {
-    path: '*',
-    element: <NotFoundPage />,
+    element: <Login />,
+    path: 'login',
+  },
+  {
+    path: 'register',
+    lazy: () => import('./pages/Register'), // Add route
   },
 ];

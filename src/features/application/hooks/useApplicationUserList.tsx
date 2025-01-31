@@ -3,12 +3,12 @@
 import { ColumnDef, createColumnHelper, Row } from '@tanstack/react-table';
 import { useState } from 'react';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
+import GlobalDBService from '@/common/services/global.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
 import TableActionButton from '@/features/application/components/TableActionButton';
-import applicationService from '@/features/application/services/application.service';
 
-const { USER_SERVICE } = applicationService();
+const { USER_SERVICE } = GlobalDBService();
 const columnHelper = createColumnHelper<IApplicationUser>(); // Initialize column helper
 
 const generateColumns = (

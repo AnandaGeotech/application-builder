@@ -210,6 +210,25 @@
       "city": "kolkata",
       "state": "wb",
       "pincode": "54654"
+    },
+    {
+      "id": "594d",
+      "firstName": "sadsad",
+      "lastName": "sdsd",
+      "email": "sadsad",
+      "password": "8420@nandA",
+      "phone": "546546546"
+    }
+  ],
+  "authenticatedUsers": [
+    {
+      "id": "822a",
+      "firstName": "Ananda",
+      "lastName": "Gharami",
+      "email": "tamalkundu007@gmail.com",
+      "password": "8420@nandA",
+      "phone": "9878767656",
+      "role": "admin"
     }
   ]
 }

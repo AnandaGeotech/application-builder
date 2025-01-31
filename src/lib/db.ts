@@ -1,4 +1,4 @@
-import { IApplicationUser } from '@/common/types/application.type';
+import { IApplicationUser, ILoginUser, IRegisterUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
 
 export async function clearStore() {
@@ -13,6 +13,38 @@ export async function clearStore() {
 }
 
 const API_BASE_URL = 'http://localhost:3000';
+
+export const loginUserFromApiServerByEmail = async (
+  email: string,
+  password: string
+): Promise<ILoginUser | undefined> => {
+  if (!email || !password) {
+    throw new Error('Please provide email and password!');
+  }
+  const response = await fetch(`${API_BASE_URL}/authenticatedUsers?email=${email}&password=${password}`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch record with ID: ${email}`);
+  }
+
+  return response.json();
+};
+
+// Add data to the API server
+export const regsiterUserToApiServer = async (data: IRegisterUser): Promise<IRegisterUser> => {
+  const response = await fetch(`${API_BASE_URL}/authenticatedUsers`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to add new record.');
+  }
+
+  return response.json();
+};
 
 // Add data to the API server
 export const addDataToApiServer = async (data: IApplicationUser): Promise<IApplicationUser> => {

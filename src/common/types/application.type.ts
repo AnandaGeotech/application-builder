@@ -1,3 +1,6 @@
+/* eslint-disable import/no-cycle */
+import { TUserRole } from './common.type';
+
 export interface Education {
   description: string;
   duration: string;
@@ -9,6 +12,19 @@ export interface Profession {
   duration: string;
   label: string;
 }
+
+export type ILoginUser = {
+  password: string;
+  email: string;
+};
+export type IRegisterUser = {
+  password: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  id?: string;
+  role: TUserRole;
+};
 
 export type IApplicationUser = {
   firstName: string;

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { applicationRoutes } from '@/features/application';
-import { authenticationRoutes } from '@/features/authentication/authentication.routes';
+import { authenticationRoutes } from '@/features/authentication';
 
 const routes = createBrowserRouter([
   {
@@ -8,7 +8,7 @@ const routes = createBrowserRouter([
     children: applicationRoutes,
   },
   {
-    path: '/auth',
+    path: 'auth',
     children: authenticationRoutes,
   },
 ]);

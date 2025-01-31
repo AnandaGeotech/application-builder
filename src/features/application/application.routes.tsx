@@ -1,12 +1,17 @@
 import { RouteObject } from 'react-router-dom';
 import NotFoundPage from '@/common/components/NotFoundPage';
 import Layout from '@/common/layouts/DashboardLayout';
+import ProtectedRoute from '@/common/utils/ProtectedRouted';
 import Home from '@/features/application/pages/Home';
 
 export const applicationRoutes: RouteObject[] = [
   {
     path: '/', // Root route
-    element: <Layout />, // Use Layout as the wrapper
+    element: (
+      <ProtectedRoute allowedRoles={['admin']}>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,

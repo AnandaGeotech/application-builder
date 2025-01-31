@@ -2,12 +2,12 @@ import { Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import { createResource, delay } from '@/common/components/utils';
+import GlobalDBService from '@/common/services/global.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import UserDetailSkeletonLoader from '@/features/application/components/UserDetailSkeletonLoader';
 import UserInfo from '@/features/application/components/UserInfo';
-import applicationService from '@/features/application/services/application.service';
 
-const { USER_SERVICE } = applicationService();
+const { USER_SERVICE } = GlobalDBService();
 
 export const Component = () => {
   const { id: userId } = useParams();

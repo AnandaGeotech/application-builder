@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { FieldValues, SubmitHandler, useFieldArray, useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import applicationService from '@/features/application/services/application.service';
 import { IApplicationUser } from '@/common/types/application.type';
+import GlobalDBService from '@/common/services/global.service';
 import { delay } from '@/common/components/utils';
 
-const { USER_SERVICE } = applicationService();
+const { USER_SERVICE } = GlobalDBService();
 
 const useUserUpsert = () => {
   const methods = useFormContext();

@@ -1,9 +1,7 @@
-import { FaShoppingBag } from 'react-icons/fa';
 import { FaUsersGear } from 'react-icons/fa6';
 import { GrHelpBook } from 'react-icons/gr';
-import { IoDocumentAttachSharp, IoLogoWebComponent } from 'react-icons/io5';
-import { PiChartPieSliceFill, PiSignInBold } from 'react-icons/pi';
-import { RiFileEditFill } from 'react-icons/ri';
+import { IoLogoWebComponent } from 'react-icons/io5';
+import { PiChartPieSliceFill } from 'react-icons/pi';
 import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -42,7 +40,7 @@ const Sidebar = () => {
             <span className="flex-1 ms-3 whitespace-nowrap">Users</span>
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             to="/"
             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -77,10 +75,10 @@ const Sidebar = () => {
             />
             <span className="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
       <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
-        <li>
+        {/* <li>
           <Link
             to="/"
             className="flex items-center p-2 text-gray-900 transition duration-75 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group"
@@ -91,7 +89,7 @@ const Sidebar = () => {
             />
             <span className="ms-3">Documentation</span>
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             to="/"

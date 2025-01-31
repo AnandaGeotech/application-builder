@@ -1,3 +1,5 @@
+import { FaArrowsAltV, FaLongArrowAltDown, FaLongArrowAltUp } from 'react-icons/fa';
+
 import {
   Column,
   ColumnDef,
@@ -7,16 +9,19 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import React, { CSSProperties } from 'react';
+
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
 
 export const showArrow = (sort: string | boolean) => {
-  let showIcon = '↕';
   if (sort === 'asc') {
-    showIcon = '↑';
-  } else if (sort === 'desc') {
-    showIcon = '↓';
+    // showIcon = '↑';
+    return <FaLongArrowAltUp />;
   }
-  return showIcon;
+  if (sort === 'desc') {
+    // showIcon = '↓';
+    return <FaLongArrowAltDown />;
+  }
+  return <FaArrowsAltV />;
 };
 
 export function getCommonPinningStyles<T>(column: Column<T>): CSSProperties {

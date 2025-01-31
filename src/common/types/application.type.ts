@@ -10,6 +10,17 @@ export interface Profession {
   label: string;
 }
 
+export type ILoginUser = {
+  password: string;
+  email: string;
+};
+export type IRegisterUser = {
+  password: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+};
+
 export type IApplicationUser = {
   firstName: string;
   lastName: string;

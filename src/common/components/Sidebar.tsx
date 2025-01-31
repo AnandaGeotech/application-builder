@@ -1,7 +1,8 @@
 import { FaUsersGear } from 'react-icons/fa6';
 import { GrHelpBook } from 'react-icons/gr';
 import { IoLogoWebComponent } from 'react-icons/io5';
-import { PiChartPieSliceFill } from 'react-icons/pi';
+import { PiChartPieSliceFill, PiSignInBold } from 'react-icons/pi';
+import { RiFileEditFill } from 'react-icons/ri';
 import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
@@ -40,18 +41,7 @@ const Sidebar = () => {
             <span className="flex-1 ms-3 whitespace-nowrap">Users</span>
           </Link>
         </li>
-        {/* <li>
-          <Link
-            to="/"
-            className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-          >
-            <FaShoppingBag
-              className="shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-              aria-hidden="true"
-            />
-            <span className="flex-1 ms-3 whitespace-nowrap">Products</span>
-          </Link>
-        </li>
+
         <li>
           <Link
             to="/"
@@ -75,7 +65,7 @@ const Sidebar = () => {
             />
             <span className="flex-1 ms-3 whitespace-nowrap">Sign Up</span>
           </Link>
-        </li> */}
+        </li>
       </ul>
       <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
         {/* <li>

@@ -18,6 +18,9 @@ export const loginUserFromApiServerByEmail = async (
   email: string,
   password: string
 ): Promise<ILoginUser | undefined> => {
+  if (!email || !password) {
+    throw new Error('Please provide email and password!');
+  }
   const response = await fetch(`${API_BASE_URL}/authenticatedUsers?email=${email}&password=${password}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch record with ID: ${email}`);

@@ -2,7 +2,7 @@
 import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import App from './App.tsx';
-import { AuthProvider } from './common/context/auth.context.tsx';
+import { AuthProvider } from './common/contexts/auth.context.tsx';
 import './index.css';
 
 const rootElement = document.getElementById('root') as HTMLElement;

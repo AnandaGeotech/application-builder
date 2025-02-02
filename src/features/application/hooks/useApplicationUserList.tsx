@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ColumnDef, createColumnHelper, Row } from '@tanstack/react-table';
 import { useState } from 'react';
+import ApplicationUserService from '../services/users.service';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
-import GlobalDBService from '@/common/services/global.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
 import TableActionButton from '@/features/application/components/TableActionButton';
 
-const { USER_SERVICE } = GlobalDBService();
+const userApplicationServiceMethods = ApplicationUserService();
 const columnHelper = createColumnHelper<IApplicationUser>(); // Initialize column helper
 
 const generateColumns = (
@@ -48,7 +48,7 @@ const useApplicationUserList = () => {
   const [columns, setColumns] = useState<ColumnDef<IApplicationUser>[]>([]);
 
   const options = useGlobalList<IApplicationUser>({
-    serviceMethods: USER_SERVICE,
+    serviceMethods: userApplicationServiceMethods,
     generateColumns,
     setColumns,
   });

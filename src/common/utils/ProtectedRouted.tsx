@@ -1,19 +1,17 @@
-/* eslint-disable boundaries/no-unknown */
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../context/auth.context';
-import { TUserRole } from '../types/common.type';
+import { useAuth } from '@/common/contexts/auth.context';
+import { TUserRole } from '@/common/types/common.type';
 
-interface ProtectedRouteProps {
+interface ProtectedRouteProps extends PropsWithChildren {
   allowedRoles: Array<TUserRole>;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles, children }) => {
-  const { token, loading, user } = useAuth();
+  const { token, authLoading, user } = useAuth();
 
   const isAuthenticated = !!token;
-
-  if (loading) return <p>Loading...</p>;
+  if (authLoading) return <p>Loading...</p>;
 
   if (!isAuthenticated || !user) return <Navigate to="/auth/login" replace />;
 

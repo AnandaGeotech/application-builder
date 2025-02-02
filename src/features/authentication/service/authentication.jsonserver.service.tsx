@@ -2,7 +2,7 @@
 /* eslint-disable boundaries/no-unknown */
 import { ILoginUser, IRegisterUser } from '@/common/types/application.type';
 import { IAuthenticationDBService } from '@/common/types/feature.type';
-import { loginUserFromApiServerByEmail, regsiterUserToApiServer } from '@/lib/db';
+import { loginUserFromApiServerByEmail, registerUserToApiServer } from '@/lib/db';
 
 // Function to get a single file data by ID
 const userLoginFromDBFn = async (email: string, password: string): Promise<ILoginUser | undefined> =>
@@ -10,7 +10,7 @@ const userLoginFromDBFn = async (email: string, password: string): Promise<ILogi
   loginUserFromApiServerByEmail(email, password);
 
 // Function to get all data from JsonApiDB
-const userRegisterToDBFn = async (data: IRegisterUser): Promise<IRegisterUser> => regsiterUserToApiServer(data);
+const userRegisterToDBFn = async (data: IRegisterUser): Promise<IRegisterUser> => registerUserToApiServer(data);
 
 const userAuthenticationJsonApiDBService: IAuthenticationDBService = {
   userLoginFromDBFn,

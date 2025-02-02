@@ -1,7 +1,7 @@
 import { FiUserPlus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { USER_REGISTER_BUILDER_FORM_FIELDS } from '../constants/authentication.constant';
 import useUserRegister from '../hooks/useUserRegister';
+import { USER_REGISTER_BUILDER_FORM_FIELDS } from '@/features/authentication/constants/authentication.form.constant';
 import Input from '@/common/components/form/Input';
 import SkeletonFormLoader from '@/common/components/form/FormLoader';
 import { Button } from '@/common/components/Button';

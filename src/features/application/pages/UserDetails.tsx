@@ -1,13 +1,14 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ApplicationUserService from '../services/users.service';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
 import { createResource, delay } from '@/common/components/utils';
-import GlobalDBService from '@/common/services/global.service';
+// import GlobalDBService from '@/common/services/global.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import UserDetailSkeletonLoader from '@/features/application/components/UserDetailSkeletonLoader';
 import UserInfo from '@/features/application/components/UserInfo';
 
-const { USER_SERVICE } = GlobalDBService();
+const userApplicationServiceMethods = ApplicationUserService();
 
 export const Component = () => {
   const { id: userId } = useParams();
@@ -22,7 +23,7 @@ export const Component = () => {
     setDataResource(null);
     await delay(1000);
 
-    const allDataPromise = USER_SERVICE.getSingleFileDataFn(userId as string);
+    const allDataPromise = userApplicationServiceMethods.getSingleFileDataFn(userId as string);
     // allDataPromise.then((res) => setUserInfoData(res));
 
     const resource = createResource(() => allDataPromise);

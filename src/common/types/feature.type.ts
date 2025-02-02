@@ -1,3 +1,4 @@
+import { IApplicationUser } from './application.type';
 import { IApplicationGlobalListRes, ILoginUser, IQueryFile, IRegisterUser } from '@/common/types/common.type';
 
 /* eslint-disable no-unused-vars */
@@ -6,6 +7,12 @@ export interface IApplicationDBService<T> {
   getAllDataFromDBFn: (props: IQueryFile) => Promise<IApplicationGlobalListRes<T>>;
   deleteDataFromDBFn: (id: string) => Promise<void>;
   upsertDataToDBFn: (payload: T) => Promise<T | void>;
+}
+export interface IApplicationUserDBService {
+  getSingleFileDataFn: (fileId: string) => Promise<IApplicationUser>;
+  getAllDataFromDBFn: (props: IQueryFile) => Promise<IApplicationGlobalListRes<IApplicationUser>>;
+  deleteDataFromDBFn: (id: string) => Promise<void>;
+  upsertDataToDBFn: (payload: IApplicationUser) => Promise<IApplicationUser | void>;
 }
 export interface IAuthenticationDBService {
   // userInfoDataFn: (token: string) => ILoginUser;

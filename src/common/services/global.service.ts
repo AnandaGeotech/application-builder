@@ -1,14 +1,12 @@
 /* eslint-disable no-alert */
-import { DB_CONNECT, SELECTED_SERVICE_TYPE } from '@/common/constants/global-db.contant';
-
-type IDBType = keyof typeof DB_CONNECT;
+import { COMMON_DB_CONNECT, SELECTED_COMMON_SERVICE_TYPE } from '@/common/constants/global-db.constant';
 
 const GlobalDBService = () => {
-  if (SELECTED_SERVICE_TYPE in DB_CONNECT) {
-    return DB_CONNECT[SELECTED_SERVICE_TYPE as IDBType];
+  if (SELECTED_COMMON_SERVICE_TYPE in COMMON_DB_CONNECT) {
+    return COMMON_DB_CONNECT[SELECTED_COMMON_SERVICE_TYPE];
   }
 
-  window.alert('Invalid database type. Please choose either IndexDB or LocalStorage.');
+  window.alert(`Invalid database type. Please choose between ${Object.keys(COMMON_DB_CONNECT).join(',')} .`);
   throw new Error('Invalid database type');
 };
 

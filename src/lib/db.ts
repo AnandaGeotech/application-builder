@@ -30,7 +30,7 @@ export const loginUserFromApiServerByEmail = async (
 };
 
 // Add data to the API server
-export const regsiterUserToApiServer = async (data: IRegisterUser): Promise<IRegisterUser> => {
+export const registerUserToApiServer = async (data: IRegisterUser): Promise<IRegisterUser> => {
   const response = await fetch(`${API_BASE_URL}/authenticatedUsers`, {
     method: 'POST',
     headers: {

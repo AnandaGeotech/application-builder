@@ -9,7 +9,7 @@ import { IRegisterUser } from '../types/common.type';
 interface AuthContextType {
   user: IRegisterUser | null;
   token: string | null;
-  loading: boolean;
+  authLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   refetchUser: () => Promise<void>;
@@ -33,14 +33,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     role: 'admin',
   });
   const [token, setToken] = useState<string | null>(localStorage.getItem(APPLICATION_TOKEN));
-  const [loading, setLoading] = useState<boolean>(true);
-  const [isMount, setisMount] = useState<boolean>(true);
+  const [authLoading, setAuthLoading] = useState<boolean>(true);
+  const [isMount, setisMount] = useState<boolean>(false);
 
   useEffect(() => {
-    setisMount(true);
+    setTimeout(() => {
+      setisMount(true);
+    }, 3000);
   }, []);
   useEffect(() => {
     if (isMount) {
+      console.log(localStorage.getItem(APPLICATION_TOKEN), APPLICATION_TOKEN, 'kjjkl');
       setToken(localStorage.getItem(APPLICATION_TOKEN));
     }
   }, [isMount]);
@@ -52,7 +55,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
   const refetchUser = useCallback(async () => {
     if (!token) return;
-    setLoading(true);
+    setAuthLoading(true);
     try {
       setUser({
         id: '822a',
@@ -76,11 +79,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // console.error('Refetch user failed:', error);
       logout();
     } finally {
-      setLoading(false);
+      setAuthLoading(false);
     }
   }, [token]);
   const login = async (email: string, password: string) => {
-    setLoading(true);
+    setAuthLoading(true);
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -97,14 +100,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     } catch (error) {
       // console.error('Login failed:', error);
     } finally {
-      setLoading(false);
+      setAuthLoading(false);
     }
   };
 
   useEffect(() => {
     if (isMount) {
       if (token) refetchUser();
-      else setLoading(false);
+      else setAuthLoading(false);
     }
   }, [token, refetchUser, isMount]);
 
@@ -113,12 +116,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     () => ({
       user,
       token,
-      loading,
+      authLoading,
       login,
       logout,
       refetchUser,
     }),
-    [user, token, loading, refetchUser]
+    [user, token, authLoading, refetchUser]
   );
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;

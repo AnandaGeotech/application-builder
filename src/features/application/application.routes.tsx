@@ -1,14 +1,14 @@
 import { RouteObject } from 'react-router-dom';
-import NotFoundPage from '@/common/components/NotFoundPage';
 import Layout from '@/common/layouts/DashboardLayout';
 import ProtectedRoute from '@/common/utils/ProtectedRouted';
 import Home from '@/features/application/pages/Home';
+import { USER_ROLES } from '@/common/constants/common.constant';
 
 export const applicationRoutes: RouteObject[] = [
   {
-    path: '/', // Root route
+    path: '/',
     element: (
-      <ProtectedRoute allowedRoles={['admin']}>
+      <ProtectedRoute allowedRoles={[USER_ROLES.ADMIN]}>
         <Layout />
       </ProtectedRoute>
     ),
@@ -34,9 +34,5 @@ export const applicationRoutes: RouteObject[] = [
         element: <Home />, // user details route
       },
     ],
-  },
-  {
-    path: '*',
-    element: <NotFoundPage />,
   },
 ];

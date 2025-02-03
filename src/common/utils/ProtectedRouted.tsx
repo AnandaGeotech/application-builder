@@ -1,11 +1,12 @@
 /* eslint-disable boundaries/no-unknown */
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/auth.context';
 import { TUserRole } from '../types/common.type';
 
 interface ProtectedRouteProps {
   allowedRoles: Array<TUserRole>;
+  children: ReactNode;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles, children }) => {

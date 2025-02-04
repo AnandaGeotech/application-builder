@@ -26,6 +26,7 @@ export const USER_REGISTER_BUILDER_FORM_FIELDS = {
     label: 'Password',
     name: 'password',
     placeholder: '********',
+    type: 'password',
   },
   PHONE: {
     // rules: userRegisterValidation.lastName,

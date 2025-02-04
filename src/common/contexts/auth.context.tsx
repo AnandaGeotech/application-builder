@@ -3,6 +3,7 @@ import React, { createContext, PropsWithChildren, useCallback, useEffect, useMem
 import { APPLICATION_TOKEN } from '../constants/common.constant';
 import { IRegisterUser } from '../types/common.type';
 import { delay } from '../components/utils';
+import DashboardSkeletonLoader from '../components/loader/DashboardSkeletonLoader';
 
 // Define User Type
 
@@ -36,13 +37,10 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [isMount, setisMount] = useState<boolean>(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setisMount(true);
-    }, 3000);
+    setisMount(true);
   }, []);
   useEffect(() => {
     if (isMount) {
-      console.log(localStorage.getItem(APPLICATION_TOKEN), APPLICATION_TOKEN, 'kjjkl');
       setToken(localStorage.getItem(APPLICATION_TOKEN));
     }
   }, [isMount]);
@@ -58,6 +56,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const refetchUser = useCallback(async () => {
     if (!token) return;
     setAuthLoading(true);
+    await delay(3000);
     try {
       setUser({
         id: '822a',
@@ -130,7 +129,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <AuthContext.Provider value={contextValue}>
-      {authLoading ? <p>authentication Loading...</p> : children}
+      {authLoading ? <DashboardSkeletonLoader /> : children}
     </AuthContext.Provider>
   );
 };

@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/common/components/Button';
 import ErrorBoundary from '@/common/components/ErrorBoundary';
-import TableSkeleton from '@/common/components/TableSkeleton';
+import TableSkeleton from '@/common/components/loader/TableSkeleton';
 import UserTable from '@/features/application/components/UserTable';
 import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 

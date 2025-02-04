@@ -26,7 +26,7 @@ const useUserLogin = () => {
     return async (data) => {
       if (toastId) return;
 
-      toastId = toast.loading('Uploading data...');
+      toastId = toast.loading('User logging...');
       await delay(1000);
 
       try {

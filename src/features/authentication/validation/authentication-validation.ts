@@ -1,3 +1,5 @@
+import { emailRegex } from '@/common/utils/regex';
+
 const validatePassword = (password: string) => {
   // Check minimum and maximum length
 
@@ -46,7 +48,12 @@ export const userRegisterValidation = {
     required: 'First name is required',
   },
   email: {
-    required: 'Field is required',
+    required: 'Email is required',
+    // validate: validateEmail,
+    pattern: {
+      value: emailRegex,
+      message: 'Please enter a valid email address',
+    },
   },
   password: {
     required: 'Password is required',

@@ -6,12 +6,12 @@ type TInputProps = {
   type?: string;
   name: string;
   label?: string;
-  required?: boolean; // Add required prop to determine if the field is required
+  required?: boolean;
   disabled?: boolean;
-  rules?: Record<string, unknown>; // Add rules prop to handle validation rules
-};
+  rules?: Record<string, unknown>;
+} & Record<string, unknown>;
 
-const Input = ({ type = 'text', name, label, required, disabled, rules = {} }: TInputProps) => {
+const Input = ({ type = 'text', name, label, required, disabled, rules = {}, ...restOptions }: TInputProps) => {
   const { search } = useLocation();
   return (
     <Controller
@@ -22,6 +22,7 @@ const Input = ({ type = 'text', name, label, required, disabled, rules = {} }: T
           {label && <Label error={fieldState.error?.message} required={required} htmlFor={name} label={label} />}
 
           <input
+            {...restOptions}
             {...field}
             type={type}
             id={name}

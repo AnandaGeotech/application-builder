@@ -1,13 +1,9 @@
-/* eslint-disable boundaries/element-types */
 /* eslint-disable no-unused-vars */
 import React, { createContext, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react';
 import { APPLICATION_TOKEN } from '../constants/common.constant';
 import { IRegisterUser } from '../types/common.type';
 import { delay } from '../components/utils';
 import DashboardSkeletonLoader from '../components/loader/DashboardSkeletonLoader';
-import authenticationService from '@/features/authentication/service/authentication.service';
-
-// Define User Type
 
 // Define Auth Context State
 interface AuthContextType {
@@ -19,19 +15,24 @@ interface AuthContextType {
   setUser: React.Dispatch<React.SetStateAction<IRegisterUser | null>>;
   setToken: React.Dispatch<React.SetStateAction<string | null>>;
 }
-const { retrieveUserByTokenFromDBFn } = authenticationService();
+
+interface AuthProviderProps extends PropsWithChildren {
+  retrieveUserByTokenFromDBFn: (token: string) => Promise<IRegisterUser | undefined>;
+}
 
 // Create Context
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children, retrieveUserByTokenFromDBFn }) => {
   const [user, setUser] = useState<IRegisterUser | null>(null);
   const [token, setToken] = useState<string | null>(localStorage.getItem(APPLICATION_TOKEN));
   const [authLoading, setAuthLoading] = useState<boolean>(true);
   const [isMount, setIsMount] = useState<boolean>(false);
+
   useEffect(() => {
     setIsMount(true);
   }, []);
+
   useEffect(() => {
     if (isMount) {
       setToken(localStorage.getItem(APPLICATION_TOKEN));
@@ -46,6 +47,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setToken(null);
     setAuthLoading(false);
   };
+
   const refetchUser = useCallback(async () => {
     if (!token) return;
     setAuthLoading(true);
@@ -61,7 +63,7 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     } finally {
       setAuthLoading(false);
     }
-  }, [token]);
+  }, [token, retrieveUserByTokenFromDBFn]);
 
   useEffect(() => {
     if (isMount) {
@@ -70,7 +72,6 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
     }
   }, [token, refetchUser, isMount]);
 
-  // ✅ Use useMemo to optimize context value
   const contextValue = useMemo(
     () => ({
       user,

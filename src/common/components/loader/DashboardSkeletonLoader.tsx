@@ -2,6 +2,7 @@
 import { FaBarsStaggered } from 'react-icons/fa6';
 import ThemeProvider from '../ThemeProvider';
 import TableSkeleton from './TableSkeleton';
+import SearchSkeleton from './SearchSkeleton';
 
 function DashboardSkeletonLoader() {
   return (
@@ -47,10 +48,9 @@ function DashboardSkeletonLoader() {
       </aside>
 
       <div className="sm:ml-64 flex flex-col justify-between h-screen p-6">
-        <div>
-          <section className="dark:bg-slate-950 bg-white py-16 mx-auto px-6 pt-20">
-            <div className="h-10 w-48 bg-gray-300 dark:bg-gray-700 rounded animate-pulse mb-6" />
-          </section>
+        <div className="mt-16">
+          <div className="h-4 w-48 bg-gray-300 dark:bg-gray-700  rounded animate-pulse" />
+          <SearchSkeleton />
           <TableSkeleton />
         </div>
         <footer className="text-gray-400 dark:text-gray-500 py-6 text-center">

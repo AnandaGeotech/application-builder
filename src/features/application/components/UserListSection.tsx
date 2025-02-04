@@ -7,7 +7,7 @@ import UserTable from '@/features/application/components/UserTable';
 import { TUserListReturn } from '@/features/application/hooks/useApplicationUserList';
 
 const UserListSection = ({ hooksOptions }: { hooksOptions: TUserListReturn }) => {
-  const { handleSearch } = hooksOptions;
+  const { handleSearch, error } = hooksOptions;
   const navigate = useNavigate();
   const handleCreate = () => navigate('/add');
 
@@ -30,10 +30,16 @@ const UserListSection = ({ hooksOptions }: { hooksOptions: TUserListReturn }) =>
           </div>
         </div>
         <ErrorBoundary
-          fallback={<h2 className="text-white text-center text-3xl">Oops! An error occurred.Please reload the page</h2>}
+          fallback={
+            <h2 className="text-white text-center text-3xl">Oops! An error occurred. Please reload the page.</h2>
+          }
         >
           <Suspense fallback={<TableSkeleton />}>
-            <UserTable hooksOptions={hooksOptions} />
+            {error ? (
+              <h2 className="text-red-500 text-center text-lg">{error}</h2> // Display error message
+            ) : (
+              <UserTable hooksOptions={hooksOptions} />
+            )}
           </Suspense>
         </ErrorBoundary>
       </div>

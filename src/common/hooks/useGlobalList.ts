@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable no-unused-vars */
 import { ColumnDef, SortingState } from '@tanstack/react-table';
@@ -7,8 +8,7 @@ import { createResource, delay } from '@/common/components/utils';
 import { useDeleteOperation } from '@/common/hooks/useDeleteOperation';
 import { usePagination } from '@/common/hooks/usePagination';
 import { useSearch } from '@/common/hooks/useSearch';
-import { IApplicationGlobalListRes } from '@/common/types/common.type';
-import { IApplicationDBService } from '@/common/types/feature.type';
+import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
 
 export type GroupedColumnDef<T> = {
   id: string;
@@ -19,7 +19,10 @@ export type GroupedColumnDef<T> = {
 export type ColumnDefinition<T> = ColumnDef<T> | GroupedColumnDef<T>;
 
 interface UseGlobalListOptions<T> {
-  serviceMethods: IApplicationDBService<T>;
+  serviceMethods: {
+    getAllDataFromDBFn: (props: IQueryFile) => Promise<IApplicationGlobalListRes<T>>;
+    deleteDataFromDBFn?: (id: string) => Promise<void>;
+  };
   generateColumns?: (
     headers: (keyof T)[],
     data: IApplicationGlobalListRes<T>,
@@ -39,14 +42,14 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
 }: UseGlobalListOptions<T>) => {
   const { getAllDataFromDBFn, deleteDataFromDBFn } = serviceMethods;
   const navigate = useNavigate();
-
+  const [error, setError] = useState<string | null>(null);
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const [dataResource, setDataResource] = useState<{
     read: () => IApplicationGlobalListRes<T>;
   } | null>(null);
-  const [listData, setlistData] = useState<IApplicationGlobalListRes<T> | null>(null);
+  const [listData, setListData] = useState<IApplicationGlobalListRes<T> | null>(null);
 
   // Optional pagination hook
   const pagination = usePagination();
@@ -59,24 +62,30 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
 
   const loadData = async () => {
     setDataResource(null);
+    setListData(null); // Optionally clear previous data to indicate loading
+    setError(null); // Reset any previous error state
     await delay(1000);
 
-    const allDataPromise = getAllDataFromDBFn({
-      currentPage: pagination.currentPage,
-      record: pagination.record,
-      searchTerm: search.debouncedSearchTerm,
-    });
+    try {
+      const allDataPromise = getAllDataFromDBFn({
+        currentPage: pagination.currentPage,
+        record: pagination.record,
+        searchTerm: search.debouncedSearchTerm,
+      });
 
-    allDataPromise.then((res) => {
-      const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
+      const res = await allDataPromise; // Wait for the promise to resolve
+
       if (generateColumns && setColumns) {
+        const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
         setColumns(generateColumns(headers, res, navigate, deleteOps?.openModal ?? (() => {})));
       }
-      setlistData(res);
-    });
+      setListData(res);
 
-    const resource = createResource(() => allDataPromise);
-    setDataResource(resource);
+      const resource = createResource(() => allDataPromise);
+      setDataResource(resource);
+    } catch (error: any) {
+      setError(error?.message || 'An error occurred while loading data. Please try again later.'); // Set error message
+    }
   };
 
   useEffect(() => {
@@ -86,7 +95,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
   return {
     dataResource,
     listData,
-    setlistData,
+    setListData,
     sorting,
     setSorting,
     ...pagination,
@@ -95,6 +104,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     selectUserInfo,
     setSelectUserInfo,
     loadData,
+    error,
   };
 };
 

@@ -43,6 +43,26 @@ export const loginUserFromApiServerByEmail = async (
   return { user, token };
 };
 
+export const retrieveUserByTokenFromApiServer = async (token: string): Promise<IRegisterUser | undefined> => {
+  if (!token) {
+    throw new Error('Token is required!');
+  }
+
+  // Here you would typically verify the token (in a real application)
+  // For the sake of this example, let's assume we just decode it
+  const userId = token.split('-')[2]; // Extract user ID from the token
+
+  const response = await fetch(`${API_BASE_URL}/authenticatedUsers/${userId}`); // Fetch the user data
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch user data for ID: ${userId}`);
+  }
+
+  const user: IRegisterUser = await response.json();
+
+  return user;
+};
+
 // Add data to the API server
 export const registerUserToApiServer = async (data: IRegisterUser): Promise<IRegisterUser> => {
   const response = await fetch(`${API_BASE_URL}/authenticatedUsers`, {
@@ -76,7 +96,6 @@ export const addDataToApiServer = async (data: IApplicationUser): Promise<IAppli
 
   return response.json();
 };
-
 // Get all data from the API server
 export const getAllDataFromApiServer = async (
   props: IQueryFile
@@ -99,11 +118,21 @@ export const getAllDataFromApiServer = async (
   const url = `${API_BASE_URL}/users?${queryParams.toString()}`;
 
   const response = await fetch(url);
+
   if (!response.ok) {
-    throw new Error('Failed to fetch records.');
+    throw new Error('Failed to fetch data.');
   }
-  return response.json();
+
+  const data = await response.json();
+
+  // Check if the data is an empty array
+  if (Array.isArray(data.data) && data.data.length === 0) {
+    throw new Error('No data found.');
+  }
+
+  return data; // Return the data (should not be empty at this point)
 };
+
 // Get data by ID from the API server
 export const getDataFromApiServerById = async (id: string): Promise<IApplicationUser> => {
   const response = await fetch(`${API_BASE_URL}/users/${id}`);

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-export const useDeleteOperation = <T extends { id: string }>(deleteDataFromDBFn: (id: string) => Promise<void>) => {
+export const useDeleteOperation = <T extends { id: string }>(deleteDataFromDBFn?: (id: string) => Promise<void>) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
   const [invalidateTag, setInvalidateTag] = useState<boolean>(false);
@@ -16,11 +16,12 @@ export const useDeleteOperation = <T extends { id: string }>(deleteDataFromDBFn:
 
   const handleDelete = async () => {
     if (!selectUserInfo?.id) return;
-
-    await deleteDataFromDBFn(selectUserInfo.id);
-    setInvalidateTag((prev) => !prev);
-    toast.success('File deleted successfully!');
-    closeModal();
+    if (deleteDataFromDBFn) {
+      await deleteDataFromDBFn(selectUserInfo.id);
+      setInvalidateTag((prev) => !prev);
+      toast.success('File deleted successfully!');
+      closeModal();
+    }
   };
 
   return {

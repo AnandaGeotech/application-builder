@@ -17,16 +17,30 @@ const API_BASE_URL = 'http://localhost:3000';
 export const loginUserFromApiServerByEmail = async (
   email: string,
   password: string
-): Promise<[IRegisterUser] | undefined> => {
+): Promise<{ user: IRegisterUser; token: string } | undefined> => {
   if (!email || !password) {
     throw new Error('Please provide email and password!');
   }
+
   const response = await fetch(`${API_BASE_URL}/authenticatedUsers?email=${email}&password=${password}`);
+
   if (!response.ok) {
     throw new Error(`Failed to fetch record with ID: ${email}`);
   }
 
-  return response.json();
+  const users = await response.json();
+
+  // Check if any user was found
+  if (users.length === 0) {
+    throw new Error('Invalid email or password!');
+  }
+
+  const user = users[0]; // Assuming the first user is the one who logged in
+
+  // Generate a fake token
+  const token = `fake-token-${user.id}-${Date.now()}`; // Simple fake token
+
+  return { user, token };
 };
 
 // Add data to the API server

@@ -1,6 +1,5 @@
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { ADD_FORM_BUILDER_FORM_FIELDS } from '@/features/application/constants/add-builder-form.constant';
-
 import { Button } from '@/common/components/Button';
 import SkeletonFormLoader from '@/common/components/form/FormLoader';
 import Input from '@/common/components/form/Input';

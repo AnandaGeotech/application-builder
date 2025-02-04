@@ -23,7 +23,7 @@
 
 @layer components {
   .custom-input {
-    @apply bg-gray-50 border text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5;
+    @apply bg-gray-50 border text-gray-900 text-sm rounded-lg focus:border-primary-500 block w-full p-2.5;
   }
 
   .dark .custom-input {

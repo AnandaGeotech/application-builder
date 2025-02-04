@@ -1,5 +1,5 @@
 import { IApplicationUser } from './application.type';
-import { IApplicationGlobalListRes, ILoginUser, IQueryFile, IRegisterUser } from '@/common/types/common.type';
+import { IApplicationGlobalListRes, IQueryFile, IRegisterUser } from '@/common/types/common.type';
 
 /* eslint-disable no-unused-vars */
 export interface IApplicationDBService<T> {
@@ -17,6 +17,6 @@ export interface IApplicationUserDBService {
 export interface IAuthenticationDBService {
   // userInfoDataFn: (token: string) => ILoginUser;
   // userLogoutFromDBFn: () => void;
-  userLoginFromDBFn: (email: string, password: string) => Promise<ILoginUser | undefined>;
+  userLoginFromDBFn: (email: string, password: string) => Promise<[IRegisterUser] | undefined>;
   userRegisterToDBFn: (payload: IRegisterUser) => Promise<IRegisterUser>;
 }

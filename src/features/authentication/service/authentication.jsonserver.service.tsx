@@ -1,11 +1,11 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable boundaries/no-unknown */
-import { ILoginUser, IRegisterUser } from '@/common/types/application.type';
+import { IRegisterUser } from '@/common/types/application.type';
 import { IAuthenticationDBService } from '@/common/types/feature.type';
 import { loginUserFromApiServerByEmail, registerUserToApiServer } from '@/lib/db';
 
 // Function to get a single file data by ID
-const userLoginFromDBFn = async (email: string, password: string): Promise<ILoginUser | undefined> =>
+const userLoginFromDBFn = async (email: string, password: string): Promise<[IRegisterUser] | undefined> =>
   // eslint-disable-next-line implicit-arrow-linebreak
   loginUserFromApiServerByEmail(email, password);
 

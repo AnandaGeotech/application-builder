@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { FaPhoneAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FaIdCardClip, FaXTwitter } from 'react-icons/fa6';
 import { MdCorporateFare, MdEmail } from 'react-icons/md';
@@ -27,22 +25,55 @@ const socialLinks = [
     link: '/',
   },
 ];
+
+// types and interfaces for this component
 type TProps = {
   dataResource: {
     read: () => IApplicationUser;
   } | null;
 };
+
+interface DetailsSectionProps {
+  label: string;
+  value: string | undefined;
+  icon: React.ReactNode;
+}
+
+interface InfoSectionProps {
+  label: string;
+  value: string | undefined;
+}
+
+// common styles and tsx structures used here
+const infoTitleStyle = 'font-bold dark:text-white text-gray-700';
+
+const DetailsSectionComponent: React.FC<DetailsSectionProps> = ({ icon, label, value }) => (
+  <div className="flex items-center">
+    <span className="dark:text-white text-gray-800 mr-2">{icon}</span>
+    <span className={`text-sm md:text-base ${infoTitleStyle}`}>{label}:</span>
+    <p className="ml-2 break-all md:break-words">{value}</p>
+  </div>
+);
+
+const InformationSectionComponent: React.FC<InfoSectionProps> = ({ label, value }) => (
+  <div>
+    <h6 className={`${infoTitleStyle}`}>{label}</h6>
+    <p>{value}</p>
+  </div>
+);
+
+// Main component
 const UserInfo: FC<TProps> = ({ dataResource }) => {
   if (!dataResource) {
-    throw new Promise(() => {});
+    throw new Promise(() => {
+      // dummy comment
+    });
   }
 
   const userInfoData = dataResource.read();
   if (!userInfoData) {
     throw new Error('User data is missing!');
   }
-
-  const infoTitleStyle = 'font-bold dark:text-white text-gray-700';
 
   return (
     <>
@@ -58,7 +89,8 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
           />
           <div className="mt-4 md:mt-0 text-center md:text-left">
             <h3 className="text-2xl md:text-3xl font-bold dark:text-white text-gray-800">
-              {capitalize(userInfoData?.firstName)} {capitalize(userInfoData?.lastName)}
+              {capitalize(userInfoData?.firstName)}
+              {capitalize(userInfoData?.lastName)}
             </h3>
             <p className=" mt-1">UI-UX Designer | Product Department</p>
             <p className="text-sm ">Based in New York, USA</p>
@@ -67,39 +99,13 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
 
         {/* Details Section */}
         <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2  ">
-          <div className="">
-            <div className="flex items-center">
-              <span className="dark:text-white text-gray-800 mr-2">
-                <FaIdCardClip />
-              </span>
-              <span className={`text-sm md:text-base ${infoTitleStyle}`}>ID :</span>
-              <p className="ml-2 break-all md:break-words">{userInfoData?.id}</p>
-            </div>
-            <div className="flex items-center ">
-              <span className="dark:text-white text-gray-800 mr-2">
-                <MdEmail />
-              </span>
-              <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Email :</span>
-              <p className="ml-2  break-all md:break-words">{userInfoData?.email}</p>
-            </div>
+          <div>
+            <DetailsSectionComponent icon={<FaIdCardClip />} label="ID" value={userInfoData?.id} />
+            <DetailsSectionComponent icon={<MdEmail />} label="Email" value={userInfoData?.email} />
           </div>
-          <div className="">
-            <div className="flex items-center">
-              <span className="dark:text-white text-gray-800 mr-2">
-                {' '}
-                <FaPhoneAlt />
-              </span>
-              <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Ph. No :</span>
-              <p className="ml-2 break-all md:break-words">{userInfoData?.phone}</p>
-            </div>
-
-            <div className="flex items-center">
-              <span className="dark:text-white text-gray-800 mr-2">
-                <MdCorporateFare />
-              </span>
-              <span className="text-sm md:text-base font-bold dark:text-white text-gray-800">Company :</span>
-              <p className="ml-2 break-all md:break-words">{userInfoData?.company}</p>
-            </div>
+          <div>
+            <DetailsSectionComponent icon={<FaPhoneAlt />} label="Ph. No" value={userInfoData?.phone} />
+            <DetailsSectionComponent icon={<MdCorporateFare />} label="Company" value={userInfoData?.company} />
           </div>
         </div>
       </section>
@@ -111,36 +117,15 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
           <h3 className={`text-2xl pb-6 ${infoTitleStyle} border-b-2 border-b-gray-600`}>Personal Information</h3>
 
           <div className="grid grid-cols-2 gap-y-4 md:gap-y-8 py-4">
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Gender</h6>
-              <p>{userInfoData?.gender}</p>
-            </div>
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Date of Birth</h6>
-              <p>{userInfoData?.birthDate}</p>
-            </div>
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Hometown</h6>
-              <p>{userInfoData?.hometown}</p>
-            </div>
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Language</h6>
-              <p>{userInfoData?.language}</p>
-            </div>
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Marital Status</h6>
-              <p>{userInfoData?.maritalStatus}</p>
-            </div>
+            <InformationSectionComponent label="Gender" value={userInfoData?.gender} />
+            <InformationSectionComponent label="Date of Birth" value={userInfoData?.birthDate} />
+            <InformationSectionComponent label="Hometown" value={userInfoData?.hometown} />
+            <InformationSectionComponent label="Language" value={userInfoData?.language} />
+            <InformationSectionComponent label="Marital Status" value={userInfoData?.maritalStatus} />
           </div>
           <div className="grid grid-cols-1 gap-y-6 py-4">
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Permanent Address</h6>
-              <p>{userInfoData?.permanentAddress}</p>
-            </div>
-            <div>
-              <h6 className={`${infoTitleStyle}`}>Current Address</h6>
-              <p>{userInfoData?.presentAddress}</p>
-            </div>
+            <InformationSectionComponent label="Permanent Address" value={userInfoData?.permanentAddress} />
+            <InformationSectionComponent label="Current Address" value={userInfoData?.presentAddress} />
           </div>
         </div>
 
@@ -155,7 +140,7 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
                     {label}
                     <span className="font-bold text-sm">{duration}</span>
                   </h6>
-                  <p className="">{description}</p>
+                  <p>{description}</p>
                 </div>
               ))}
             </div>
@@ -169,7 +154,7 @@ const UserInfo: FC<TProps> = ({ dataResource }) => {
                     {label}
                     <span className="font-bold text-sm">{duration}</span>
                   </h6>
-                  <p className="  ">{description}</p>
+                  <p>{description}</p>
                 </div>
               ))}
             </div>

@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
-import React, { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { createContext, PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react';
 import { APPLICATION_TOKEN } from '../constants/common.constant';
 import { IRegisterUser } from '../types/common.type';
+import { delay } from '../components/utils';
 
 // Define User Type
 
@@ -9,20 +10,18 @@ import { IRegisterUser } from '../types/common.type';
 interface AuthContextType {
   user: IRegisterUser | null;
   token: string | null;
-  loading: boolean;
+  authLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   refetchUser: () => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<IRegisterUser | null>>;
+  setToken: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 // Create Context
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<IRegisterUser | null>({
     id: '822a',
     firstName: 'Ananda',
@@ -33,26 +32,32 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     role: 'admin',
   });
   const [token, setToken] = useState<string | null>(localStorage.getItem(APPLICATION_TOKEN));
-  const [loading, setLoading] = useState<boolean>(true);
-  const [isMount, setisMount] = useState<boolean>(true);
+  const [authLoading, setAuthLoading] = useState<boolean>(true);
+  const [isMount, setisMount] = useState<boolean>(false);
 
   useEffect(() => {
-    setisMount(true);
+    setTimeout(() => {
+      setisMount(true);
+    }, 3000);
   }, []);
   useEffect(() => {
     if (isMount) {
+      console.log(localStorage.getItem(APPLICATION_TOKEN), APPLICATION_TOKEN, 'kjjkl');
       setToken(localStorage.getItem(APPLICATION_TOKEN));
     }
   }, [isMount]);
 
-  const logout = () => {
+  const logout = async () => {
+    setAuthLoading(true);
+    await delay(2000);
     setUser(null);
     setToken(null);
     localStorage.removeItem(APPLICATION_TOKEN);
+    setAuthLoading(false);
   };
   const refetchUser = useCallback(async () => {
     if (!token) return;
-    setLoading(true);
+    setAuthLoading(true);
     try {
       setUser({
         id: '822a',
@@ -76,11 +81,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       // console.error('Refetch user failed:', error);
       logout();
     } finally {
-      setLoading(false);
+      setAuthLoading(false);
     }
   }, [token]);
   const login = async (email: string, password: string) => {
-    setLoading(true);
+    setAuthLoading(true);
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -97,14 +102,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     } catch (error) {
       // console.error('Login failed:', error);
     } finally {
-      setLoading(false);
+      setAuthLoading(false);
     }
   };
 
   useEffect(() => {
     if (isMount) {
       if (token) refetchUser();
-      else setLoading(false);
+      else setAuthLoading(false);
     }
   }, [token, refetchUser, isMount]);
 
@@ -113,15 +118,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     () => ({
       user,
       token,
-      loading,
+      authLoading,
       login,
       logout,
       refetchUser,
+      setUser,
+      setToken,
     }),
-    [user, token, loading, refetchUser]
+    [user, token, authLoading, refetchUser]
   );
 
-  return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={contextValue}>
+      {authLoading ? <p>authentication Loading...</p> : children}
+    </AuthContext.Provider>
+  );
 };
 
 // Custom Hook to use Auth Context

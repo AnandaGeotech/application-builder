@@ -1,20 +1,22 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ColumnDef, createColumnHelper, Row } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { useState } from 'react';
+import { NavigateFunction } from 'react-router-dom';
+import ApplicationUserService from '../services/users.service';
 import useGlobalList, { ColumnDefinition } from '@/common/hooks/useGlobalList';
-import GlobalDBService from '@/common/services/global.service';
 import { IApplicationUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes } from '@/common/types/common.type';
-import TableActionButton from '@/features/application/components/TableActionButton';
+import MenuBar from '@/common/components/MenuBar';
 
-const { USER_SERVICE } = GlobalDBService();
+const userApplicationServiceMethods = ApplicationUserService();
 const columnHelper = createColumnHelper<IApplicationUser>(); // Initialize column helper
 
 const generateColumns = (
   headers: (keyof IApplicationUser)[],
   data: IApplicationGlobalListRes<IApplicationUser>,
-  openModal: (info: IApplicationUser) => void
+  navigate: NavigateFunction,
+  openModal?: (info: IApplicationUser) => void
 ): ColumnDefinition<IApplicationUser>[] => {
   const columnsArray = [];
 
@@ -36,9 +38,34 @@ const generateColumns = (
     id: 'action',
     enableSorting: false,
     header: 'Actions',
-    cell: (info: { row: Row<IApplicationUser> }) => (
+    cell: (info: any) => (
       <div className="flex justify-center">
-        <TableActionButton info={info?.row} openModal={openModal} />
+        {/* <TableActionButton info={info?.row} openModal={openModal} /> */}
+        <MenuBar>
+          <MenuBar.MenuItem
+            handleItemClick={() => {
+              navigate(`/edit/${info.original.id}`);
+            }}
+          >
+            Edit
+          </MenuBar.MenuItem>
+          <MenuBar.MenuItem
+            handleItemClick={() => {
+              navigate(`/user/${info.original.id}`);
+            }}
+          >
+            View
+          </MenuBar.MenuItem>
+          <MenuBar.MenuItem
+            handleItemClick={() => {
+              if (openModal) {
+                openModal(info.original);
+              }
+            }}
+          >
+            Delete
+          </MenuBar.MenuItem>
+        </MenuBar>
       </div>
     ),
   });
@@ -48,7 +75,7 @@ const useApplicationUserList = () => {
   const [columns, setColumns] = useState<ColumnDef<IApplicationUser>[]>([]);
 
   const options = useGlobalList<IApplicationUser>({
-    serviceMethods: USER_SERVICE,
+    serviceMethods: userApplicationServiceMethods,
     generateColumns,
     setColumns,
   });

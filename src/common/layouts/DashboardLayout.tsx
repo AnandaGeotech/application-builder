@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { Link, Outlet } from 'react-router-dom';
+import MenuBar from '../components/MenuBar';
+import { useAuth } from '../contexts/auth.context';
 import { Button } from '@/common/components/Button';
 import Sidebar from '@/common/components/Sidebar';
 import ThemeProvider from '@/common/components/ThemeProvider';
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { logout } = useAuth();
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prevState) => !prevState);
@@ -38,19 +41,24 @@ function Layout() {
             <div className="flex items-center">
               <div className="flex items-center ms-3">
                 <div className="flex">
-                  <Button
-                    type="button"
-                    className="border-0 "
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
+                  <MenuBar
+                    menuTriggerBtn={
+                      <img
+                        className="w-8 h-8 rounded-full cursor-pointer"
+                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                        alt="user "
+                      />
+                    }
                   >
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                      alt="user "
-                    />
-                  </Button>
+                    <MenuBar.MenuItem>Profile</MenuBar.MenuItem>
+                    <MenuBar.MenuItem
+                      handleItemClick={() => {
+                        logout();
+                      }}
+                    >
+                      Logout
+                    </MenuBar.MenuItem>
+                  </MenuBar>
                   <ThemeProvider />
                 </div>
                 <div

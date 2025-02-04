@@ -8,7 +8,7 @@ import {
 } from '@/lib/db';
 import { IApplicationUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
-import { IApplicationDBService } from '@/common/types/feature.type';
+import { IApplicationUserDBService } from '@/common/types/feature.type';
 
 // Function to get a single file data by ID
 const getSingleFileDataFn = async (fileId: string): Promise<IApplicationUser> => getDataFromApiServerById(fileId);
@@ -29,7 +29,7 @@ const upsertDataToDBFn = async (payload: IApplicationUser) => {
   return data;
 };
 
-const userJsonApiDBService: IApplicationDBService<IApplicationUser> = {
+const userJsonApiDBService: IApplicationUserDBService = {
   getSingleFileDataFn,
   getAllDataFromDBFn,
   deleteDataFromDBFn,

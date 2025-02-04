@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { ColumnDef, SortingState } from '@tanstack/react-table';
 import React, { useEffect, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { createResource, delay } from '@/common/components/utils';
 import { useDeleteOperation } from '@/common/hooks/useDeleteOperation';
 import { usePagination } from '@/common/hooks/usePagination';
@@ -22,8 +23,10 @@ interface UseGlobalListOptions<T> {
   generateColumns?: (
     headers: (keyof T)[],
     data: IApplicationGlobalListRes<T>,
-    openModal: (info: T) => void
+    navigate: NavigateFunction,
+    openModal?: (info: T) => void
   ) => ColumnDefinition<T>[];
+
   setColumns?: React.Dispatch<React.SetStateAction<ColumnDef<T>[]>>;
   enablePagination?: boolean;
   enableDelete?: boolean;
@@ -35,6 +38,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
   setColumns,
 }: UseGlobalListOptions<T>) => {
   const { getAllDataFromDBFn, deleteDataFromDBFn } = serviceMethods;
+  const navigate = useNavigate();
 
   const [selectUserInfo, setSelectUserInfo] = useState<T | undefined>();
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -66,7 +70,7 @@ const useGlobalList = <T extends Record<string, unknown> & { id: string }>({
     allDataPromise.then((res) => {
       const headers = res?.data?.length && res.data.length > 0 ? (Object.keys(res.data[0]) as (keyof T)[]) : [];
       if (generateColumns && setColumns) {
-        setColumns(generateColumns(headers, res, deleteOps?.openModal ?? (() => {})));
+        setColumns(generateColumns(headers, res, navigate, deleteOps?.openModal ?? (() => {})));
       }
       setlistData(res);
     });

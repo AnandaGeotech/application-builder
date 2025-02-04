@@ -2,14 +2,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { delay } from '@/common/components/utils';
-import GlobalDBService from '@/common/services/global.service';
 import { IRegisterUser } from '@/common/types/application.type';
 import { useState } from 'react';
 import { FieldValues, SubmitHandler, useFormContext } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import authenticationService from '../service/authentication.service';
 
-const { AUTHENTICATION_SERVICE } = GlobalDBService();
+const { userRegisterToDBFn } = authenticationService();
 
 const useUserRegister = () => {
   const methods = useFormContext();
@@ -31,7 +31,7 @@ const useUserRegister = () => {
         formData.append('file', data.file[0]);
       }
       try {
-        const newData = await AUTHENTICATION_SERVICE.userRegisterToDBFn(data as IRegisterUser);
+        const newData = await userRegisterToDBFn(data as IRegisterUser);
         toast.success('User added successfully', { id: toastId });
         toastId = undefined;
         methods.reset({});

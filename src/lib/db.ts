@@ -1,4 +1,4 @@
-import { IApplicationUser, ILoginUser, IRegisterUser } from '@/common/types/application.type';
+import { IApplicationUser, IRegisterUser } from '@/common/types/application.type';
 import { IApplicationGlobalListRes, IQueryFile } from '@/common/types/common.type';
 
 export async function clearStore() {
@@ -17,7 +17,7 @@ const API_BASE_URL = 'http://localhost:3000';
 export const loginUserFromApiServerByEmail = async (
   email: string,
   password: string
-): Promise<ILoginUser | undefined> => {
+): Promise<[IRegisterUser] | undefined> => {
   if (!email || !password) {
     throw new Error('Please provide email and password!');
   }
@@ -30,7 +30,7 @@ export const loginUserFromApiServerByEmail = async (
 };
 
 // Add data to the API server
-export const regsiterUserToApiServer = async (data: IRegisterUser): Promise<IRegisterUser> => {
+export const registerUserToApiServer = async (data: IRegisterUser): Promise<IRegisterUser> => {
   const response = await fetch(`${API_BASE_URL}/authenticatedUsers`, {
     method: 'POST',
     headers: {

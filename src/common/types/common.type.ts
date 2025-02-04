@@ -4,8 +4,9 @@
 import { IApplicationUser } from '@/common/types/application.type';
 import { ColumnDef, SortingState } from '@tanstack/react-table';
 import React, { ReactNode } from 'react';
+import { THEME_OPTIONS, USER_ROLES } from '../constants/common.constant';
 
-export type TTheme = 'light' | 'dark';
+export type TTheme = (typeof THEME_OPTIONS)[keyof typeof THEME_OPTIONS];
 export interface IApplicationGlobalListRes<T> {
   data: T[];
   first?: number;
@@ -15,7 +16,8 @@ export interface IApplicationGlobalListRes<T> {
   pages?: number;
   prev?: null | number;
 }
-export type TUserRole = 'admin' | 'customer' | 'user';
+
+export type TUserRole = (typeof USER_ROLES)[keyof typeof USER_ROLES];
 export type ILoginUser = {
   password: string;
   email: string;
@@ -27,6 +29,7 @@ export type IRegisterUser = {
   lastName: string;
   id?: string;
   role: TUserRole;
+  phone?: string;
 };
 export type TGlobalTableProps<T> = {
   hooksOptions: Record<string, unknown> & {

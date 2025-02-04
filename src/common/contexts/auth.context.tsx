@@ -22,15 +22,7 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [user, setUser] = useState<IRegisterUser | null>({
-    id: '822a',
-    firstName: 'Ananda',
-    lastName: 'Gharami',
-    email: 'tamalkundu007@gmail.com',
-    password: '8420@nandA',
-    phone: '9878767656',
-    role: 'admin',
-  });
+  const [user, setUser] = useState<IRegisterUser | null>(null);
   const [token, setToken] = useState<string | null>(localStorage.getItem(APPLICATION_TOKEN));
   const [authLoading, setAuthLoading] = useState<boolean>(true);
   const [isMount, setisMount] = useState<boolean>(false);

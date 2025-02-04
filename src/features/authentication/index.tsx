@@ -1,3 +1,6 @@
+import authenticationService from './service/authentication.service';
 import { authenticationRoutes } from '@/features/authentication/authentication.routes';
 
-export { authenticationRoutes };
+const { retrieveUserByTokenFromDBFn } = authenticationService();
+
+export { authenticationRoutes, retrieveUserByTokenFromDBFn };

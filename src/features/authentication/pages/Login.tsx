@@ -3,7 +3,7 @@ import Form from '@/common/components/form/Form';
 
 const Login = () => (
   <div className="h-[100vh] items-center flex justify-center px-5 lg:px-0">
-    <div className="max-w-screen-xl bg-white flex justify-center flex-1">
+    <div className="max-w-screen-xl  flex justify-center flex-1">
       <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
         <div className=" flex flex-col items-center">
           <div className="text-center">

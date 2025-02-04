@@ -15,8 +15,6 @@ export interface IApplicationUserDBService {
   upsertDataToDBFn: (payload: IApplicationUser) => Promise<IApplicationUser | void>;
 }
 export interface IAuthenticationDBService {
-  // userInfoDataFn: (token: string) => ILoginUser;
-  // userLogoutFromDBFn: () => void;
   userLoginFromDBFn: (email: string, password: string) => Promise<[IRegisterUser] | undefined>;
   userRegisterToDBFn: (payload: IRegisterUser) => Promise<IRegisterUser>;
 }

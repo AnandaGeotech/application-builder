@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { DropdownMenu } from 'radix-ui';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import React, { createContext, PropsWithChildren, ReactNode, useMemo } from 'react';

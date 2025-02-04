@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 import authenticationService from '../service/authentication.service';
 import { APPLICATION_TOKEN } from '@/common/constants/common.constant';
 import { useAuth } from '@/common/contexts/auth.context';
+import useFetchData from '@/common/hooks/useFetchData';
+import { IRegisterUser } from '@/common/types/application.type';
 
 const { userLoginFromDBFn } = authenticationService();
 
@@ -16,8 +18,15 @@ const useUserLogin = () => {
   const methods = useFormContext();
   const { setUser, setToken } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  const [uiLoading, setUiLoading] = useState(false);
+  const fetchOptions = useFetchData<
+    | {
+        user: IRegisterUser;
+        token: string;
+      }
+    | undefined
+  >();
 
+  const { loadData: fetchData } = fetchOptions;
   const navigate = useNavigate();
 
   const submit: SubmitHandler<FieldValues> = (() => {
@@ -27,25 +36,23 @@ const useUserLogin = () => {
       if (toastId) return;
 
       toastId = toast.loading('User logging...');
-      await delay(1000);
 
       try {
-        const newData = await userLoginFromDBFn(data.email, data.password);
-
+        await delay(9000);
+        const newData = await fetchData(() => userLoginFromDBFn(data.email, data.password));
         if (newData?.user?.id) {
           toast.success('User login successfully', { id: toastId });
           setUser(newData?.user);
           localStorage.setItem(APPLICATION_TOKEN, newData.token);
           setToken(newData.token);
-          await delay(2000);
           methods.reset({});
           navigate('/');
         } else {
           toast.error('Invalid credentials', { id: toastId });
         }
         toastId = undefined;
-      } catch (error) {
-        toast.error('Something went wrong!', { id: toastId });
+      } catch (error: any) {
+        toast.error(error.message || 'Something went wrong!', { id: toastId });
         toastId = undefined;
       }
     };
@@ -54,9 +61,9 @@ const useUserLogin = () => {
   return {
     methods,
     submit,
-    uiLoading,
     showPassword,
     setShowPassword,
+    ...fetchOptions,
   };
 };
 

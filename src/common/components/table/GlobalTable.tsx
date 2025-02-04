@@ -39,12 +39,12 @@ export default function GlobalTable<T extends object>({
         >
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableHeadRow headerGroup={headerGroup} />
+              <TableHeadRow key={headerGroup.id} headerGroup={headerGroup} />
             ))}
           </thead>
           <tbody className="-z-20">
             {table.getRowModel().rows.map((row) => (
-              <TableBodyRow row={row} />
+              <TableBodyRow key={row.id} row={row} />
             ))}
           </tbody>
         </table>

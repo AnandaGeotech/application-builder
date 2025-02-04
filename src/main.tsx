@@ -8,9 +8,11 @@ import './index.css';
 const rootElement = document.getElementById('root') as HTMLElement;
 
 createRoot(rootElement).render(
-  <AuthProvider>
-    <App />
+  <>
     <Toaster />
-  </AuthProvider>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </>
 );
 // 1.1.28

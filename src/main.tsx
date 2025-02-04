@@ -4,13 +4,15 @@ import { Toaster } from 'react-hot-toast';
 import App from './App.tsx';
 import { AuthProvider } from './common/contexts/auth.context.tsx';
 import './index.css';
+import authenticationService from '@/features/authentication/service/authentication.service.ts';
 
+const { retrieveUserByTokenFromDBFn } = authenticationService();
 const rootElement = document.getElementById('root') as HTMLElement;
 
 createRoot(rootElement).render(
   <>
     <Toaster />
-    <AuthProvider>
+    <AuthProvider retrieveUserByTokenFromDBFn={retrieveUserByTokenFromDBFn}>
       <App />
     </AuthProvider>
   </>

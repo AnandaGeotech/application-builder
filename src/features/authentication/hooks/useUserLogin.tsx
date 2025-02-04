@@ -32,11 +32,11 @@ const useUserLogin = () => {
       try {
         const newData = await userLoginFromDBFn(data.email, data.password);
 
-        if (newData?.[0]?.id) {
+        if (newData?.user?.id) {
           toast.success('User login successfully', { id: toastId });
-          setUser(newData?.[0]);
-          localStorage.setItem(APPLICATION_TOKEN, 'tokennn');
-          setToken('tokennn');
+          setUser(newData?.user);
+          localStorage.setItem(APPLICATION_TOKEN, newData.token);
+          setToken(newData.token);
           await delay(2000);
           methods.reset({});
           navigate('/');

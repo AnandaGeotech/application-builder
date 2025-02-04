@@ -5,7 +5,16 @@ import { IAuthenticationDBService } from '@/common/types/feature.type';
 import { loginUserFromApiServerByEmail, registerUserToApiServer } from '@/lib/db';
 
 // Function to get a single file data by ID
-const userLoginFromDBFn = async (email: string, password: string): Promise<[IRegisterUser] | undefined> =>
+const userLoginFromDBFn = async (
+  email: string,
+  password: string
+): Promise<
+  | {
+      user: IRegisterUser;
+      token: string;
+    }
+  | undefined
+> =>
   // eslint-disable-next-line implicit-arrow-linebreak
   loginUserFromApiServerByEmail(email, password);
 

@@ -46,10 +46,10 @@ export const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const logout = async () => {
     setAuthLoading(true);
+    localStorage.removeItem(APPLICATION_TOKEN);
     await delay(2000);
     setUser(null);
     setToken(null);
-    localStorage.removeItem(APPLICATION_TOKEN);
     setAuthLoading(false);
   };
   const refetchUser = useCallback(async () => {

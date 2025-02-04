@@ -21,7 +21,8 @@ const LoginForm = () => {
           <Button
             type="button"
             onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute top-8 right-1 flex items-center text-gray-500 border-0 hover:bg-transparent hover:text-gray-500"
+            className="absolute top-8 right-1 flex items-center  border-0   "
+            variant="link"
           >
             {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
           </Button>

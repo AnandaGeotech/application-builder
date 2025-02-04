@@ -16,7 +16,7 @@ export const buttonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
         danger: 'text-red-500 hover:underline',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
+        link: 'text-primary underline-offset-4 hover:underline ',
         Login: 'w-full py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-all',
       },
       size: {

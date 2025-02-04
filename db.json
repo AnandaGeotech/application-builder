@@ -229,6 +229,14 @@
       "password": "8420@nandA",
       "phone": "9878767656",
       "role": "admin"
+    },
+    {
+      "id": "c33f",
+      "firstName": "Mohon",
+      "lastName": "halder",
+      "email": "mahan@gmail.com",
+      "password": "8420@nandA",
+      "phone": "9878767656"
     }
   ]
 }

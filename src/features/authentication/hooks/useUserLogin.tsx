@@ -31,18 +31,19 @@ const useUserLogin = () => {
 
       try {
         const newData = await userLoginFromDBFn(data.email, data.password);
-        toast.success('User login successfully', { id: toastId });
-        toastId = undefined;
 
-        methods.reset({});
         if (newData?.[0]?.id) {
+          toast.success('User login successfully', { id: toastId });
           setUser(newData?.[0]);
           localStorage.setItem(APPLICATION_TOKEN, 'tokennn');
           setToken('tokennn');
           await delay(2000);
-
+          methods.reset({});
           navigate('/');
+        } else {
+          toast.error('Invalid credentials', { id: toastId });
         }
+        toastId = undefined;
       } catch (error) {
         toast.error('Something went wrong!', { id: toastId });
         toastId = undefined;

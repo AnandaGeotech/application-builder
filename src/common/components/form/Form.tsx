@@ -11,7 +11,7 @@ type TFormProps = {
   children: ReactNode;
 } & TFormConfig;
 
-const Form = ({ children, defaultValues, mode = 'all' }: TFormProps) => {
+const Form = ({ children, defaultValues, mode = 'onSubmit' }: TFormProps) => {
   const formConfig: TFormConfig = { mode };
 
   if (defaultValues) {

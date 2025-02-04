@@ -1,5 +1,6 @@
 import { FiUserPlus } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import useUserLogin from '../hooks/useUserLogin';
 import { USER_REGISTER_BUILDER_FORM_FIELDS } from '@/features/authentication/constants/authentication.form.constant';
 import Input from '@/common/components/form/Input';
@@ -7,7 +8,7 @@ import SkeletonFormLoader from '@/common/components/form/FormLoader';
 import { Button } from '@/common/components/Button';
 
 const LoginForm = () => {
-  const { methods, submit, uiLoading } = useUserLogin();
+  const { methods, submit, uiLoading, showPassword, setShowPassword } = useUserLogin();
 
   return uiLoading ? (
     <SkeletonFormLoader />
@@ -15,8 +16,17 @@ const LoginForm = () => {
     <form onSubmit={methods.handleSubmit(submit)} className="w-full flex-1 mt-8">
       <div className="mx-auto max-w-xs flex flex-col">
         <Input {...USER_REGISTER_BUILDER_FORM_FIELDS.EMAIL} />
-        <Input {...USER_REGISTER_BUILDER_FORM_FIELDS.PASSWORD} />
-
+        <div className="relative">
+          <Input {...USER_REGISTER_BUILDER_FORM_FIELDS.PASSWORD} type={showPassword ? 'text' : 'password'} />
+          <Button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute top-8 right-1 flex items-center  border-0   "
+            variant="link"
+          >
+            {showPassword ? <AiOutlineEyeInvisible size={20} /> : <AiOutlineEye size={20} />}
+          </Button>
+        </div>
         <Button className="">
           <FiUserPlus size={20} />
 

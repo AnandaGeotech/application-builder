@@ -15,7 +15,7 @@ const { userLoginFromDBFn } = authenticationService();
 const useUserLogin = () => {
   const methods = useFormContext();
   const { setUser, setToken } = useAuth();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [uiLoading, setUiLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -55,6 +55,8 @@ const useUserLogin = () => {
     methods,
     submit,
     uiLoading,
+    showPassword,
+    setShowPassword,
   };
 };
 

@@ -6,9 +6,9 @@ type TInputProps = {
   type?: string;
   name: string;
   label?: string;
-  required?: boolean;
+  required?: boolean; // Add required prop to determine if the field is required
   disabled?: boolean;
-  rules?: Record<string, unknown>;
+  rules?: Record<string, unknown>; // Add rules prop to handle validation rules
 } & Record<string, unknown>;
 
 const Input = ({ type = 'text', name, label, required, disabled, rules = {}, ...restOptions }: TInputProps) => {

@@ -13,7 +13,7 @@ const { userRegisterToDBFn } = authenticationService();
 
 const useUserRegister = () => {
   const methods = useFormContext();
-
+  const [showPassword, setShowPassword] = useState(false);
   const [uiLoading, setUiLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -84,6 +84,8 @@ const useUserRegister = () => {
     handleFileChange,
     preview,
     uiLoading,
+    showPassword,
+    setShowPassword,
   };
 };
 

@@ -7,7 +7,6 @@ const AuthRoute: React.FC<PropsWithChildren> = ({ children }) => {
   const { token, authLoading, user } = useAuth();
 
   const isAuthenticated = !!token;
-  console.log(token, authLoading, 'token');
   if (authLoading) return <p>Loading...</p>;
 
   if (!isAuthenticated || !user?.email) return children;

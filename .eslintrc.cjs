@@ -118,7 +118,7 @@ module.exports = {
           },
           {
             from: ['router', 'store'],
-            allow: ['router', 'feature'],
+            allow: ['router', 'feature',"common"],
           },
           {
             from: ['scss'],
